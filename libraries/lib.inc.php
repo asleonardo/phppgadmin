@@ -248,11 +248,6 @@
 		}
 
 
-		// Load Slony if required
-		if ($_server_info['slony_support']) {
-			include('./classes/plugins/Slony.php');
-			$slony = new Slony();
-		}
 	}
 
 	if (!function_exists("htmlspecialchars_decode")) {
