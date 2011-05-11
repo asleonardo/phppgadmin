@@ -179,6 +179,17 @@
 		exit;
 	}
 
+	// Check if there are activated plugins
+	$plugins = $conf['plugins'];//xdebug_var_dump($lang, $_language);
+	require_once('./classes/plugins/PluginManager.php');
+	$plugin_manager = new PluginManager();
+	//register the plugins and their functions
+	foreach ($plugins as $activated_plugin) {
+		include_once('./plugins/'.$activated_plugin.'/plugin.php');
+		$plugin = new $activated_plugin($plugin_manager, $_language);
+		$plugin_manager->add_plugin($plugin);
+	}
+
 	// Create data accessor object, if necessary
 	if (!isset($_no_db_connection)) {
 		if (!isset($_REQUEST['server'])) {

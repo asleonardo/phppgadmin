@@ -1142,11 +1142,21 @@
 					' onclick="return confirm(\''. $lang['strconfdropcred']. '\')"':
 					'';
 
+				global $plugin_manager;
+				$toplinks = array();
+				$toplinks[] = "<a class=\"toplink\" href=\"{$sql_url}sql\" target=\"sqledit\" onclick=\"window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strsql']}</a>";
+				$toplinks[] = "<a class=\"toplink\" href=\"{$history_url}\" onclick=\"window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strhistory']}</a>";
+				$toplinks[] = "<a class=\"toplink\" href=\"{$sql_url}find\" target=\"sqledit\" onclick=\"window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strfind']}</a>";
+				/* TOPLINK HOOK'S PLACE */
+				$plugin_manager->execute_plugin_funtions('toplinks', $toplinks);
+				$toplinks[] = "<a class=\"toplink\" href=\"servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode'])."\"{$logout_shared}>{$lang['strlogout']}</a>";
+				
+				
 				echo "<td style=\"text-align: right\">";
-				echo "<ul class=\"toplink\">\n\t<li><a class=\"toplink\" href=\"{$sql_url}sql\" target=\"sqledit\" onclick=\"window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strsql']}</a></li>\n";
-				echo "\t<li><a class=\"toplink\" href=\"{$history_url}\" onclick=\"window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strhistory']}</a></li>\n";
-				echo "\t<li><a class=\"toplink\" href=\"{$sql_url}find\" target=\"sqledit\" onclick=\"window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strfind']}</a></li>\n";
- 				echo "\t<li><a class=\"toplink\" href=\"servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode'])."\"{$logout_shared}>{$lang['strlogout']}</a></li>\n";
+				echo "<ul class=\"toplink\">\n";
+				foreach ($toplinks as $link) {
+					echo "\t<li>$link</li>\n";
+				}
  				echo "</ul>\n";
 				echo "</td>";
 			}
