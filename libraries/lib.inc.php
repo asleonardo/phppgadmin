@@ -180,7 +180,7 @@
 	}
 
 	// Check if there are activated plugins
-	$plugins = $conf['plugins'];//xdebug_var_dump($lang, $_language);
+	$plugins = $conf['plugins'];
 	require_once('./classes/plugins/PluginManager.php');
 	$plugin_manager = new PluginManager();
 	//register the plugins and their functions

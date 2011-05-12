@@ -22,6 +22,7 @@
 
 	$availableLanguages = array(
 		'en' => 'english',
+		'pt' => 'portuguese-br',
 		'pt-br' => 'portuguese-br'
 	);
 ?>

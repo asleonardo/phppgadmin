@@ -151,8 +151,9 @@
 	$conf['ajax_refresh'] = 3;
 
 	// Plugins
+	// Add index to plugins that will be activated.
+	// Example: array('PluginExample', 'Slony', ...)
 	$conf['plugins'] = array();
-	$conf['plugins'][] = 'PluginExample';
 
 	/*****************************************
 	 * Don't modify anything below this line *

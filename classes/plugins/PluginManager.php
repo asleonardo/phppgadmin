@@ -15,7 +15,7 @@ class PluginManager {
 	public $functions_list = array();
 
 	/**
-	 * Add a plugin in the manager 
+	 * Add a plugin in the manager
 	 * @param $plugin
 	 */
 	function add_plugin($plugin) {
@@ -31,7 +31,7 @@ class PluginManager {
 	}
 
 	/**
-	 * Add a function in the $functions_list list, with the information when this function will be used by the 
+	 * Add a function in the $functions_list list, with the information when this function will be used by the
 	 * phppgadmin core.
 	 * @param $plugin_index - Index that identify the plugin. Example the plugin_example's index is plugin_example :-)
 	 * @param $when - This identify when the added function will be called
@@ -60,6 +60,22 @@ class PluginManager {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Get the plugin translations
+	 * @param $plugin_index - Name of the plugin index. Example: PluginExample, Crud, etc...
+	 * @param $language - Current phpPgAdmin language. If it was not found in the plugin, English will be used.
+	 *
+	 * TODO: check if an english translation file exists. If not, to think a way to alert about it.
+	 */
+	function get_transalation($plugin_index, $language) {
+		require_once("./plugins/{$plugin_index}/lang/recoded/english.php");
+		require_once("./plugins/{$plugin_index}/lang/translations.php");
+		if (isset($pluginLangFiles[$language])) {
+			include_once("./plugins/{$plugin_index}/lang/recoded/{$language}.php");
+		}
+		return $plugin_lang;
 	}
 }
 ?>
