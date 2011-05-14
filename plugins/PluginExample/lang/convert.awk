@@ -1,6 +1,7 @@
 #!/usr/bin/awk -f
 #
 # Script contains all needed conversions of recoded text
+# This script is a copy of lang/convert.awk
 #
 # Remove everything before first "<?php"
 BEGIN	{ while (index($0,"&lt;?php")==0) { getline; continue } 

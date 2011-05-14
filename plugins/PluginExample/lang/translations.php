@@ -1,8 +1,6 @@
 <?php
 	/**
 	 * Supported Translations for PluginExample
-	 *
-	 * $Id: 
 	 */
 	
 	

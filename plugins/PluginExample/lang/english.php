@@ -3,8 +3,6 @@
 	/**
 	 * English language file for plugin Example.  Use this as a basis
 	 * for new translations.
-	 *
-	 * $Id: 
 	 */
 
 	//Plugin data

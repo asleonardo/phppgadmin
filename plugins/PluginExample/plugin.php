@@ -6,7 +6,7 @@ class PluginExample {
 	 */
 	public $plugin_name = 'Plugin example';
 	public $plugin_index = __CLASS__;
-	public $plugin_lang = '';
+	public $plugin_lang;
 
 	/**
 	 * Constructor
@@ -22,7 +22,7 @@ class PluginExample {
 	}
 
 	/**
-	 * Get the $plugin_index
+	 * Get the plugin identification
 	 * @return $plugin_index
 	 */
 	 function get_plugin_index() {

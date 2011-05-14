@@ -2,8 +2,6 @@
 
 /**
  * A class that implements the plugin's system
- *
- * $Id:
  */
 
 class PluginManager {
@@ -15,16 +13,20 @@ class PluginManager {
 	public $functions_list = array();
 
 	/**
-	 * Add a plugin in the manager
-	 * @param $plugin
+	 * Add a plugin in the list of plugins to manage
+	 * @param $plugin - Instance from plugin
 	 */
 	function add_plugin($plugin) {
-		$this->plugins_list[$plugin->get_plugin_index()] = $plugin;
+		//The plugin index is the identification of the plugin.
+		//Example: PluginExample is the identification for PluginExample
+		//It will be used to get a specific plugin from the plugins_list.
+		$plugin_index = $plugin->get_plugin_index();
+		$this->plugins_list[$plugin_index] = $plugin;
 	}
 
 	/**
-	 * Get a plugin from the $plugins_list by the plugin's name.
-	 * @param $plugin_index
+	 * Get a plugin from the $plugins_list by the plugin's identification.
+	 * @param $plugin_index - plugin identification. Exemple: PluginExample.
 	 */
 	function get_plugin($plugin_index) {
 		return $this->plugins_list[$plugin_index];
@@ -53,7 +55,7 @@ class PluginManager {
 			foreach ($this->functions_list[$when] as $node) {
 				$plugin_index = $node['plugin_index'];
 				$function = $node['function'];
-				$plugin = $this->get_plugin($plugin_index); 
+				$plugin = $this->get_plugin($plugin_index);
 				//
 				if (method_exists($plugin, $function)) {
 					call_user_func_array(array($plugin, $function), array(&$function_args));
