@@ -151,6 +151,7 @@
 	$lang['strstop'] = 'Arr&#234;ter';
 	$lang['strgotoppage'] = 'Haut de la page';
 	$lang['strtheme'] = 'Th&#232;me';
+	$lang['strcluster'] = 'Cluster';
 
 	// Admin
 	$lang['stradminondatabase'] = 'Les actions d\'administration suivantes s\'appliquent &#224; l\'ensemble de la base de donn&#233;e %s.';
@@ -804,118 +805,6 @@
 	$lang['strtablespacedroppedbad'] = '&#201;chec lors de la suppression du tablespace.';
 	$lang['strtablespacealtered'] = 'Tablespace modifi&#233;.';
 	$lang['strtablespacealteredbad'] = '&#201;chec lors de la modification du tablespace.';
-
-	// Slony clusters
-	$lang['strcluster'] = 'Cluster';
-	$lang['strnoclusters'] = 'Aucun cluster trouv&#233;.';
-	$lang['strconfdropcluster'] = '&#202;tesvous s&#251;r de vouloir supprimer le cluster &#171; %s &#187; ?';
-	$lang['strclusterdropped'] = 'Cluster supprim&#233;.';
-	$lang['strclusterdroppedbad'] = '&#201;chec lors de la suppression du cluster.';
-	$lang['strinitcluster'] = 'Initialiser le cluster';
-	$lang['strclustercreated'] = 'Cluster initialis&#233;.';
-	$lang['strclustercreatedbad'] = '&#201;chec lors de l\'initialisation du cluster.';
-	$lang['strclusterneedsname'] = 'Vous devez donner un nom au cluster.';
-	$lang['strclusterneedsnodeid'] = 'Vous devez donner un ID au noeud local.';
-
-	// Slony nodes
-	$lang['strnodes'] = 'Noeuds';
-	$lang['strnonodes'] = 'Aucun noeud trouv&#233;.';
-	$lang['strcreatenode'] = 'Cr&#233;er un noeud';
-	$lang['strid'] = 'ID';
-	$lang['stractive'] = 'Actif';
-	$lang['strnodecreated'] = 'Noeud cr&#233;&#233;.';
-	$lang['strnodecreatedbad'] = '&#201;chec lors de la cr&#233;ation du noeud.';
-	$lang['strconfdropnode'] = '&#202;tes-vous s&#251;r de vouloir supprimer le noeud &#171; %s &#187; ?';
-	$lang['strnodedropped'] = 'Noeud supprim&#233;.';
-	$lang['strnodedroppedbad'] = '&#201;chec lors de la suppression du noeud';
-	$lang['strfailover'] = 'Basculer (failover)';
-	$lang['strnodefailedover'] = 'Node bascul&#233;.';
-	$lang['strnodefailedoverbad'] = '&#201;chec lors du basculement du noeud.';
-	$lang['strstatus'] = 'Statut';	
-	$lang['strhealthy'] = '&#201;tat';
-	$lang['stroutofsync'] = 'Hors synchro';
-	$lang['strunknown'] = 'Inconnu';
-
-	// Slony paths 
-	$lang['strpaths'] = 'Chemins';
-	$lang['strnopaths'] = 'Aucun chemin trouv&#233;.';
-	$lang['strcreatepath'] = 'Cr&#233;er un chemin';
-	$lang['strnodename'] = 'Nom du noeud';
-	$lang['strnodeid'] = 'ID du noeud';
-	$lang['strconninfo'] = 'Cha&#238;ne de connexion';
-	$lang['strconnretry'] = 'Secondes avant une nouvelle tentative de connexion';
-	$lang['strpathneedsconninfo'] = 'Vous devez donner une cha&#238;ne de connexion pour le chemin.';
-	$lang['strpathneedsconnretry'] = 'Vous devez donner le nombre de secondes d\'attente avant une nouvelle tentative de connexion.';
-	$lang['strpathcreated'] = 'Chemin cr&#233;&#233;.';
-	$lang['strpathcreatedbad'] = '&#201;chec lors de la cr&#233;ation du chemin.';
-	$lang['strconfdroppath'] = '&#202;tes-vous s&#251;r de vouloir supprimer le chemin &#171; %s &#187; ?';
-	$lang['strpathdropped'] = 'Chemin supprim&#233;.';
-	$lang['strpathdroppedbad'] = '&#201;chec lors de la suppression du chemin.';
-
-	// Slony listens
-	$lang['strlistens'] = '&#201;coutes';
-	$lang['strnolistens'] = 'Aucune &#233;coute trouv&#233;e.';
-	$lang['strcreatelisten'] = 'Cr&#233;er une &#233;coute';
-	$lang['strlistencreated'] = '&#201;coute cr&#233;&#233;e.';
-	$lang['strlistencreatedbad'] = '&#201;chec lors de la cr&#233;ation de l\'&#233;coute.';
-	$lang['strconfdroplisten'] = '&#202;tes-vous s&#251;r de vouloir supprimer l\'&#233;coute &#171; %s &#187; ?';
-	$lang['strlistendropped'] = '&#201;coute supprim&#233;.';
-	$lang['strlistendroppedbad'] = '&#201;chec lors de la suppression de l\'&#233;coute.';
-
-	// Slony replication sets
-	$lang['strrepsets'] = 'Ensembles de r&#233;plication';
-	$lang['strnorepsets'] = 'Aucun ensemble de r&#233;plication trouv&#233;.';
-	$lang['strcreaterepset'] = 'Cr&#233;er un ensemble de r&#233;plication';
-	$lang['strrepsetcreated'] = 'Ensemble de r&#233;plication cr&#233;&#233;.';
-	$lang['strrepsetcreatedbad'] = '&#201;chec lors de la cr&#233;ation de l\'ensemble de r&#233;plication.';
-	$lang['strconfdroprepset'] = '&#202;tes-vous s&#251;r de vouloir supprimer l\'ensemble de r&#233;plication &#171; %s &#187; ?';
-	$lang['strrepsetdropped'] = 'Ensemble de r&#233;plication supprim&#233;.';
-	$lang['strrepsetdroppedbad'] = '&#201;chec lors de la suppression de l\'ensemble de r&#233;plication.';
-	$lang['strmerge'] = 'Assemblage';
-	$lang['strmergeinto'] = 'Assembler dans';
-	$lang['strrepsetmerged'] = 'Ensembles de r&#233;plication assembl&#233;s.';
-	$lang['strrepsetmergedbad'] = '&#201;chec lors de l\'assemblage des ensembles de r&#233;plication.';
-	$lang['strmove'] = 'D&#233;placement';
-	$lang['strneworigin'] = 'Nouvelle origine';
-	$lang['strrepsetmoved'] = 'Ensemble de r&#233;plication d&#233;plac&#233;.';
-	$lang['strrepsetmovedbad'] = '&#201;chec lors du d&#233;placement de l\'ensemble de r&#233;plication.';
-	$lang['strnewrepset'] = 'Nouvel ensemble de r&#233;plication';
-	$lang['strlock'] = 'Verrou';
-	$lang['strlocked'] = 'Verrouill&#233;';
-	$lang['strunlock'] = 'D&#233;verrouill&#233;';
-	$lang['strconflockrepset'] = '&#202;tes-vous s&#251;r de vouloir verrouiller l\'ensemble de r&#233;plication &#171; %s &#187; ?';
-	$lang['strrepsetlocked'] = 'Ensemble de r&#233;plication verrouill&#233;.';
-	$lang['strrepsetlockedbad'] = '&#201;chec lors du verrouillage de l\'ensemble de r&#233;plication.';
-	$lang['strconfunlockrepset'] = '&#202;tes-vous s&#251;r de vouloir d&#233;verrouiller l\'ensemble de r&#233;plication &#171; %s &#187; ?';
-	$lang['strrepsetunlocked'] = 'Ensemble de r&#233;plication d&#233;verrouill&#233;.';
-	$lang['strrepsetunlockedbad'] = '&#201;chec lors du d&#233;verrouillage de l\'ensemble de r&#233;plication.';
-	$lang['stronlyonnode'] = 'Seulement sur le noeud';
-	$lang['strddlscript'] = 'Script DDL';
-	$lang['strscriptneedsbody'] = 'Vous devez fournir un script &#224; ex&#233;cuter sur tous les noeuds.';
-	$lang['strscriptexecuted'] = 'Script DDL de l\'ensemble de r&#233;plication ex&#233;cut&#233;.';
-	$lang['strscriptexecutedbad'] = '&#201;chec lors de l\'ex&#233;cution du script DDL de l\'ensemble de r&#233;plication.';
-	$lang['strtabletriggerstoretain'] = 'Les triggers suivants ne seront PAS d&#233;sactiv&#233;s par Slony:';
-
-	// Slony tables in replication sets
-	$lang['straddtable'] = 'Ajouter une table';
-	$lang['strtableneedsuniquekey'] = 'La table &#224; ajouter doit avoir une cl&#233; primaire ou une cl&#233; unique.';
-	$lang['strtableaddedtorepset'] = 'Table ajouter &#224; l\'ensemble de r&#233;plication.';
-	$lang['strtableaddedtorepsetbad'] = '&#201;chec lors de l\'ajout de la table dans l\'ensemble de r&#233;plication.';
-	$lang['strconfremovetablefromrepset'] = '&#202;tes-vous s&#251;r de vouloir supprimer la table &#171; %s &#187; de l\'ensemble de r&#233;plication &#171; %s &#187; ?';
-	$lang['strtableremovedfromrepset'] = 'Table supprim&#233;e de l\'ensemble de r&#233;plication.';
-	$lang['strtableremovedfromrepsetbad'] = '&#201;chec lors de la suppression de la table de l\'ensemble de r&#233;plication.';
-
-	// Slony sequences in replication sets
-	$lang['straddsequence'] = 'Ajouter une s&#233;quence';
-	$lang['strsequenceaddedtorepset'] = 'S&#233;quence ajout&#233;e &#224; l\'ensemble de r&#233;plication.';
-	$lang['strsequenceaddedtorepsetbad'] = '&#201;chec lors de l\'ajout de la s&#233;quence &#224; l\'ensemble de r&#233;plication.';
-	$lang['strconfremovesequencefromrepset'] = '&#202;tes-vous s&#251;r de vouloir supprimer la s&#233;quence &#171; %s &#187; de l\'ensemble de r&#233;plication &#171; %s &#187;?';
-	$lang['strsequenceremovedfromrepset'] = 'S&#233;quence supprim&#233;e de l\'ensemble de r&#233;plication.';
-	$lang['strsequenceremovedfromrepsetbad'] = '&#201;chec lors de la suppression de la s&#233;quence &#224; partir de l\'ensemble de r&#233;plication.';
-
-	// Slony subscriptions
-	$lang['strsubscriptions'] = 'Souscriptions';
-	$lang['strnosubscriptions'] = 'Aucune souscription trouv&#233;e.';
 
 	// Miscellaneous
 	$lang['strtopbar'] = '%s lanc&#233; sur %s:%s -- Vous &#234;tes connect&#233; avec le profil &#171; %s &#187;';

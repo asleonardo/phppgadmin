@@ -137,6 +137,7 @@
 	$lang['strfile'] = 'Plik';
 	$lang['strfileimported'] = 'Plik zosta&#322; zaimportowany.';
 	$lang['strtrycred'] = 'U&#380;yj tych parametr&#243;w dla wszystkich serwer&#243;w';
+	$lang['strexecute'] = 'Wykonaj';
 
 	// Database Sizes
 	$lang['strsize'] = 'Rozmiar';
@@ -413,6 +414,7 @@
 	$lang['strconfcluster'] = 'Czy na pewno chcesz zklastrowa&#263; &quot;%s&quot;?';
 	$lang['strclusteredgood'] = 'Klastrowanie zosta&#322;o zako&#324;czone.';
 	$lang['strclusteredbad'] = 'Pr&#243;ba klastrowania si&#281; nie powiod&#322;a.';
+	$lang['strcluster'] = 'Klaster';
 
 	// Rules
 	$lang['strrules'] = 'Regu&#322;y';
@@ -720,119 +722,6 @@ $lang['straggrneedsstype']  =  'You must specify the data type for the aggregate
 	$lang['strtablespacealtered'] = 'Przestrze&#324; tabel zosta&#322;a zmieniona.';
 	$lang['strtablespacealteredbad'] = 'Pr&#243;ba modyfikacji przestrzeni tabel si&#281; nie powiod&#322;a.';
 
-	// Slony clusters
-	$lang['strcluster'] = 'Klaster';
-	$lang['strnoclusters'] = 'Nie znaleziono klastr&#243;w.';
-	$lang['strconfdropcluster'] = 'Czy na pewno chcesz usun&#261;&#263; klaster &quot;%s&quot;?';
-	$lang['strclusterdropped'] = 'Klaster zosta&#322; usuni&#281;ty.';
-	$lang['strclusterdroppedbad'] = 'Pr&#243;ba usuni&#281;cia klastra si&#281; nie powiod&#322;a.';
-	$lang['strinitcluster'] = 'Utw&#243;rz klaster';	
-	$lang['strclustercreated'] = 'Klaster zosta&#322; utworzony.';
-	$lang['strclustercreatedbad'] = 'Pr&#243;ba utworzenia klastra si&#281; nie powiod&#322;a.';
-	$lang['strclusterneedsname'] = 'Musisz poda&#263; nazw&#281; klastra.';
-	$lang['strclusterneedsnodeid'] = 'Musisz poda&#263; identyfikator lokalnego w&#281;z&#322;a.';
-	
-	// Slony nodes
-	$lang['strnodes'] = 'W&#281;z&#322;y';
-	$lang['strnonodes'] = 'Nie znaleziono w&#281;z&#322;&#243;w.';
-	$lang['strcreatenode'] = 'Utw&#243;rz w&#281;ze&#322;';
-	$lang['strid'] = 'ID';
-	$lang['stractive'] = 'Aktywny';
-	$lang['strnodecreated'] = 'W&#281;ze&#322; zosta&#322; utworzony.';
-	$lang['strnodecreatedbad'] = 'Pr&#243;ba utworzenia w&#281;z&#322;a si&#281; nie powiod&#322;a.';
-	$lang['strconfdropnode'] = 'Czy na pewno chcesz usun&#261;&#263; w&#281;ze&#322; &quot;%s&quot;?';
-	$lang['strnodedropped'] = 'W&#281;ze&#322; zosta&#322; usuni&#281;ty.';
-	$lang['strnodedroppedbad'] = 'Pr&#243;ba usuni&#281;cia w&#281;z&#322;a si&#281; nie powiod&#322;a.';
-	$lang['strfailover'] = 'Prze&#322;&#261;czenie awaryjne';
-	$lang['strnodefailedover'] = 'W&#281;ze&#322; zosta&#322; prze&#322;&#261;czony awaryjnie.';
-	$lang['strnodefailedoverbad'] = 'Pr&#243;ba awaryjnego prze&#322;&#261;czenia w&#281;z&#322;a si&#281; nie powiod&#322;a.';
-	$lang['strstatus']  =  'Stan';	
-	$lang['strhealthy']  =  'Poprawny';
-	$lang['stroutofsync']  =  'Niezsynchronizowany';
-	$lang['strunknown']  =  'Nieznany';	
-
-	
-	// Slony paths	
-	$lang['strpaths'] = '&#346;cie&#380;ki';
-	$lang['strnopaths'] = 'Nie znaleziono &#347;cie&#380;ek.';
-	$lang['strcreatepath'] = 'Utw&#243;rz &#347;cie&#380;k&#281;';
-	$lang['strnodename'] = 'Nazwa w&#281;z&#322;a';
-	$lang['strnodeid'] = 'Identyfikator w&#281;z&#322;a';
-	$lang['strconninfo'] = 'Parametry po&#322;&#261;czenia';
-	$lang['strconnretry'] = 'Czas przed pr&#243;b&#261; ponownego po&#322;&#261;czenia';
-	$lang['strpathneedsconninfo'] = 'Musisz poda&#263; parametry po&#322;&#261;czenia.';
-	$lang['strpathneedsconnretry'] = 'Musisz okre&#347;li&#263; ilo&#347;&#263; sekund, kt&#243;r&#261; nale&#380;y odczeka&#263; przed ponowieniem po&#322;&#261;czenia.';
-	$lang['strpathcreated'] = '&#346;cie&#380;ka zosta&#322;a utworzona.';
-	$lang['strpathcreatedbad'] = 'Pr&#243;ba utworzenia &#347;cie&#380;ki si&#281; nie powiod&#322;a.';
-	$lang['strconfdroppath'] = 'Czy na pewno chcesz usun&#261;&#263; &#347;cie&#380;k&#281; &quot;%s&quot;?';
-	$lang['strpathdropped'] = '&#346;cie&#380;ka zosta&#322;a usuni&#281;ta.';
-	$lang['strpathdroppedbad'] = 'Pr&#243;ba usuni&#281;cia &#347;cie&#380;ki si&#281; nie powiod&#322;a.';
-
-	// Slony listens
-	$lang['strlistens'] = 'Nas&#322;uchy';
-	$lang['strnolistens'] = 'Nie znaleziono nas&#322;uch&#243;w.';
-	$lang['strcreatelisten'] = 'Utw&#243;rz nas&#322;uch';
-	$lang['strlistencreated'] = 'Nas&#322;uch zosta&#322; utworzony.';
-	$lang['strlistencreatedbad'] = 'Pr&#243;ba usuni&#281;cia nas&#322;uchu si&#281; nie powiod&#322;a.';
-	$lang['strconfdroplisten'] = 'Czy na pewno chcesz usun&#261;&#263; nas&#322;uch &quot;%s&quot;?';
-	$lang['strlistendropped'] = 'Nas&#322;uch zosta&#322; usuni&#281;ty.';
-	$lang['strlistendroppedbad'] = 'Pr&#243;ba usuni&#281;cia nas&#322;uchu si&#281; nie powiod&#322;a.';
-
-	// Slony replication sets
-	$lang['strrepsets'] = 'Zbiory replikacji';
-	$lang['strnorepsets'] = 'Nie znaleziono zbior&#243;w replikacji.';
-	$lang['strcreaterepset'] = 'Utw&#243;rz zbi&#243;r replikacji';
-	$lang['strrepsetcreated'] = 'Zbi&#243;r replikacji zosta&#322; utworzony.';
-	$lang['strrepsetcreatedbad'] = 'Pr&#243;ba utworzenia zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strconfdroprepset'] = 'Czy na pewno chcesz usun&#261;&#263; zbi&#243;r replikacji &quot;%s&quot;?';
-	$lang['strrepsetdropped'] = 'Zbi&#243;r replikacji zosta&#322; usuni&#281;ty.';
-	$lang['strrepsetdroppedbad'] = 'Pr&#243;ba usuni&#281;cia zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strmerge'] = 'Po&#322;&#261;cz';
-	$lang['strmergeinto'] = 'Po&#322;&#261;cz w';
-	$lang['strrepsetmerged'] = 'Zbiory replikacji zosta&#322;y po&#322;&#261;czone.';
-	$lang['strrepsetmergedbad'] = 'Pr&#243;ba po&#322;&#261;czenia zbior&#243;w replikacji si&#281; nie powiod&#322;a.';
-	$lang['strmove'] = 'Przenie&#347;';
-	$lang['strneworigin'] = 'Nowe po&#322;o&#380;enie';
-	$lang['strrepsetmoved'] = 'Zbi&#243;r replikacji zosta&#322; przeniesiony.';
-	$lang['strrepsetmovedbad'] = 'Pr&#243;ba przeniesienia zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strnewrepset'] = 'Nowy zbi&#243;r replikacji';
-	$lang['strlock'] = 'Zablokuj';
-	$lang['strlocked'] = 'Zablokowany';
-	$lang['strunlock'] = 'Odblokuj';
-	$lang['strconflockrepset'] = 'Czy na pewno chcesz zablokowa&#263; zbi&#243;r replikacji &quot;%s&quot;?';
-	$lang['strrepsetlocked'] = 'Zbi&#243;r replikacji zosta&#322; zablokowany.';
-	$lang['strrepsetlockedbad'] = 'Pr&#243;ba zablokowania zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strconfunlockrepset'] = 'Czy na pewno chcesz odblokowa&#263; zbi&#243;r replikacji &quot;%s&quot;?';
-	$lang['strrepsetunlocked'] = 'Zbi&#243;r replikacji zosta&#322; odblokowany.';
-	$lang['strrepsetunlockedbad'] = 'Pr&#243;ba odblokowania zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strexecute'] = 'Wykonaj';
-	$lang['stronlyonnode'] = 'Tylko w w&#281;&#378;le';
-	$lang['strddlscript'] = 'Skrypt DDL';
-	$lang['strscriptneedsbody'] = 'Musisz poda&#263; skrypt, kt&#243;ry nale&#380;y wykona&#263; na wszystkich w&#281;z&#322;ach.';
-	$lang['strscriptexecuted'] = 'Skrypt DDL zosta&#322; wykonany w zbiorze replikacji.';
-	$lang['strscriptexecutedbad'] = 'Pr&#243;ba wykonania skryptu DDL w zbiorze replikacji si&#281; nie powiod&#322;a.';
-	$lang['strtabletriggerstoretain'] = 'Nast&#281;puj&#261;ce wyzwalacze NIE zostan&#261; wy&#322;&#261;czone przez Slony:';
-
-	// Slony tables in replication sets
-	$lang['straddtable'] = 'Dodaj tabel&#281;';
-	$lang['strtableneedsuniquekey'] = 'Dodawana tabela musi mie&#263; klucz g&#322;&#243;wny lub unikatowy.';
-	$lang['strtableaddedtorepset'] = 'Tabela zosta&#322;a dodana do zbioru replikacji.';
-	$lang['strtableaddedtorepsetbad'] = 'Pr&#243;ba dodania tabeli do zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strconfremovetablefromrepset'] = 'Czy na pewno chcesz usun&#261;&#263; tabel&#281; &quot;%s&quot; ze zbioru replikacji &quot;%s&quot;?';
-	$lang['strtableremovedfromrepset'] = 'Tabela zosta&#322;a usuni&#281;ta ze zbioru replikacji.';
-	$lang['strtableremovedfromrepsetbad'] = 'Pr&#243;ba usuni&#281;cia tabeli ze zbioru replikacji si&#281; nie powiod&#322;a.';
-
-	// Slony sequences in replication sets
-	$lang['straddsequence'] = 'Dodaj sekwencj&#281;';
-	$lang['strsequenceaddedtorepset'] = 'Sekwencja zosta&#322;a dodana do zbioru replikacji.';
-	$lang['strsequenceaddedtorepsetbad'] = 'Pr&#243;ba dodania sekwencji do zbioru replikacji si&#281; nie powiod&#322;a.';
-	$lang['strconfremovesequencefromrepset'] = 'Czy na pewno chcesz usun&#261;&#263; sekwencj&#281; &quot;%s&quot; ze zbioru replikacji &quot;%s&quot;?';
-	$lang['strsequenceremovedfromrepset'] = 'Sekwencja zosta&#322;a usuni&#281;ta ze zbioru replikacji.';
-	$lang['strsequenceremovedfromrepsetbad'] = 'Pr&#243;ba usuni&#281;cia sekwencji ze zbioru replikacji si&#281; nie powiod&#322;a.';
-
-	// Slony subscriptions
-	$lang['strsubscriptions'] = 'Subskrypcje';
-	$lang['strnosubscriptions'] = 'Nie znaleziono subskrypcji.';
 
 	// Miscellaneous
 	$lang['strtopbar'] = '%s uruchomiony na %s:%s -- Jeste&#347; zalogowany jako &quot;%s&quot;';

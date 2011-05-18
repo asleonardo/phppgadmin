@@ -150,6 +150,7 @@
         $lang['strstop']  =  'Para';
         $lang['strgotoppage']  =  'Torna al principi';
         $lang['strtheme']  =  'Tema';
+	$lang['strcluster'] = 'Cl&#250;ster';
 	
 	// Admin
         $lang['stradminondatabase']  =  'Les seg&#252;ents tasques administratives s\'apliquen a tota la base de dades %s.';
@@ -803,119 +804,7 @@
 	$lang['strtablespacedroppedbad'] = 'No s\'ha pogut eliminar el tablespace.';
 	$lang['strtablespacealtered'] = 'Tablespace modificat.';
 	$lang['strtablespacealteredbad'] = 'No s\'ha pogut modifcar el tablespace.';
-
-	// Slony clusters
-	$lang['strcluster'] = 'Cl&#250;ster';
-	$lang['strnoclusters'] = 'No s\'han trobat cl&#250;sters';
-	$lang['strconfdropcluster'] = 'Est&#224; segur de voler eliminar el cl&#250;ster &quot;%s&quot;?';
-	$lang['strclusterdropped'] = 'Cl&#250;ster eliminat.';
-	$lang['strclusterdroppedbad'] = 'No s\'ha pogut eliminar el cl&#250;ster.';
-	$lang['strinitcluster'] = 'Inicialitza el cl&#250;ster';
-	$lang['strclustercreated'] = 'Cl&#250;ster inicialitzat.';
-	$lang['strclustercreatedbad'] = 'No s\'ha pogut inicialitzar el cl&#250;ster.';
-	$lang['strclusterneedsname'] = 'Ha de donar un nom al cl&#250;ster.';
-	$lang['strclusterneedsnodeid'] = 'Ha de donar una ID al node local.';
 	
-	// Slony nodes
-	$lang['strnodes'] = 'Nodes';
-	$lang['strnonodes'] = 'No s\'han trobat nodes.';
-	$lang['strcreatenode'] = 'Crea un node';
-	$lang['strid'] = 'ID';
-	$lang['stractive'] = 'Activa';
-	$lang['strnodecreated'] = 'Node creat.';
-	$lang['strnodecreatedbad'] = 'No s\'ha pogut crear el node.';
-	$lang['strconfdropnode'] = 'Est&#224; segur de voler eliminar el node &quot;%s&quot;?';
-	$lang['strnodedropped'] = 'Node eliminat.';
-	$lang['strnodedroppedbad'] = 'No s\'ha pogut eliminar el node';
-	$lang['strfailover'] = 'Filtra';
-	$lang['strnodefailedover'] = 'Node filtrat.';
-	$lang['strnodefailedoverbad'] = 'No s\'ha pogut filtrar el node.';
-	$lang['strstatus'] = 'Estat';	
-	$lang['strhealthy'] = 'Saludable';
-	$lang['stroutofsync'] = 'Fora de sincronisme';
-	$lang['strunknown'] = 'Desconegut';	
-	
-	// Slony paths	
-	$lang['strpaths'] = 'Rutes';
-	$lang['strnopaths'] = 'No s\'han trobat rutes.';
-	$lang['strcreatepath'] = 'Crea una ruta';
-	$lang['strnodename'] = 'Nom del node';
-	$lang['strnodeid'] = 'ID del node';
-	$lang['strconninfo'] = 'Cadena de connexi&#243;';
-	$lang['strconnretry'] = 'Segons abans de reintentar la connexi&#243;';
-	$lang['strpathneedsconninfo'] = 'Ha de donar una cadena de connexi&#243; per a la ruta.';
-	$lang['strpathneedsconnretry'] = 'Ha de donar el num. de seg. d\'espera abans de reintentar la connexi&#243;.';
-	$lang['strpathcreated'] = 'Ruta creada.';
-	$lang['strpathcreatedbad'] = 'La creaci&#243; de la ruta ha fallat.';
-	$lang['strconfdroppath'] = 'Est&#224; segur de voler eliminar la ruta &quot;%s&quot;?';
-	$lang['strpathdropped'] = 'Ruta eliminada.';
-	$lang['strpathdroppedbad'] = 'No s\ha pogut eliminar la ruta.';
-
-	// Slony listens
-	$lang['strlistens'] = 'Escoltes';
-	$lang['strnolistens'] = 'No s\'han trobat escoltes.';
-	$lang['strcreatelisten'] = 'Crea una escolta';
-	$lang['strlistencreated'] = 'Escolta creada.';
-	$lang['strlistencreatedbad'] = 'La creaci&#243; de l\'escolta ha fallat.';
-	$lang['strconfdroplisten'] = 'Est&#224; segur de voler eliminar l\'escolta &quot;%s&quot;?';
-	$lang['strlistendropped'] = 'Escolta eliminada.';
-	$lang['strlistendroppedbad'] = 'No s\'ha pogut eliminar l\'escolta.';
-
-	// Slony replication sets
-	$lang['strrepsets'] = 'Conjunts de replicaci&#243;';
-	$lang['strnorepsets'] = 'No s\'han trobat conjunts de replicaci&#243;.';
-	$lang['strcreaterepset'] = 'Crea un conjunt de replicaci&#243;';
-	$lang['strrepsetcreated'] = 'Conjunt de replicaci&#243; creat.';
-	$lang['strrepsetcreatedbad'] = 'No s\'ha pogut crear el conjunt de replicaci&#243;.';
-	$lang['strconfdroprepset'] = 'Est&#224; segur de voler eliminar el conjunt de replicaci&#243; &quot;%s&quot;?';
-	$lang['strrepsetdropped'] = 'Conjunt de replicaci&#243; eliminat.';
-	$lang['strrepsetdroppedbad'] = 'No s\'ha pogut eliminar el conjunt de replicaci&#243;.';
-	$lang['strmerge'] = 'Uneix';
-	$lang['strmergeinto'] = 'Uneix a';
-	$lang['strrepsetmerged'] = 'Conjunts de replicaci&#243; units.';
-	$lang['strrepsetmergedbad'] = 'No s\'han pogut unir els conjunts de replicaci&#243;.';
-	$lang['strmove'] = 'Mou';
-	$lang['strneworigin'] = 'Nou origen';
-	$lang['strrepsetmoved'] = 'Conjunt de replicaci&#243; traslladat.';
-	$lang['strrepsetmovedbad'] = 'No s\'ha pogut traslladar el conjunt de replicaci&#243;.';
-	$lang['strnewrepset'] = 'Nou conjunt de replicaci&#243;';
-	$lang['strlock'] = 'Bloqueja';
-	$lang['strlocked'] = 'Bloquejat';
-	$lang['strunlock'] = 'Desbloqueja';
-	$lang['strconflockrepset'] = 'Est&#224; segur de voler bloquejar el conjunt de replicaci&#243; &quot;%s&quot;?';
-	$lang['strrepsetlocked'] = 'Conjunt de replicaci&#243; bloquejat.';
-	$lang['strrepsetlockedbad'] = 'No s\'ha pogut bloquejar el conjunt de replicaci&#243;.';
-	$lang['strconfunlockrepset'] = 'Est&#224; segur de voler desbloquejar el conjunt de replicaci&#243; &quot;%s&quot;?';
-	$lang['strrepsetunlocked'] = 'Conjunt de replicaci&#243; desbloquejat.';
-	$lang['strrepsetunlockedbad'] = 'No s\'ha pogut desbloquejar el conjunt de replicaci&#243;.';
-	$lang['stronlyonnode'] = 'Nom&#233;s en el node';
-	$lang['strddlscript'] = 'Script DDL';
-	$lang['strscriptneedsbody'] = 'Ha de subministrar un script per ser executat a tots els nodes.';
-	$lang['strscriptexecuted'] = 'Script DDL del conjunt de replicaci&#243; executat.';
-	$lang['strscriptexecutedbad'] = 'Fallada executant l\'script DDL del conjunt de replicaci&#243;.';
-	$lang['strtabletriggerstoretain'] = 'Els seg&#252;ents disparadors NO seran inhabilitats per l\'Slony:';
-
-	// Slony tables in replication sets
-	$lang['straddtable'] = 'Afegeix una taula';
-	$lang['strtableneedsuniquekey'] = 'La taula que s\'ha d\'afegir requereix una clau prim&#224;ria o &#250;nica.';
-	$lang['strtableaddedtorepset'] = 'Taula afegida al conjunt de replicaci&#243;.';
-	$lang['strtableaddedtorepsetbad'] = 'No s\'ha pogut afegir la taula al conjunt de replicaci&#243;.';
-	$lang['strconfremovetablefromrepset'] = 'Est&#224; segur de voler eliminar la taula &quot;%s&quot; del conjunt de replicaci&#243; &quot;%s&quot;?';
-	$lang['strtableremovedfromrepset'] = 'Taula eliminada del conjunt de replicaci&#243;.';
-	$lang['strtableremovedfromrepsetbad'] = 'No s\'ha pogut eliminar la taula del conjunt de replicaci&#243;.';
-
-	// Slony sequences in replication sets
-	$lang['straddsequence'] = 'Afegeix una seq&#252;&#232;ncia';
-	$lang['strsequenceaddedtorepset'] = 'Seq&#252;&#232;ncia afegida al conjunt de replicaci&#243;.';
-	$lang['strsequenceaddedtorepsetbad'] = 'No s\'ha pogut afegir la seq&#252;&#232;ncia al conjunt de replicaci&#243;.';
-	$lang['strconfremovesequencefromrepset'] = 'Est&#224; segur de voler eliminar la seq&#252;&#232;ncia &quot;%s&quot; del conjunt de replicaci&#243; &quot;%s&quot;?';
-	$lang['strsequenceremovedfromrepset'] = 'Seq&#252;&#232;ncia eliminada del conjunt de replicaci&#243;.';
-	$lang['strsequenceremovedfromrepsetbad'] = 'No s\'ha pogut eliminar la seq&#252;&#232;ncia del conjunt de replicaci&#243;.';
-
-	// Slony subscriptions
-	$lang['strsubscriptions'] = 'Subscripcions';
-	$lang['strnosubscriptions'] = 'No s\'han trobat subscripcions.';
-
 	// Miscellaneous
 	$lang['strtopbar'] = '%s corrent a %s:%s -- Ha entrat com a usuari &quot;%s&quot;';
 	$lang['strtimefmt'] = 'jS M, Y g:iA';
