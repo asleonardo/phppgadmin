@@ -134,6 +134,7 @@
 	$lang['strfile'] = 'Fi&#351;ier';
 	$lang['strfileimported'] = 'Fi&#351;ier importat';
 	$lang['strtrycred'] = 'Folosi&#355;i aceste acredit&#259;ri pentru toate serverele';
+	$lang['strexecute'] = 'Executare';
 
 	// Database sizes
 	$lang['strsize'] = 'Dimensiune';
@@ -422,6 +423,7 @@
 	$lang['strconfcluster'] = 'Sigur grupa&#355;i &quot;%s&quot;?';
 	$lang['strclusteredgood'] = 'Grupare complet&#259;.';
 	$lang['strclusteredbad'] = 'Grupare e&#351;uat&#259;.';
+	$lang['strcluster'] = 'Grupare';
 
 	// Rules
 	$lang['strrules'] = 'Reguli';
@@ -727,119 +729,6 @@
 	$lang['strtablespacedroppedbad'] = '&#350;tergere &#351;pa&#355;iu de tabele e&#351;uat&#259;.';
 	$lang['strtablespacealtered'] = 'Spa&#355;iu de tabele modificat.';
 	$lang['strtablespacealteredbad'] = 'Modificare &#351;pa&#355;iu de tabele e&#351;uat&#259;.';
-
-	// Slony clusters
-	$lang['strcluster'] = 'Grupare';
-	$lang['strnoclusters'] = 'Nici o grupare g&#259;sit&#259;.';
-	$lang['strconfdropcluster'] = 'Sigur &#351;terge&#355;i gruparea &quot;%s&quot;?';
-	$lang['strclusterdropped'] = 'Grupare &#351;tears&#259;.';
-	$lang['strclusterdroppedbad'] = '&#350;tergere grupare e&#351;uat&#259;.';
-	$lang['strinitcluster'] = 'Ini&#355;ializare grupare';
-	$lang['strclustercreated'] = 'Grupare ini&#355;ializat&#259;.';
-	$lang['strclustercreatedbad'] = 'Ini&#355;ializare grupare e&#351;uat&#259;.';
-	$lang['strclusterneedsname'] = 'Trebuie s&#259; da&#355;i un nume grup&#259;rii.';
-	$lang['strclusterneedsnodeid'] = 'Trebuie s&#259; da&#355;i un identificator nodului local.';
-
-	// Slony nodes
-	$lang['strnodes'] = 'Noduri';
-	$lang['strnonodes'] = 'Nici un nod g&#259;sit.';
-	$lang['strcreatenode'] = 'Creare nod';
-	$lang['strid'] = 'ID';
-	$lang['stractive'] = 'Activ(&#259;)';
-	$lang['strnodecreated'] = 'Nod creat.';
-	$lang['strnodecreatedbad'] = 'Creare nod e&#351;uat&#259;.';
-	$lang['strconfdropnode'] = 'Sigur &#351;terge&#355;i nodul &quot;%s&quot;?';
-	$lang['strnodedropped'] = 'Nod &#351;ters.';
-	$lang['strnodedroppedbad'] = '&#350;tergere nod e&#351;uat&#259;';
-	$lang['strfailover'] = 'Failover';
-	$lang['strnodefailedover'] = 'Node failed over.';
-	$lang['strnodefailedoverbad'] = 'Node failover failed.';
-	$lang['strstatus'] = 'Stare';
-	$lang['strhealthy'] = 'Intact';
-	$lang['stroutofsync'] = 'Desincronizat';
-	$lang['strunknown'] = 'Necunoscut';
-
-	// Slony paths
-	$lang['strpaths'] = 'C&#259;i';
-	$lang['strnopaths'] = 'Nici o cale g&#259;sit&#259;.';
-	$lang['strcreatepath'] = 'Creare cale';
-	$lang['strnodename'] = 'Nume nod';
-	$lang['strnodeid'] = 'ID nod';
-	$lang['strconninfo'] = '&#350;ir pentru conectare';
-	$lang['strconnretry'] = 'Secunde p&#226;n&#259; la o nou&#259; &#238;ncercare de conectare';
-	$lang['strpathneedsconninfo'] = 'Trebuie s&#259; da&#355;i un &#351;ir de conectare pentru cale.';
-	$lang['strpathneedsconnretry'] = 'Trebuie s&#259; da&#355;i num&#259;rul de secunde p&#226;n&#259; la o nou&#259; &#238;ncercare de conectare.';
-	$lang['strpathcreated'] = 'Cale creat&#259;.';
-	$lang['strpathcreatedbad'] = 'Creare cale e&#351;uat&#259;.';
-	$lang['strconfdroppath'] = 'Sigur &#351;terge&#355;i calea &quot;%s&quot;?';
-	$lang['strpathdropped'] = 'Cale &#351;tears&#259;.';
-	$lang['strpathdroppedbad'] = '&#350;tergere cale e&#351;uat&#259;.';
-
-	// Slony listens
-	$lang['strlistens'] = 'Ascult&#259;ri';
-	$lang['strnolistens'] = 'Nici o ascultare g&#259;sit&#259;.';
-	$lang['strcreatelisten'] = 'Creare ascultare';
-	$lang['strlistencreated'] = 'Ascultare creat&#259;.';
-	$lang['strlistencreatedbad'] = 'Creare ascultare e&#351;uat&#259;.';
-	$lang['strconfdroplisten'] = 'Sigur &#351;terge&#355;i ascultarea &quot;%s&quot;?';
-	$lang['strlistendropped'] = 'Ascultare &#351;tears&#259;.';
-	$lang['strlistendroppedbad'] = '&#350;tergere ascultare e&#351;uat&#259;.';
-
-	// Slony replication sets
-	$lang['strrepsets'] = 'Seturi de replicare';
-	$lang['strnorepsets'] = 'Nici un set de replicare g&#259;sit.';
-	$lang['strcreaterepset'] = 'Creare set de replicare';
-	$lang['strrepsetcreated'] = 'Set de replicare creat';
-	$lang['strrepsetcreatedbad'] = 'Creare set de replicare e&#351;uat&#259;';
-	$lang['strconfdroprepset'] = 'Sigur &#351;terge&#355;i setul de replicare &quot;%s&quot;?';
-	$lang['strrepsetdropped'] = 'Set de replicare &#351;ters';
-	$lang['strrepsetdroppedbad'] = '&#350;tergere set de replicare e&#351;uat&#259;.';
-	$lang['strmerge'] = 'Contopire';
-	$lang['strmergeinto'] = 'Contopire &#238;n';
-	$lang['strrepsetmerged'] = 'Seturi de replicare contopite';
-	$lang['strrepsetmergedbad'] = 'Contopire seturi de replicare e&#351;uat&#259;.';
-	$lang['strmove'] = 'Mutare';
-	$lang['strneworigin'] = 'Origine nou&#259;';
-	$lang['strrepsetmoved'] = 'Set de replicare mutat';
-	$lang['strrepsetmovedbad'] = 'Mutare set de replicare e&#351;uat&#259;.';
-	$lang['strnewrepset'] = 'Set de replicare nou';
-	$lang['strlock'] = 'Blocare';
-	$lang['strlocked'] = 'Blocat';
-	$lang['strunlock'] = 'Deblocare';
-	$lang['strconflockrepset'] = 'Siguri bloca&#355;i setul de replicare &quot;%s&quot;?';
-	$lang['strrepsetlocked'] = 'Set de replicare blocat';
-	$lang['strrepsetlockedbad'] = 'Blocare set de replicare e&#351;uat&#259;.';
-	$lang['strconfunlockrepset'] = 'Sigur debloca&#355;i setul de replicare &quot;%s&quot;?';
-	$lang['strrepsetunlocked'] = 'Set de replicare deblocat';
-	$lang['strrepsetunlockedbad'] = 'Deblocare set de replicare e&#351;uat&#259;.';
-	$lang['strexecute'] = 'Executare';
-	$lang['stronlyonnode'] = 'Numai pentru nodul';
-	$lang['strddlscript'] = 'Script DDL';
-	$lang['strscriptneedsbody'] = 'Trebuie s&#259; furniza&#355;i un script care s&#259; fie executat pentru toate nodurile.';
-	$lang['strscriptexecuted'] = 'Scriptul DDL pentru setul de replicare a fost executat.';
-	$lang['strscriptexecutedbad'] = 'Executare script DDL pentru setul de replicare e&#351;uat&#259;.';
-	$lang['strtabletriggerstoretain'] = 'Urm&#259;toarele declan&#351;atoare NU vor fi dezactivate de Slony:';
-
-	// Slony tables in replication sets
-	$lang['straddtable'] = 'Ad&#259;ugare tabel&#259;';
-	$lang['strtableneedsuniquekey'] = 'Tabela ad&#259;ugat&#259; necesit&#259; o cheie primar&#259; sau unic&#259;.';
-	$lang['strtableaddedtorepset'] = 'Tabel&#259; ad&#259;ugat&#259; setului de replicare.';
-	$lang['strtableaddedtorepsetbad'] = 'Ad&#259;ugare tabel&#259; la setul de replicare e&#351;uat&#259;.';
-	$lang['strconfremovetablefromrepset'] = 'Sigur elimina&#355;i tabela &quot;%s&quot; din setul de replicare &quot;%s&quot;?';
-	$lang['strtableremovedfromrepset'] = 'Tabel&#259; eliminat&#259; din setul de replicare.';
-	$lang['strtableremovedfromrepsetbad'] = 'Eliminare tabel&#259; din setul de replicare e&#351;uat&#259;.';
-
-	// Slony sequences in replication sets
-	$lang['straddsequence'] = 'Ad&#259;ugare secven&#355;&#259;';
-	$lang['strsequenceaddedtorepset'] = 'Secven&#355;&#259; ad&#259;ugat&#259; setului de replicare.';
-	$lang['strsequenceaddedtorepsetbad'] = 'Ad&#259;ugare secven&#355;&#259; la setul de replicare e&#351;uat&#259;.';
-	$lang['strconfremovesequencefromrepset'] = 'Sigur elimina&#355;i secven&#355;a &quot;%s&quot; din setul de replicare &quot;%s&quot;?';
-	$lang['strsequenceremovedfromrepset'] = 'Secven&#355;&#259; eliminat&#259; din setul de replicare.';
-	$lang['strsequenceremovedfromrepsetbad'] = 'Eliminare secven&#355;&#259; din setul de replicare e&#351;uat&#259;.';
-
-	// Slony subscriptions
-	$lang['strsubscriptions'] = 'Subscriere';
-	$lang['strnosubscriptions'] = 'Nici o subscriere g&#259;sit&#259;.';
 
 	// Miscellaneous
 	$lang['strtopbar'] = '%s rul&#226;nd pe %s:%s -- Sunte&#355;i autentificat ca utilizator &quot;%s&quot;';

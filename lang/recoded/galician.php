@@ -161,6 +161,7 @@
 	$lang['strstop'] = 'Deter';
 	$lang['strgotoppage'] = 'Volver arriba';
 	$lang['strtheme'] = 'Tema visual';
+	$lang['strcluster'] = 'Concentrador';
 
 	// Admin
 	$lang['stradminondatabase'] = 'As seguintes tarefas administrativas realizaranse en toda a base de datos &#171;%s&#187;.';
@@ -815,118 +816,6 @@
 	$lang['strtablespacedroppedbad'] = 'Non se conseguiu eliminar o alias de ruta.';
 	$lang['strtablespacealtered'] = 'Modificouse o alias de ruta.';
 	$lang['strtablespacealteredbad'] = 'Non se conseguiu modificar o alias de ruta.';
-
-	// Slony clusters
-	$lang['strcluster'] = 'Concentrador';
-	$lang['strnoclusters'] = 'Non se atopou concentrador alg&#250;n.';
-	$lang['strconfdropcluster'] = 'Est&#225; seguro de que quere eliminar o concentrador &#171;%s&#187;?';
-	$lang['strclusterdropped'] = 'Eliminouse o concentrador.';
-	$lang['strclusterdroppedbad'] = 'Non se conseguiu eliminar o concentrador.';
-	$lang['strinitcluster'] = 'Inicializar o concentrador';
-	$lang['strclustercreated'] = 'Inicializouse o concentrador.';
-	$lang['strclustercreatedbad'] = 'Non se conseguiu inicializar o concentrador.';
-	$lang['strclusterneedsname'] = 'Debe fornecer un nome para o concentrador.';
-	$lang['strclusterneedsnodeid'] = 'Debe fornecer un identificador para o nodo local.';
-
-	// Slony nodes
-	$lang['strnodes'] = 'Nodos';
-	$lang['strnonodes'] = 'Non se atopou nodo alg&#250;n.';
-	$lang['strcreatenode'] = 'Crear un nodo';
-	$lang['strid'] = 'Identificador';
-	$lang['stractive'] = 'Activo';
-	$lang['strnodecreated'] = 'Creouse o nodo.';
-	$lang['strnodecreatedbad'] = 'Non se conseguiu crear o nodo.';
-	$lang['strconfdropnode'] = 'Est&#225; seguro de que quere eliminar o nodo &#171;%s&#187;?';
-	$lang['strnodedropped'] = 'Eliminouse o nodo.';
-	$lang['strnodedroppedbad'] = 'Non se conseguiu eliminar o nodo.';
-	$lang['strfailover'] = 'Tolerancia de erros';
-	$lang['strnodefailedover'] = 'O nodo tolerou o erro.';
-	$lang['strnodefailedoverbad'] = 'O nodo non deu tolerado o erro.';
-	$lang['strstatus'] = 'Estado';
-	$lang['strhealthy'] = 'Sa&#250;de';
-	$lang['stroutofsync'] = 'Sen sincronizar';
-	$lang['strunknown'] = 'Desco&#241;ecido';
-
-	// Slony paths
-	$lang['strpaths'] = 'Rutas';
-	$lang['strnopaths'] = 'Non se atopou ruta algunha.';
-	$lang['strcreatepath'] = 'Crear unha ruta';
-	$lang['strnodename'] = 'Nome do nodo';
-	$lang['strnodeid'] = 'Identificador do nodo';
-	$lang['strconninfo'] = 'Cadea de conexi&#243;n';
-	$lang['strconnretry'] = 'Segundos entre os intentos de conexi&#243;n';
-	$lang['strpathneedsconninfo'] = 'Debe fornecer unha cadea de conexi&#243;n para a ruta.';
-	$lang['strpathneedsconnretry'] = 'Debe indicar cantos segundos se ha de agardar para volver intentar establecer unha conexi&#243;n.';
-	$lang['strpathcreated'] = 'Creouse a ruta.';
-	$lang['strpathcreatedbad'] = 'Non se conseguiu crear a ruta.';
-	$lang['strconfdroppath'] = 'Est&#225; seguro de que quere eliminar a ruta &#171;%s&#187;?';
-	$lang['strpathdropped'] = 'Eliminouse a ruta.';
-	$lang['strpathdroppedbad'] = 'Non se conseguiu eliminar a ruta.';
-
-	// Slony listens
-	$lang['strlistens'] = 'Escoitas';
-	$lang['strnolistens'] = 'Non se atopou escoita algunha.';
-	$lang['strcreatelisten'] = 'Crear unha escoita';
-	$lang['strlistencreated'] = 'Creouse a escoita.';
-	$lang['strlistencreatedbad'] = 'Non se conseguiu crear a escoita.';
-	$lang['strconfdroplisten'] = 'Est&#225; seguro de que quere eliminar a escoita &#171;%s&#187;?';
-	$lang['strlistendropped'] = 'Eliminouse a escoita.';
-	$lang['strlistendroppedbad'] = 'Non se conseguiu eliminar a escoita.';
-
-	// Slony replication sets
-	$lang['strrepsets'] = 'Grupos de r&#233;plicas';
-	$lang['strnorepsets'] = 'Non se atopou grupo de r&#233;plicas alg&#250;n.';
-	$lang['strcreaterepset'] = 'Crear un grupo de r&#233;plicas';
-	$lang['strrepsetcreated'] = 'Creouse o grupo de r&#233;plicas.';
-	$lang['strrepsetcreatedbad'] = 'Non se conseguiu crear o grupo de r&#233;plicas.';
-	$lang['strconfdroprepset'] = 'Est&#225; seguro de que quere borrar o grupo de r&#233;plicas &#171;%s&#187;?';
-	$lang['strrepsetdropped'] = 'Eliminouse o grupo de r&#233;plicas.';
-	$lang['strrepsetdroppedbad'] = 'Non se conseguiu eliminar o grupo de r&#233;plicas.';
-	$lang['strmerge'] = 'Mesturar';
-	$lang['strmergeinto'] = 'Mesturar con';
-	$lang['strrepsetmerged'] = 'Mestur&#225;ronse os grupos de r&#233;plicas.';
-	$lang['strrepsetmergedbad'] = 'Non se conseguiu mesturar os grupos de r&#233;plicas.';
-	$lang['strmove'] = 'Mover';
-	$lang['strneworigin'] = 'Nova orixe';
-	$lang['strrepsetmoved'] = 'Moveuse o grupo de r&#233;plicas.';
-	$lang['strrepsetmovedbad'] = 'Non se conseguiu mover o grupo de r&#233;plicas.';
-	$lang['strnewrepset'] = 'Novo grupo de r&#233;plicas';
-	$lang['strlock'] = 'Bloquear';
-	$lang['strlocked'] = 'Bloqueado';
-	$lang['strunlock'] = 'Desbloquear';
-	$lang['strconflockrepset'] = 'Est&#225; seguro de que quere bloquear o grupo de r&#233;plicas &#171;%s&#187;?';
-	$lang['strrepsetlocked'] = 'Bloqueouse o grupo de r&#233;plicas.';
-	$lang['strrepsetlockedbad'] = 'Non se conseguiu bloquear o grupo de r&#233;plicas.';
-	$lang['strconfunlockrepset'] = 'Est&#225; seguro de que quere desbloquear o grupo de r&#233;plicas &#171;%s&#187;?';
-	$lang['strrepsetunlocked'] = 'Desbloqueouse o grupo de r&#233;plicas.';
-	$lang['strrepsetunlockedbad'] = 'Non se conseguiu desbloquear o grupo de r&#233;plicas.';
-	$lang['stronlyonnode'] = 'S&#243; no nodo';
-	$lang['strddlscript'] = 'Gui&#243;n DDL';
-	$lang['strscriptneedsbody'] = 'Debe fornecer un gui&#243;n para que se execute en todos os nodos.';
-	$lang['strscriptexecuted'] = 'Executouse o gui&#243;n DDL do grupo de r&#233;plicas.';
-	$lang['strscriptexecutedbad'] = 'Non se conseguiu executar o gui&#243;n DDL do grupo de r&#233;plicas.';
-	$lang['strtabletriggerstoretain'] = 'Slony non vai desactivar o seguintes disparadores::';
-
-	// Slony tables in replication sets
-	$lang['straddtable'] = 'Engadir unha t&#225;boa';
-	$lang['strtableneedsuniquekey'] = 'A t&#225;boa a engadir necesita dunha clave primaria ou &#250;nica.';
-	$lang['strtableaddedtorepset'] = 'Engadiuse a t&#225;boa ao grupo de r&#233;plicas.';
-	$lang['strtableaddedtorepsetbad'] = 'Non se conseguiu engadir a t&#225;boa ao grupo de r&#233;plicas.';
-	$lang['strconfremovetablefromrepset'] = 'Est&#225; seguro de que quere eliminar a t&#225;boa &#171;%s&#187; do grupo de r&#233;plicas &#171;%s&#187;?';
-	$lang['strtableremovedfromrepset'] = 'Eliminouse a t&#225;boa do grupo de r&#233;plicas.';
-	$lang['strtableremovedfromrepsetbad'] = 'Non se conseguiu eliminar a t&#225;boa do grupo de r&#233;plicas.';
-
-	// Slony sequences in replication sets
-	$lang['straddsequence'] = 'Engadir unha secuencia';
-	$lang['strsequenceaddedtorepset'] = 'Engadiuse a secuencia ao grupo de r&#233;plicas.';
-	$lang['strsequenceaddedtorepsetbad'] = 'Non se conseguiu engadir a secuencia ao grupo de r&#233;plicas.';
-	$lang['strconfremovesequencefromrepset'] = 'Est&#225; seguro de que quere eliminar a secuencia &#171;%s&#187; do grupo de r&#233;plicas &#171;%s&#187;?';
-	$lang['strsequenceremovedfromrepset'] = 'Eliminouse a secuencia do grupo de r&#233;plicas.';
-	$lang['strsequenceremovedfromrepsetbad'] = 'Non se conseguiu eliminar a secuencia do grupo de r&#233;plicas.';
-
-	// Slony subscriptions
-	$lang['strsubscriptions'] = 'Subscrici&#243;ns';
-	$lang['strnosubscriptions'] = 'Non se atopou subscrici&#243;n algunha.';
 
 	// Miscellaneous
 	$lang['strtopbar'] = '%s, execut&#225;ndose no enderezo %s:%s. Est&#225; identificado coma &#171;%s&#187;.';

@@ -150,6 +150,7 @@
 	$lang['strstop'] = 'Zastavit';
 	$lang['strgotoppage'] = 'zp&#283;t nahoru';
 	$lang['strtheme'] = 'Motiv';
+	$lang['strcluster'] = 'Klastr';
 	
 	// Admin
 	$lang['stradminondatabase'] = 'N&#225;sleduj&#237;c&#237; &#250;lohy spr&#225;vy pou&#382;&#237;t na celou datab&#225;zi %s.';
@@ -803,118 +804,6 @@
 	$lang['strtablespacedroppedbad'] = 'Nezda&#345;ilo se odstranit prostor tabulek.';
 	$lang['strtablespacealtered'] = 'Zm&#283;ny v prostoru tabulek byly provedeny.';
 	$lang['strtablespacealteredbad'] = 'Nezda&#345;ilo se prov&#233;st zm&#283;ny v prostoru tabulek.';
-
-	// Slony clusters
-	$lang['strcluster'] = 'Klastr';
-	$lang['strnoclusters'] = 'Nebyly nalezeny &#382;&#225;dn&#233; klastry.';
-	$lang['strconfdropcluster'] = 'Opravdu chcete odstranit klastr &#8222;%s&#8220;?';
-	$lang['strclusterdropped'] = 'Klastr byl odstran&#283;n.';
-	$lang['strclusterdroppedbad'] = 'Nezda&#345;ilo se odstranit klastr.';
-	$lang['strinitcluster'] = 'Inicializovat klastr';
-	$lang['strclustercreated'] = 'Klastr byl inicializov&#225;n.';
-	$lang['strclustercreatedbad'] = 'Nezda&#345;ilo se inicializovat klastr.';
-	$lang['strclusterneedsname'] = 'Mus&#237;te zadat n&#225;zev pro klastr.';
-	$lang['strclusterneedsnodeid'] = 'Mus&#237;te zadat ID pro lok&#225;ln&#237; uzel.';
-
-	// Slony nodes
-	$lang['strnodes'] = 'Uzly';
-	$lang['strnonodes'] = 'Nenalezeny &#382;&#225;dn&#233; uzly.';
-	$lang['strcreatenode'] = 'Vytvo&#345;it uzel';
-	$lang['strid'] = 'ID';
-	$lang['stractive'] = 'Aktivn&#237;';
-	$lang['strnodecreated'] = 'Uzel byl vytvo&#345;en.';
-	$lang['strnodecreatedbad'] = 'Nezda&#345;ilo se vytvo&#345;it uzel.';
-	$lang['strconfdropnode'] = 'Opravdu chcete odstranit uzel &#8222;%s&#8220;?';
-	$lang['strnodedropped'] = 'Uzel byl odstran&#283;n.';
-	$lang['strnodedroppedbad'] = 'Nezda&#345;ilo se odstranit uzel.';
-	$lang['strfailover'] = 'P&#345;eklenout v&#253;padek';
-	$lang['strnodefailedover'] = 'Uzel p&#345;eklenul v&#253;padek.';
-	$lang['strnodefailedoverbad'] = 'Uzlu se nezda&#345;ilo p&#345;eklenout v&#253;padek.';
-	$lang['strstatus'] = 'Stav';	
-	$lang['strhealthy'] = 'V po&#345;&#225;dku';
-	$lang['stroutofsync'] = 'Neslad&#283;no';
-	$lang['strunknown'] = 'Nezn&#225;mo';	
-
-	// Slony paths	
-	$lang['strpaths'] = 'Cesty';
-	$lang['strnopaths'] = 'Nenalezeny &#382;&#225;dn&#233; cesty.';
-	$lang['strcreatepath'] = 'Vytvo&#345;it cestu';
-	$lang['strnodename'] = 'N&#225;zev uzlu';
-	$lang['strnodeid'] = 'ID uzlu';
-	$lang['strconninfo'] = 'P&#345;ipojovac&#237; &#345;et&#283;zec';
-	$lang['strconnretry'] = '&#268;ek&#225;n&#237; v sekund&#225;ch p&#345;ed nov&#253;m pokusem p&#345;ipojen&#237;';
-	$lang['strpathneedsconninfo'] = 'Mus&#237;te zadat p&#345;ipojovac&#237; &#345;et&#283;zec pro cestu.';
-	$lang['strpathneedsconnretry'] = 'Mus&#237;te zadat dobu v sekund&#225;ch, po kterou se bude &#269;ekat, ne&#382; se zkus&#237; znovu p&#345;ipojit.';
-	$lang['strpathcreated'] = 'Cesta byla vytvo&#345;ena.';
-	$lang['strpathcreatedbad'] = 'Nezda&#345;ilo se vytvo&#345;it cestu.';
-	$lang['strconfdroppath'] = 'Opravdu chcete odstranit cestu &#8222;%s&#8220;?';
-	$lang['strpathdropped'] = 'Cesta byla odstran&#283;na.';
-	$lang['strpathdroppedbad'] = 'Nezda&#345;ilo se odstranit cestu.';
-
-	// Slony listens
-	$lang['strlistens'] = 'Naslouch&#225;n&#237;';
-	$lang['strnolistens'] = 'Nebyla nalezena &#382;&#225;dn&#225; naslouch&#225;n&#237;.';
-	$lang['strcreatelisten'] = 'Vytvo&#345;it naslouch&#225;n&#237;';
-	$lang['strlistencreated'] = 'Naslouch&#225;n&#237; bylo vytvo&#345;eno.';
-	$lang['strlistencreatedbad'] = 'Nezda&#345;ilo se vytvo&#345;it naslouch&#225;n&#237;.';
-	$lang['strconfdroplisten'] = 'Opravdu chcete odstranit naslouch&#225;n&#237; &#8222;%s&#8220;?';
-	$lang['strlistendropped'] = 'Naslouch&#225;n&#237; bylo odstran&#283;no.';
-	$lang['strlistendroppedbad'] = 'Nezda&#345;ilo se odstranit naslouch&#225;n&#237;.';
-
-	// Slony replication sets
-	$lang['strrepsets'] = 'Replika&#269;n&#237; sady';
-	$lang['strnorepsets'] = 'Nebyly nalezeny &#382;&#225;dn&#233; replika&#269;n&#237; sady.';
-	$lang['strcreaterepset'] = 'Vytvo&#345;it replika&#269;n&#237; sadu';
-	$lang['strrepsetcreated'] = 'Replika&#269;n&#237; sada byla vytvo&#345;ena.';
-	$lang['strrepsetcreatedbad'] = 'Nezda&#345;ilo se vytvo&#345;it replika&#269;n&#237; sadu.';
-	$lang['strconfdroprepset'] = 'Opravdu chcete odstranit replika&#269;n&#237; sadu &#8222;%s&#8220;?';
-	$lang['strrepsetdropped'] = 'Replika&#269;n&#237; sada byla odstran&#283;na.';
-	$lang['strrepsetdroppedbad'] = 'Nezda&#345;ilo se odstranit replika&#269;n&#237; sadu.';
-	$lang['strmerge'] = 'Slou&#269;it';
-	$lang['strmergeinto'] = 'Slou&#269;it s';
-	$lang['strrepsetmerged'] = 'Replika&#269;n&#237; sady byly slou&#269;eny.';
-	$lang['strrepsetmergedbad'] = 'Nezda&#345;ilo se slou&#269;it replika&#269;n&#237; sady.';
-	$lang['strmove'] = 'P&#345;esunout';
-	$lang['strneworigin'] = 'Nov&#253; po&#269;&#225;tek';
-	$lang['strrepsetmoved'] = 'Replika&#269;n&#237; sada byla p&#345;esunuta.';
-	$lang['strrepsetmovedbad'] = 'Nezda&#345;ilo se p&#345;esunout replika&#269;n&#237; sadu.';
-	$lang['strnewrepset'] = 'Nov&#225; replika&#269;n&#237; sada';
-	$lang['strlock'] = 'Zamknout';
-	$lang['strlocked'] = 'Zamknuto';
-	$lang['strunlock'] = 'Odemknout';
-	$lang['strconflockrepset'] = 'Opravdu chcete zamknout replika&#269;n&#237; sadu &#8222;%s&#8220;?';
-	$lang['strrepsetlocked'] = 'Replika&#269;n&#237; sada byla zamknuta.';
-	$lang['strrepsetlockedbad'] = 'Nezda&#345;ilo se zamknout replika&#269;n&#237; sadu.';
-	$lang['strconfunlockrepset'] = 'Opravdu chcete odemknout replika&#269;n&#237; sadu &#8222;%s&#8220;?';
-	$lang['strrepsetunlocked'] = 'Replika&#269;n&#237; sada byla odemknuta.';
-	$lang['strrepsetunlockedbad'] = 'Nezda&#345;ilo se odemknout replika&#269;n&#237; sadu.';
-	$lang['stronlyonnode'] = 'Poze v uzlu';
-	$lang['strddlscript'] = 'Skript DDL';
-	$lang['strscriptneedsbody'] = 'Mus&#237;te zajistit, aby se skript spustil na v&#353;ech uzlech.';
-	$lang['strscriptexecuted'] = 'Skript DDL replika&#269;n&#237; sady byl vykon&#225;n.';
-	$lang['strscriptexecutedbad'] = 'Nezda&#345;ilo se vykonat skript DDL replika&#269;n&#237; sady.';
-	$lang['strtabletriggerstoretain'] = 'N&#225;sleduj&#237;c&#237; triggery NEBUDOU replika&#269;n&#237;m syst&#233;mem Slony zak&#225;z&#225;ny:';
-
-	// Slony tables in replication sets
-	$lang['straddtable'] = 'P&#345;idat tabulku';
-	$lang['strtableneedsuniquekey'] = 'P&#345;id&#225;van&#225; tabulka mus&#237; obsahovat prim&#225;rn&#237; nebo jedine&#269;n&#253; kl&#237;&#269;.';
-	$lang['strtableaddedtorepset'] = 'Tabulka byla p&#345;id&#225;na do replika&#269;n&#237; sady.';
-	$lang['strtableaddedtorepsetbad'] = 'Tabulku se nezda&#345;ilo p&#345;idat do replika&#269;n&#237; sady.';
-	$lang['strconfremovetablefromrepset'] = 'Opravdu chcete odebrat tabulku &#8222;%s&#8220; z replika&#269;n&#237; sady &#8222;%s&#8220;?';
-	$lang['strtableremovedfromrepset'] = 'Tabulka byla odebr&#225;na z replika&#269;n&#237; sady.';
-	$lang['strtableremovedfromrepsetbad'] = 'Tabulku se nezda&#345;ilo odebrat z replika&#269;n&#237; sady.';
-
-	// Slony sequences in replication sets
-	$lang['straddsequence'] = 'P&#345;idat sekvenci';
-	$lang['strsequenceaddedtorepset'] = 'Sekvence byla p&#345;id&#225;na do replika&#269;n&#237; sady.';
-	$lang['strsequenceaddedtorepsetbad'] = 'Sekvenci se nezda&#345;ilo p&#345;idat do replika&#269;n&#237; sady.';
-	$lang['strconfremovesequencefromrepset'] = 'Opravdu chcete odebrat sekvenci &#8222;%s&#8220; z replika&#269;n&#237; sady &#8222;%s&#8220;?';
-	$lang['strsequenceremovedfromrepset'] = 'Sekvence byla odebr&#225;na z replika&#269;n&#237; sady.';
-	$lang['strsequenceremovedfromrepsetbad'] = 'Sekvenci se nezda&#345;ilo odebrat z replika&#269;n&#237; sady.';
-
-	// Slony subscriptions
-	$lang['strsubscriptions'] = 'Odb&#283;ry';
-	$lang['strnosubscriptions'] = 'Nebyly nalezeny &#382;&#225;dn&#233; odb&#283;ry.';
 
 	// Miscellaneous
 	$lang['strtopbar'] = '%s b&#283;&#382;&#237;c&#237; na %s:%s -- Jste p&#345;ihl&#225;&#353;en&#253; jako u&#382;ivatel &#8222;%s&#8220;';
