@@ -910,4 +910,8 @@
 	$lang['strftstabdicts'] = 'Dictionaries';
 	$lang['strftstabparsers'] = 'Parsers';
 	$lang['strftscantparsercopy'] = 'Can\'t specify both parser and template during text search configuration creation.';
+
+	//Plugins
+	$lang['strpluginnotfound'] = 'Erro: plugin \'%s\' not found. Check if this plugin exists in the plugins/ directory, or if this plugins has a plugin.php file.';
+	$lang['strpluginnotfoundcomplem'] = 'Plugin\'s names are case sensitive';
 ?>

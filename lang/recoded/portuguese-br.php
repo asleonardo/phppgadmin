@@ -910,4 +910,8 @@
 	$lang['strftstabdicts'] = 'Dicion&#225;rios';
 	$lang['strftstabparsers'] = 'Parsers';
 	$lang['strftscantparsercopy'] = 'N&#227;o &#233; poss&#237;vel especificar ambos parser e modelo durante a cria&#231;&#227;o da configura&#231;&#227;o de busca de texto.';
+
+	//Plugins
+	$lang['strpluginnotfound'] = 'Erro: plugin \'%s\' n&#227;o encontrado. Verifique se esse plugin existe no diret&#243;rio plugins/, ou se esse plugin cont&#233;m um arquivo plugin.php';
+	$lang['strpluginnotfoundcomplem'] = 'Os nomes dos plugins s&#227;o case sensitive';
 ?>

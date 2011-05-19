@@ -179,16 +179,9 @@
 		exit;
 	}
 
-	// Check if there are activated plugins
-	$plugins = $conf['plugins'];
-	require_once('./classes/plugins/PluginManager.php');
-	$plugin_manager = new PluginManager();
-	//register the plugins and their functions
-	foreach ($plugins as $activated_plugin) {
-		include_once('./plugins/'.$activated_plugin.'/plugin.php');
-		$plugin = new $activated_plugin($plugin_manager, $_language);
-		$plugin_manager->add_plugin($plugin);
-	}
+	// Manage the plugins
+	require_once('./classes/PluginManager.php');
+	$plugin_manager = new PluginManager($_language);
 
 	// Create data accessor object, if necessary
 	if (!isset($_no_db_connection)) {

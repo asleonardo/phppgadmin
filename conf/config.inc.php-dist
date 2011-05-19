@@ -142,9 +142,10 @@
 	// Time in seconds. If set to 0, refreshing data using ajax will be disabled (locks and activity pages)
 	$conf['ajax_refresh'] = 3;
 
-	// Plugins
-	// Add index to plugins that will be activated.
-	// Example: array('PluginExample', 'Slony', ...)
+	/** Plugins management
+	 * Add plugin names to the following array to activate them
+	 * Example: $conf['plugins'] = array('PluginExample', 'Slony');
+	 */
 	$conf['plugins'] = array();
 
 	/*****************************************
