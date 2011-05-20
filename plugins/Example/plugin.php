@@ -78,6 +78,7 @@ class Example {
 		global $lang;
 
 		echo "<div>{$this->lang['strdescription']}</div>";
+		echo "<br>";
 
 		$url = "<a href=\"{$_REQUEST['return_url']}\">";
 		$url.= $lang['strback'];
