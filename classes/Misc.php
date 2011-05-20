@@ -1088,7 +1088,12 @@
 				$toplinks[] = "<a class=\"toplink\" href=\"{$history_url}\" onclick=\"window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strhistory']}</a>";
 				$toplinks[] = "<a class=\"toplink\" href=\"{$sql_url}find\" target=\"sqledit\" onclick=\"window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strfind']}</a>";
 				/* TOPLINK HOOK'S PLACE */
-				$plugin_manager->execute_plugin_funtions('toplinks', $toplinks);
+				$plugin_functions_parameters = array(
+					'toplinks' => &$toplinks, //the array of toplinks is passed by reference.
+					'href' => $this->href
+				);
+				/* * */
+				$plugin_manager->execute_plugin_funtions('toplinks', $plugin_functions_parameters);
 				$toplinks[] = "<a class=\"toplink\" href=\"servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode'])."\"{$logout_shared}>{$lang['strlogout']}</a>";
 				
 				

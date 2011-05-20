@@ -5,7 +5,7 @@ class PluginExample {
 	 * Attributes
 	 */
 	private $name = 'PluginExample';
-	private $description = 'Plugin Exemple';
+	private $description = 'Plugin Example';	//I think it should be extracted from $lang
 	private $lang;
 
 	/**
@@ -53,8 +53,36 @@ class PluginExample {
 	 * Add plugin in the top links
 	 * @param $toplinks_operations
 	 */
-	function add_plugin_toplinks(&$toplinks_operations) {
-		$toplinks_operations[$this->name] = "<a class=\"toplink\" href=\"#\">{$this->lang['plugin_toplink']}</a>";
+	function add_plugin_toplinks(&$plugin_functions_parameters) {
+		global $misc;
+
+		$href = "plugin.php?".$plugin_functions_parameters['href'];
+		$href.= "&amp;plugin=".urlencode($this->name);
+		$href.= "&amp;action=show_page";
+		$href.= "&amp;return_url=".urlencode($_SERVER['PHP_SELF']."?".$misc->getHREF());
+
+		$link = "<a class=\"toplink\" href=\"$href\">";
+		$link.= $this->lang['plugin_toplink'];
+		$link.= "</a>";
+
+		//Add the link in the toplinks array
+		$plugin_functions_parameters['toplinks'][] = $link;
+	}
+
+	/**
+	 * Show a simple page
+	 *
+	 * TODO: make a style for this plugin, as an example of use of own css style.
+	 */
+	function show_page() {
+		global $lang;
+
+		echo "<div>{$this->description}</div>";
+
+		$url = "<a href=\"{$_REQUEST['return_url']}\">";
+		$url.= $lang['strback'];
+		$url.= "</a>";
+		echo $url;
 	}
 }
 ?>
