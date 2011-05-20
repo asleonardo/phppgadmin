@@ -1,10 +1,10 @@
 <?php
-class PluginExample {
+class Example {
 
 	/**
 	 * Attributes
 	 */
-	private $name = 'PluginExample';
+	private $name = 'Example';
 	private $lang;
 
 	/**
@@ -77,7 +77,7 @@ class PluginExample {
 	function show_page() {
 		global $lang;
 
-		echo "<div>{$this->lang['plugin_description']}</div>";
+		echo "<div>{$this->lang['strdescription']}</div>";
 
 		$url = "<a href=\"{$_REQUEST['return_url']}\">";
 		$url.= $lang['strback'];

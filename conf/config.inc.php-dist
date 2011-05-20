@@ -144,7 +144,7 @@
 
 	/** Plugins management
 	 * Add plugin names to the following array to activate them
-	 * Example: $conf['plugins'] = array('PluginExample', 'Slony');
+	 * Example: $conf['plugins'] = array('Example', 'Slony');
 	 */
 	$conf['plugins'] = array();
 
