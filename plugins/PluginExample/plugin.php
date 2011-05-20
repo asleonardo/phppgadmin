@@ -5,7 +5,6 @@ class PluginExample {
 	 * Attributes
 	 */
 	private $name = 'PluginExample';
-	private $description = 'Plugin Example';	//I think it should be extracted from $lang
 	private $lang;
 
 	/**
@@ -59,10 +58,11 @@ class PluginExample {
 		$href = "plugin.php?".$plugin_functions_parameters['href'];
 		$href.= "&amp;plugin=".urlencode($this->name);
 		$href.= "&amp;action=show_page";
+		//NOTE: What is the best way to return? $_SERVER['HTTP_REFERER'] cannot be trusted.
 		$href.= "&amp;return_url=".urlencode($_SERVER['PHP_SELF']."?".$misc->getHREF());
 
 		$link = "<a class=\"toplink\" href=\"$href\">";
-		$link.= $this->lang['plugin_toplink'];
+		$link.= $this->lang['strdescription'];
 		$link.= "</a>";
 
 		//Add the link in the toplinks array
@@ -77,7 +77,7 @@ class PluginExample {
 	function show_page() {
 		global $lang;
 
-		echo "<div>{$this->description}</div>";
+		echo "<div>{$this->lang['plugin_description']}</div>";
 
 		$url = "<a href=\"{$_REQUEST['return_url']}\">";
 		$url.= $lang['strback'];

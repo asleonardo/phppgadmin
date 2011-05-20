@@ -6,9 +6,6 @@
 	 */
 
 	//Plugin data
-	$plugin_lang['plugin_name'] = 'Plugin Exemplo';
-
-	//Test
-	$plugin_lang['plugin_toplink'] = 'Exemplo de toplink extra';
+	$plugin_lang['strdescription'] = 'Plugin Exemplo';
 
 ?>
