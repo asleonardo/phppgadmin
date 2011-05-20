@@ -95,8 +95,7 @@ class PluginManager {
 	 */
 	function get_transalation($name, $language) {
 		require_once("./plugins/{$name}/lang/recoded/english.php");
-		require_once("./plugins/{$name}/lang/translations.php");
-		if (isset($pluginLangFiles[$language])) {
+		if (file_exists("./plugins/{$name}/lang/recoded/{$language}.php")) {
 			include_once("./plugins/{$name}/lang/recoded/{$language}.php");
 		}
 		return $plugin_lang;
