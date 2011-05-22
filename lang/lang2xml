@@ -57,12 +57,12 @@ COMMAND=$1
 case $COMMAND in
 	all)
 		# find all translation files in the source tree
-		TARGETS=$(ls *.php | grep -v translations.php)
+		TARGETS=$(ls *.php  ../plugins/*/lang/*.php | grep -v translations.php)
 		rec $TARGETS
 	;;
 	clean)
 		# find all recoded translation files in the source tree
-		TARGETS=$(ls ${DESTDIR}/*.php | grep -v translations.php)
+		TARGETS=$(ls ${DESTDIR}/*.php ../plugins/*/lang/${DESTDIR}/*.php | grep -v translations.php)
 		clean $TARGETS
 	;;
 	*)
