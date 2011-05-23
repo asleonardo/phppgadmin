@@ -15,7 +15,7 @@ class Example {
 	 */
 	function __construct($plugin_manager, $language) {
 		$this->lang = $plugin_manager->get_transalation($this->name, $language);
-		$plugin_manager->add_plugin($this, $this->get_hooks());
+		$plugin_manager->add_plugin($this, $this->get_hooks(), $this->get_actions());
 	}
 
 	/**
@@ -36,8 +36,25 @@ class Example {
 		$hooks = array(
 			'toplinks' => array('add_plugin_toplinks')
 		);
-
 		return $hooks;
+	}
+
+	/**
+	 * This method returns the functions that will be used as actions.
+	 * To do include a function that will be used as action, just put in the $actions array the follwing code:
+	 *
+	 * $actions = array(
+	 *	'show_page',
+	 *	'show_error',
+	 * );
+	 *
+	 * @return $actions
+	 */
+	function get_actions() {
+		$actions = array(
+			'show_page'
+		);
+		return $actions;
 	}
 
 	/**
@@ -71,6 +88,7 @@ class Example {
 
 	/**
 	 * Show a simple page
+	 * This function will be used as an action
 	 *
 	 * TODO: make a style for this plugin, as an example of use of own css style.
 	 */

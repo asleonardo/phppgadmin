@@ -41,9 +41,10 @@ class PluginManager {
 	/**
 	 * Add a plugin in the list of plugins to manage
 	 * @param $plugin - Instance from plugin
-	 * @param $hooks - Array with functions and the places where they will hook.
+	 * @param $hooks - Array with functions and the places where they will hook. The default value is an empty array.
+	 * @param $actions - Array with functions that the plugin will use as actions. The default value is an empty array.
 	 */
-	function add_plugin($plugin, $hooks) {
+	function add_plugin($plugin, $hooks = array(), $actions = array()) {
 		//The $name is the identification of the plugin.
 		//Example: PluginExample is the identification for PluginExample
 		//It will be used to get a specific plugin from the plugins_list.
@@ -52,18 +53,28 @@ class PluginManager {
 
 		//Register the plugin's functions
 		foreach ($hooks as $hook => $functions) {
-			$this->functions_list[$hook][$plugin_name] = $functions;
+			$this->functions_list['hooks'][$hook][$plugin_name] = $functions;
 		}
+
+		//Register the plugin's actions
+		$this->functions_list['actions'][$plugin_name] = $actions;
 	}
 
 	/**
 	 * Get a plugin from the $plugins_list by the plugin's identification.
 	 * @param $name - the plugin's name as identification. Exemple: PluginExample.
-	 *
-	 * TODO: show an error when a given plugin doesn't exist
 	 */
 	function get_plugin($name) {
-		return $this->plugins_list[$name];
+		global $lang;
+
+		if (isset($this->plugins_list[$name])) {
+			return $this->plugins_list[$name];
+		} else {
+			// Show an error and stop the application
+			printf($lang['strpluginnotfound']."\t\n", $name);
+			printf($lang['strpluginnotfoundcomplem']);
+			exit;
+		}
 	}
 
 	/**
@@ -74,8 +85,8 @@ class PluginManager {
 	 * TODO: check the supported entries (browser tree, tabs, trailer, navigation links, action buttons, top links)
 	 */
 	function execute_plugin_funtions($hook, &$function_args) {
-		if (isset($this->functions_list[$hook])) {
-			foreach ($this->functions_list[$hook] as $plugin_name => $functions) {
+		if (isset($this->functions_list['hooks'][$hook])) {
+			foreach ($this->functions_list['hooks'][$hook] as $plugin_name => $functions) {
 				foreach ($functions as $function) {
 					$plugin = $this->get_plugin($plugin_name);
 					if (method_exists($plugin, $function)) {
@@ -104,15 +115,20 @@ class PluginManager {
 	/**
 	 * Execute a plugin's action
 	 * @param $action - action that will be executed. The action is the name of a plugin's function.
-	 *
-	 * TODO: show erro when an action cannot be executed.
 	 */
 	function do_action($plugin_name, $action) {
+		global $lang;
 
 		$plugin = $this->get_plugin($plugin_name);
 
-		if (method_exists($plugin, $action)) {
+		// Check if the plugin's method exists and if this method is an declareted action.
+		// The actions are declared in the plugins' constructors.
+		if (method_exists($plugin, $action) and in_array($action, $this->functions_list['actions'][$plugin_name])) {
 			call_user_func(array($plugin, $action));
+		} else {
+			// Show an error and stop the application
+			printf($lang['stractionnotfound']."\t\n", $action, $plugin_name);
+			exit;
 		}
 	}
 }
