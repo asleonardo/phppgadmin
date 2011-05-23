@@ -20,11 +20,11 @@ class Example {
 
 	/**
 	 * This method returns the functions that will hook in the phpPgAdmin core.
-	 * To do include a function just put in the $functions array the follwing code:
+	 * To do include a function just put in the $hooks array the follwing code:
 	 * 'hook' => array('function1', 'function2').
 	 *
 	 * Example:
-	 * $functions = array(
+	 * $hooks = array(
 	 *	'toplinks' => array('add_plugin_toplinks'),
 	 *	'tabs' => array('add_tab_entry'),
 	 *  'action_buttons' => array('add_more_an_entry')
@@ -75,8 +75,6 @@ class Example {
 		$href = "plugin.php?".$plugin_functions_parameters['href'];
 		$href.= "&amp;plugin=".urlencode($this->name);
 		$href.= "&amp;action=show_page";
-		//NOTE: What is the best way to return? $_SERVER['HTTP_REFERER'] cannot be trusted.
-		$href.= "&amp;return_url=".urlencode($_SERVER['PHP_SELF']."?".$misc->getHREF());
 
 		$link = "<a class=\"toplink\" href=\"$href\">";
 		$link.= $this->lang['strdescription'];
@@ -98,7 +96,7 @@ class Example {
 		echo "<div>{$this->lang['strdescription']}</div>";
 		echo "<br>";
 
-		$url = "<a href=\"{$_REQUEST['return_url']}\">";
+		$url = "<a href=\"servers.php\">";
 		$url.= $lang['strback'];
 		$url.= "</a>";
 		echo $url;
