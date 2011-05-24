@@ -14,7 +14,14 @@ class Example {
 	 * @param $language Current phpPgAdmin language. If it was not found in the plugin, English will be used.
 	 */
 	function __construct($plugin_manager, $language) {
-		$this->lang = $plugin_manager->get_transalation($this->name, $language);
+		// Set the plugin's language
+		$lang_directory = dirname(__FILE__)."/lang/recoded";
+		require_once("$lang_directory/english.php");
+		if (file_exists("$lang_directory/$language.php")) {
+			include_once("$lang_directory/$language.php");
+		}
+		$this->lang = $plugin_lang;
+		
 		$plugin_manager->add_plugin($this, $this->get_hooks(), $this->get_actions());
 	}
 

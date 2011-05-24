@@ -95,21 +95,6 @@ class PluginManager {
 	}
 
 	/**
-	 * Get the plugin translations
-	 * @param $name - Plugin's name. Example: PluginExample, Crud, etc...
-	 * @param $language - Current phpPgAdmin language. If it was not found in the plugin, English will be used.
-	 *
-	 * TODO: check if an english translation file exists. If not, to think a way to alert about it.
-	 */
-	function get_transalation($name, $language) {
-		require_once("./plugins/{$name}/lang/recoded/english.php");
-		if (file_exists("./plugins/{$name}/lang/recoded/{$language}.php")) {
-			include_once("./plugins/{$name}/lang/recoded/{$language}.php");
-		}
-		return $plugin_lang;
-	}
-
-	/**
 	 * Execute a plugin's action
 	 * @param $action - action that will be executed. The action is the name of a plugin's function.
 	 */
