@@ -912,7 +912,6 @@
 	$lang['strftscantparsercopy'] = 'Não é possível especificar ambos parser e modelo durante a criação da configuração de busca de texto.';
 
 	//Plugins
-	$lang['strpluginnotfound'] = 'Erro: plugin \'%s\' não encontrado. Verifique se esse plugin existe no diretório plugins/, ou se esse plugin contém um arquivo plugin.php';
-	$lang['strpluginnotfoundcomplem'] = 'Os nomes dos plugins são case sensitive';
+	$lang['strpluginnotfound'] = 'Erro: plugin \'%s\' não encontrado. Verifique se esse plugin existe no diretório plugins/, ou se esse plugin contém um arquivo plugin.php. Os nomes dos plugins são case sensitive.';
 	$lang['stractionnotfound'] = 'Erro: ação \'%s\' não encontrada no plugin \'%s\'.';
 ?>

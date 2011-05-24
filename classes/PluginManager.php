@@ -30,10 +30,8 @@ class PluginManager {
 				include_once($plugin_file);
 				$plugin = new $activated_plugin($this, $language);
 			} else {
-				//TODO: create a HTML.
 				printf($lang['strpluginnotfound']."\t\n", $activated_plugin);
-				printf($lang['strpluginnotfoundcomplem']);
-				// TODO: exit??
+				exit;
 			}
 		}
 	}
@@ -72,7 +70,6 @@ class PluginManager {
 		} else {
 			// Show an error and stop the application
 			printf($lang['strpluginnotfound']."\t\n", $name);
-			printf($lang['strpluginnotfoundcomplem']);
 			exit;
 		}
 	}
