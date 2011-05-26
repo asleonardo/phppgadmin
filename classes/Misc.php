@@ -1089,7 +1089,7 @@
 				$toplinks[] = "<a class=\"toplink\" href=\"{$sql_url}find\" target=\"sqledit\" onclick=\"window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strfind']}</a>";
 				/* TOPLINK HOOK'S PLACE */
 				$plugin_functions_parameters = array(
-					'toplinks' => &$toplinks, //the array of toplinks is passed by reference.
+					'toplinks' => &$toplinks,
 					'href' => $this->href
 				);
 				/* * */

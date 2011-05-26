@@ -39,10 +39,8 @@ class PluginManager {
 	/**
 	 * Add a plugin in the list of plugins to manage
 	 * @param $plugin - Instance from plugin
-	 * @param $hooks - Array with functions and the places where they will hook. The default value is an empty array.
-	 * @param $actions - Array with functions that the plugin will use as actions. The default value is an empty array.
 	 */
-	function add_plugin($plugin, $hooks = array(), $actions = array()) {
+	function add_plugin($plugin) {
 		//The $name is the identification of the plugin.
 		//Example: PluginExample is the identification for PluginExample
 		//It will be used to get a specific plugin from the plugins_list.
@@ -50,11 +48,13 @@ class PluginManager {
 		$this->plugins_list[$plugin_name] = $plugin;
 
 		//Register the plugin's functions
+		$hooks = $plugin->get_hooks();   //TODO: validate if the plugin has the get_hooks method?
 		foreach ($hooks as $hook => $functions) {
 			$this->functions_list['hooks'][$hook][$plugin_name] = $functions;
 		}
 
 		//Register the plugin's actions
+		$actions = $plugin->get_actions();
 		$this->functions_list['actions'][$plugin_name] = $actions;
 	}
 
@@ -85,7 +85,7 @@ class PluginManager {
 		if (isset($this->functions_list['hooks'][$hook])) {
 			foreach ($this->functions_list['hooks'][$hook] as $plugin_name => $functions) {
 				foreach ($functions as $function) {
-					$plugin = $this->get_plugin($plugin_name);
+					$plugin = $this->plugins_list[$plugin_name];
 					if (method_exists($plugin, $function)) {
 						call_user_func_array(array($plugin, $function), array(&$function_args));
 					}

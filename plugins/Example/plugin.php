@@ -21,8 +21,8 @@ class Example {
 			include_once("$lang_directory/$language.php");
 		}
 		$this->lang = $plugin_lang;
-		
-		$plugin_manager->add_plugin($this, $this->get_hooks(), $this->get_actions());
+
+		$plugin_manager->add_plugin($this);
 	}
 
 	/**
