@@ -79,7 +79,7 @@ class Example {
 	function add_plugin_toplinks(&$plugin_functions_parameters) {
 		global $misc;
 
-		$href = "plugin.php?".$plugin_functions_parameters['href'];
+		$href = "plugins/Example/test_page.php?".$plugin_functions_parameters['href'];
 		$href.= "&amp;plugin=".urlencode($this->name);
 		$href.= "&amp;action=show_page";
 
