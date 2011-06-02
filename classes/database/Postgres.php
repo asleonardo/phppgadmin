@@ -454,7 +454,7 @@ class Postgres extends ADODB_base {
 
 		$server_info = $misc->getServerInfo();
 
-		if (isset($conf['owned_only']) && $conf['owned_only'] && !$this->isSuperUser($server_info['username'])) {
+		if (isset($conf['owned_only']) && $conf['owned_only'] && !$this->isSuperUser()) {
 			$username = $server_info['username'];
 			$this->clean($username);
 			$clause = " AND pr.rolname='{$username}'";
@@ -6462,10 +6462,10 @@ class Postgres extends ADODB_base {
 	 * @param $username The username of the user
 	 * @return True if is a super user, false otherwise
 	 */
-	function isSuperUser($username) {
+	function isSuperUser($username = '') {
 		$this->clean($username);
 
-		if (function_exists('pg_parameter_status')) {
+		if (empty($usename)) {
 			$val = pg_parameter_status($this->conn->_connectionID, 'is_superuser');
 			if ($val !== false) return $val == 'on';
 		}
