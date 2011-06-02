@@ -75,7 +75,7 @@ class Example {
 
 	/**
 	 * Add plugin in the top links
-	 * @param $toplinks_operations
+	 * @param $plugin_functions_parameters
 	 */
 	function add_plugin_toplinks(&$plugin_functions_parameters) {
 		global $misc;
@@ -94,7 +94,7 @@ class Example {
 
 	/**
 	 * Add plugin in the tabs
-	 * @param $tabs_operations
+	 * @param $plugin_functions_parameters
 	 */
 	function add_plugin_tabs(&$plugin_functions_parameters) {
 		global $misc;
