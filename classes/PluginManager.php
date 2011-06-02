@@ -102,7 +102,6 @@ class PluginManager {
 		global $lang;
 
 		$plugin = $this->get_plugin($plugin_name);
-
 		// Check if the plugin's method exists and if this method is an declareted action.
 		// The actions are declared in the plugins' constructors.
 		if (method_exists($plugin, $action) and in_array($action, $this->functions_list['actions'][$plugin_name])) {

@@ -41,7 +41,8 @@ class Example {
 	 */
 	function get_hooks() {
 		$hooks = array(
-			'toplinks' => array('add_plugin_toplinks')
+			'toplinks' => array('add_plugin_toplinks'),
+			'tabs' => array('add_plugin_tabs')
 		);
 		return $hooks;
 	}
@@ -79,7 +80,7 @@ class Example {
 	function add_plugin_toplinks(&$plugin_functions_parameters) {
 		global $misc;
 
-		$href = "plugins/Example/test_page.php?".$plugin_functions_parameters['href'];
+		$href = "plugin.php?".$plugin_functions_parameters['href'];
 		$href.= "&amp;plugin=".urlencode($this->name);
 		$href.= "&amp;action=show_page";
 
@@ -89,6 +90,31 @@ class Example {
 
 		//Add the link in the toplinks array
 		$plugin_functions_parameters['toplinks'][] = $link;
+	}
+
+	/**
+	 * Add plugin in the tabs
+	 * @param $tabs_operations
+	 */
+	function add_plugin_tabs(&$plugin_functions_parameters) {
+		global $misc;
+
+		$tabs = array();
+		switch ($plugin_functions_parameters['section']) {
+			case 'server':
+				$tabs = array (
+					'title' => $this->lang['strdescription'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => urlencode($this->name)),
+					'hide' => false,
+					'icon' => 'Databases' //TODO: create an icon!!
+				);
+				break;
+		}
+		//Add the link in the tabs array
+		if (count($tabs) > 0) {
+			$plugin_functions_parameters['tabs']['Example'] = $tabs;
+		}
 	}
 
 	/**

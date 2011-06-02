@@ -445,17 +445,25 @@
 
 		/**
 		 * Display navigation tabs
-		 * @param $tabs An associative array of tabs definitions, see printNav() for an example.
+		 * @param $section The name of current section (Ex: intro, server, ...)
 		 * @param $activetab The name of the tab to be highlighted.
 		 */
-		function printTabs($tabs, $activetab) {
-			global $misc, $conf, $data, $lang;
+		function printTabs($section, $activetab) {
+			global $misc, $conf, $data, $lang, $plugin_manager;
 
-			if (is_string($tabs)) {
-				$_SESSION['webdbLastTab'][$tabs] = $activetab;
-				$tabs = $this->getNavTabs($tabs);
+			if (is_string($section)) {
+				$_SESSION['webdbLastTab'][$section] = $activetab;
+				$tabs = $this->getNavTabs($section);
 			}
 
+			/* TABS HOOK'S PLACE */
+			$plugin_functions_parameters = array(
+				'tabs' => &$tabs,
+				'href' => $this->href,
+				'section' => $section
+			);
+			$plugin_manager->execute_plugin_funtions('tabs', $plugin_functions_parameters);
+			/* * */
 			echo "<table class=\"tabs\"><tr>\n";
 			#echo "<div class=\"tabs\">\n";
 
@@ -1092,8 +1100,8 @@
 					'toplinks' => &$toplinks,
 					'href' => $this->href
 				);
-				/* * */
 				$plugin_manager->execute_plugin_funtions('toplinks', $plugin_functions_parameters);
+				/* * */
 				$toplinks[] = "<a class=\"toplink\" href=\"servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode'])."\"{$logout_shared}>{$lang['strlogout']}</a>";
 				
 				
