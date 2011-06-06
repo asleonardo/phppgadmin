@@ -1139,14 +1139,20 @@
 		 * Display a bread crumb trail.
 		 */
 		function printTrail($trail = array()) {
-			global $lang;
+			global $lang, $plugin_manager;
 
 			$this->printTopbar();
 
 			if (is_string($trail)) {
 				$trail = $this->getTrail($trail);
 			}
-
+			/* TRAIL HOOKS PLACE */
+			$plugin_functions_parameters = array(
+				'trail' => &$trail,
+				'href' => $this->href
+			);
+			$plugin_manager->execute_plugin_funtions('trail', $plugin_functions_parameters);
+			/* * */
 			echo "<div class=\"trail\"><table><tr>";
 
 			foreach ($trail as $crumb) {
@@ -1185,7 +1191,7 @@
 
 		/**
 		 * Create a bread crumb trail of the object hierarchy.
-		 * @param $object The type of object at the end of the trail.
+		 * @param $subject The type of object at the end of the trail.
 		 */
 		function getTrail($subject = null) {
 			global $lang, $conf, $data, $appName;
