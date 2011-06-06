@@ -445,21 +445,22 @@
 
 		/**
 		 * Display navigation tabs
-		 * @param $section The name of current section (Ex: intro, server, ...)
+		 * @param $tabs The name of current section (Ex: intro, server, ...), or an array with tabs (Ex: sqledit.php doFind function)
 		 * @param $activetab The name of the tab to be highlighted.
 		 */
-		function printTabs($section, $activetab) {
+		function printTabs($tabs, $activetab) {
 			global $misc, $conf, $data, $lang, $plugin_manager;
 
-			if (is_string($section)) {
+			$section = '';
+			if (is_string($tabs)) {
 				$_SESSION['webdbLastTab'][$section] = $activetab;
-				$tabs = $this->getNavTabs($section);
+				$section = $tabs;
+				$tabs = $this->getNavTabs($tabs);
 			}
 
 			/* TABS HOOK'S PLACE */
 			$plugin_functions_parameters = array(
 				'tabs' => &$tabs,
-				'href' => $this->href,
 				'section' => $section
 			);
 			$plugin_manager->execute_plugin_funtions('tabs', $plugin_functions_parameters);
@@ -1819,12 +1820,20 @@
 
 		function icon($icon) {
 			global $conf;
-			$path = "images/themes/{$conf['theme']}/{$icon}";
-			if (file_exists($path.'.png')) return $path.'.png';
-			if (file_exists($path.'.gif')) return $path.'.gif';
-			$path = "images/themes/default/{$icon}";
-			if (file_exists($path.'.png')) return $path.'.png';
-			if (file_exists($path.'.gif')) return $path.'.gif';
+			if (is_string($icon)) {
+				$path = "images/themes/{$conf['theme']}/{$icon}";
+				if (file_exists($path.'.png')) return $path.'.png';
+				if (file_exists($path.'.gif')) return $path.'.gif';
+				$path = "images/themes/default/{$icon}";
+				if (file_exists($path.'.png')) return $path.'.png';
+				if (file_exists($path.'.gif')) return $path.'.gif';
+			} else {
+				/* ICON HOOK'S PLACE */
+				$path = "plugins/{$icon['plugin']}/images/{$icon['image']}";
+				if (file_exists($path.'.png')) return $path.'.png';
+				if (file_exists($path.'.gif')) return $path.'.gif';
+				/* * */
+			}
 			return '';
 		}
 

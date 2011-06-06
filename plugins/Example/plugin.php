@@ -112,7 +112,7 @@ class Example {
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => urlencode($this->name)),
 					'hide' => false,
-					'icon' => 'Databases' //TODO: create an icon!!
+					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
 				);
 				break;
 		}
@@ -142,7 +142,7 @@ class Example {
 					'title' => $this->lang['strlinktoplevel'],
 					'text'  => $this->lang['strlinktoplevel'],
 					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_page&subject=server",
-					'icon'  => "Database"	//TODO: create a plugin icon
+					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
 				);
 			}
 
@@ -153,7 +153,7 @@ class Example {
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
 					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_level_2&subject=show_page",
-					'icon'  => 'Database'	//TODO: create a plugin icon
+					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
 				);
 			}
 
@@ -164,7 +164,7 @@ class Example {
 					'title' => $this->lang['strlinklevel3'],
 					'text'  => $this->lang['strlinklevel3'],
 					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_level_3&subject=show_level_2",
-					'icon'  => 'Database'	//TODO: create a plugin icon
+					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
 				);
 			}
 		}
