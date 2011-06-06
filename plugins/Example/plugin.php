@@ -153,7 +153,7 @@ class Example {
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
 					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_level_2&subject=show_page",
-					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
+					'icon' => array('plugin' => 'Example', 'image' => 'Level2')
 				);
 			}
 
@@ -164,7 +164,7 @@ class Example {
 					'title' => $this->lang['strlinklevel3'],
 					'text'  => $this->lang['strlinklevel3'],
 					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_level_3&subject=show_level_2",
-					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
+					'icon' => array('plugin' => 'Example', 'image' => 'Level3')
 				);
 			}
 		}
