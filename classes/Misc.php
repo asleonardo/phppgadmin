@@ -1001,36 +1001,36 @@
 						)
 					);
 
-                case 'fulltext':
-                    $tabs = array (
-                        'ftsconfigs' => array (
-                            'title' => $lang['strftstabconfigs'],
-                            'url'   => 'fulltext.php',
-                            'urlvars' => array('subject' => 'schema'),
-                            'hide'  => !$data->hasFTS(),
-                            'help'  => 'pg.ftscfg',
-                            'tree'  => true,
-                            'icon'  => 'FtsCfg',
-                        ),
-                        'ftsdicts' => array (
-                            'title' => $lang['strftstabdicts'],
-                            'url'   => 'fulltext.php',
-                            'urlvars' => array('subject' => 'schema', 'action' => 'viewdicts'),
-                            'hide'  => !$data->hasFTS(),
-                            'help'  => 'pg.ftsdict',
-                            'tree'  => true,
-                            'icon'  => 'FtsDict',
-                        ),
-                        'ftsparsers' => array (
-                            'title' => $lang['strftstabparsers'],
-                            'url'   => 'fulltext.php',
-                            'urlvars' => array('subject' => 'schema', 'action' => 'viewparsers'),
-                            'hide'  => !$data->hasFTS(),
-                            'help'  => 'pg.ftsparser',
-                            'tree'  => true,
-                            'icon'  => 'FtsParser',
-                        ),
-                    );
+				case 'fulltext':
+					$tabs = array (
+						'ftsconfigs' => array (
+							'title' => $lang['strftstabconfigs'],
+							'url'   => 'fulltext.php',
+							'urlvars' => array('subject' => 'schema'),
+							'hide'  => !$data->hasFTS(),
+							'help'  => 'pg.ftscfg',
+							'tree'  => true,
+							'icon'  => 'FtsCfg',
+						),
+						'ftsdicts' => array (
+							'title' => $lang['strftstabdicts'],
+							'url'   => 'fulltext.php',
+							'urlvars' => array('subject' => 'schema', 'action' => 'viewdicts'),
+							'hide'  => !$data->hasFTS(),
+							'help'  => 'pg.ftsdict',
+							'tree'  => true,
+							'icon'  => 'FtsDict',
+						),
+						'ftsparsers' => array (
+							'title' => $lang['strftstabparsers'],
+							'url'   => 'fulltext.php',
+							'urlvars' => array('subject' => 'schema', 'action' => 'viewparsers'),
+							'hide'  => !$data->hasFTS(),
+							'help'  => 'pg.ftsparser',
+							'tree'  => true,
+							'icon'  => 'FtsParser',
+						)
+					);
 			}
 
 			/* TABS HOOK'S PLACE */
