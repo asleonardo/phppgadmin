@@ -10,10 +10,9 @@ class Example {
 	/**
 	 * Constructor
 	 * Register the plugin's functions in hooks of PPA.
-	 * @param $plugin_manager - Instance of plugin manager
 	 * @param $language Current phpPgAdmin language. If it was not found in the plugin, English will be used.
 	 */
-	function __construct($plugin_manager, $language) {
+	function __construct($language) {
 		// Set the plugin's language
 		$lang_directory = dirname(__FILE__)."/lang/recoded";
 		require_once("$lang_directory/english.php");
@@ -21,8 +20,6 @@ class Example {
 			include_once("$lang_directory/$language.php");
 		}
 		$this->lang = $plugin_lang;
-
-		$plugin_manager->add_plugin($this);
 	}
 
 	/**
@@ -84,17 +81,18 @@ class Example {
 	function add_plugin_toplinks(&$plugin_functions_parameters) {
 		global $misc;
 
-		$href = "plugin.php?".$plugin_functions_parameters['href'];
+		$href = "plugin.php?".$misc->href;
 		$href.= "&amp;plugin=".urlencode($this->name);
 		$href.= "&amp;subject=server";
 		$href.= "&amp;action=show_page";
-
-		$link = "<a class=\"toplink\" href=\"$href\">";
-		$link.= $this->lang['strdescription'];
-		$link.= "</a>\n";
+		
+		$toplink = array(
+			'href' => $href,
+			'text' => $this->lang['strdescription']
+		);
 
 		//Add the link in the toplinks array
-		$plugin_functions_parameters['toplinks'][] = $link;
+		$plugin_functions_parameters['toplinks'][] = $toplink;
 	}
 
 	/**

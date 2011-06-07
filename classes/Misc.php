@@ -449,22 +449,13 @@
 		 * @param $activetab The name of the tab to be highlighted.
 		 */
 		function printTabs($tabs, $activetab) {
-			global $misc, $conf, $data, $lang, $plugin_manager;
+			global $misc, $conf, $data, $lang;
 
-			$section = '';
 			if (is_string($tabs)) {
-				$_SESSION['webdbLastTab'][$section] = $activetab;
-				$section = $tabs;
+				$_SESSION['webdbLastTab'][$tabs] = $activetab;
 				$tabs = $this->getNavTabs($tabs);
 			}
 
-			/* TABS HOOK'S PLACE */
-			$plugin_functions_parameters = array(
-				'tabs' => &$tabs,
-				'section' => $section
-			);
-			$plugin_manager->execute_plugin_funtions('tabs', $plugin_functions_parameters);
-			/* * */
 			echo "<table class=\"tabs\"><tr>\n";
 			#echo "<div class=\"tabs\">\n";
 
@@ -505,9 +496,10 @@
 		 * @param $section The name of the tab bar.
 		 */
 		function getNavTabs($section) {
-			global $data, $lang, $conf;
+			global $data, $lang, $conf, $plugin_manager;
 
 			$hide_advanced = ($conf['show_advanced'] === false);
+			$tabs = array();
 
 			switch ($section) {
 				case 'root':
@@ -527,7 +519,7 @@
 				case 'server':
 				case 'report':
 					$hide_users = !$data->isSuperUser();
-					$tmp = array (
+					$tabs = array (
 						'databases' => array (
 							'title' => $lang['strdatabases'],
 							'url'   => 'all_db.php',
@@ -537,7 +529,7 @@
 						)
 					);
 					if ($data->hasRoles()) {
-						$tmp = array_merge($tmp, array(
+						$tabs = array_merge($tabs, array(
 							'roles' => array (
 								'title' => $lang['strroles'],
 								'url'   => 'roles.php',
@@ -549,7 +541,7 @@
 						));
 					}
 					else {
-						$tmp = array_merge($tmp, array(
+						$tabs = array_merge($tabs, array(
 							'users' => array (
 								'title' => $lang['strusers'],
 								'url'   => 'users.php',
@@ -569,7 +561,7 @@
 						));
 					}
 
-					$tmp = array_merge($tmp, array(
+					$tabs = array_merge($tabs, array(
 						'account' => array (
 							'title' => $lang['straccount'],
 							'url'   => $data->hasRoles() ? 'roles.php' : 'users.php',
@@ -601,7 +593,6 @@
 							'icon' => 'Reports',
 						),
 					));
-					return $tmp;
 					break;
 				case 'database':
 					$tabs = array (
@@ -800,7 +791,7 @@
 					return $tabs;
 
 				case 'table':
-					return array (
+					$tabs = array (
 						'columns' => array (
 							'title' => $lang['strcolumns'],
 							'url'   => 'tblproperties.php',
@@ -876,7 +867,7 @@
 					);
 
 				case 'view':
-					return array (
+					$tabs = array (
 						'columns' => array (
 							'title' => $lang['strcolumns'],
 							'url'   => 'viewproperties.php',
@@ -915,7 +906,7 @@
 					);
 
 				case 'function':
-					return array (
+					$tabs = array (
 						'definition' => array (
 							'title' => $lang['strdefinition'],
 							'url'   => 'functions.php',
@@ -940,7 +931,7 @@
 					);
 
 				case 'aggregate':
-					return array (
+					$tabs = array (
 						'definition' => array (
 							'title' => $lang['strdefinition'],
 							'url'   => 'aggregates.php',
@@ -969,7 +960,7 @@
 					);
 
 				case 'popup':
-					return array (
+					$tabs = array (
 						'sql' => array (
 							'title' => $lang['strsql'],
 							'url'   => 'sqledit.php',
@@ -986,7 +977,7 @@
 					);
 
 				case 'column':
-					return array(
+					$tabs = array(
 						'properties' => array (
 							'title'		=> $lang['strcolprop'],
 							'url'		=> 'colproperties.php',
@@ -1011,7 +1002,7 @@
 					);
 
                 case 'fulltext':
-                    return array (
+                    $tabs = array (
                         'ftsconfigs' => array (
                             'title' => $lang['strftstabconfigs'],
                             'url'   => 'fulltext.php',
@@ -1040,10 +1031,17 @@
                             'icon'  => 'FtsParser',
                         ),
                     );
-
-				default:
-					return array();
 			}
+
+			/* TABS HOOK'S PLACE */
+			$plugin_functions_parameters = array(
+				'tabs' => &$tabs,
+				'section' => $section
+			);
+			$plugin_manager->do_hook('tabs', $plugin_functions_parameters);
+			/* * */
+
+			return $tabs;
 		}
 
 		/**
@@ -1082,33 +1080,23 @@
 			echo "</td>";
 
 			if (isset($_REQUEST['server'])) {
-				$sql_url = "sqledit.php?{$this->href}&amp;action=";
-				$sql_window_id = htmlspecialchars('sqledit:'.$_REQUEST['server']);
-				$history_url = "history.php?{$this->href}&amp;action=pophistory";
-				$history_window_id = htmlspecialchars('history:'.$_REQUEST['server']);
-				$logout_shared = isset($_SESSION['sharedUsername']) ?
-					' onclick="return confirm(\''. $lang['strconfdropcred']. '\')"':
-					'';
-
-				global $plugin_manager;
-				$toplinks = array();
-				$toplinks[] = "<a class=\"toplink\" href=\"{$sql_url}sql\" target=\"sqledit\" onclick=\"window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strsql']}</a>";
-				$toplinks[] = "<a class=\"toplink\" href=\"{$history_url}\" onclick=\"window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strhistory']}</a>";
-				$toplinks[] = "<a class=\"toplink\" href=\"{$sql_url}find\" target=\"sqledit\" onclick=\"window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;\">{$lang['strfind']}</a>";
-				/* TOPLINK HOOK'S PLACE */
-				$plugin_functions_parameters = array(
-					'toplinks' => &$toplinks,
-					'href' => $this->href
-				);
-				$plugin_manager->execute_plugin_funtions('toplinks', $plugin_functions_parameters);
-				/* * */
-				$toplinks[] = "<a class=\"toplink\" href=\"servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode'])."\"{$logout_shared}>{$lang['strlogout']}</a>";
-				
+				$toplinks = $this->getTopLinks();
 				
 				echo "<td style=\"text-align: right\">";
 				echo "<ul class=\"toplink\">\n";
 				foreach ($toplinks as $link) {
-					echo "\t<li>$link</li>\n";
+					$tag = "\t<li><a class=\"toplink\"";
+					$tag.=" href=\"{$link['href']}\"";
+
+					if (isset($link['target']))  $tag.=" target=\"{$link['target']}\"";
+					if (isset($link['onclick'])) $tag.=" onclick=\"{$link['onclick']}\"";
+
+					$tag.=">";
+
+					if (isset($link['text'])) $tag.= $link['text'];
+					$tag.="</a></li>\n";
+
+					echo $tag;
 				}
  				echo "</ul>\n";
 				echo "</td>";
@@ -1136,24 +1124,64 @@
 			echo "</tr></table></div>\n";
 		}
 
+		function getTopLinks() {
+			global $lang, $plugin_manager;
+
+			$server_info = $this->getServerInfo();
+
+			$sql_url = "sqledit.php?{$this->href}&amp;action=";
+			$sql_window_id = htmlspecialchars('sqledit:'.$_REQUEST['server']);
+			$history_url = "history.php?{$this->href}&amp;action=pophistory";
+			$history_window_id = htmlspecialchars('history:'.$_REQUEST['server']);
+			$logout_shared = isset($_SESSION['sharedUsername']) ? "return confirm('{$lang['strconfdropcred']})" : "";
+
+			$toplinks = array(
+				array(
+					'href' => "{$sql_url}sql",
+					'target' => "sqledit",
+					'onclick' => "window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
+					'text' => $lang['strsql']
+				),
+				array(
+					'href' => $history_url,
+					'onclick' => "window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;",
+					'text' => $lang['strhistory']
+				),
+				array(
+					'href' => "{$sql_url}find",
+					'target' => "sqledit",
+					'onclick' => "window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
+					'text' => $lang['strfind']
+				),
+				array(
+					'href' => "servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode']).$logout_shared,
+					'text' => $lang['strlogout'],
+					'onclick' => $logout_shared
+				)
+			);
+
+			/* TOPLINK HOOK'S PLACE */
+			$plugin_functions_parameters = array(
+				'toplinks' => &$toplinks
+			);
+			$plugin_manager->do_hook('toplinks', $plugin_functions_parameters);
+			/* * */
+
+			return $toplinks;
+		}
+
 		/**
 		 * Display a bread crumb trail.
 		 */
 		function printTrail($trail = array()) {
-			global $lang, $plugin_manager;
+			global $lang;
 
 			$this->printTopbar();
 
 			if (is_string($trail)) {
 				$trail = $this->getTrail($trail);
 			}
-			/* TRAIL HOOKS PLACE */
-			$plugin_functions_parameters = array(
-				'trail' => &$trail,
-				'href' => $this->href
-			);
-			$plugin_manager->execute_plugin_funtions('trail', $plugin_functions_parameters);
-			/* * */
+
 			echo "<div class=\"trail\"><table><tr>";
 
 			foreach ($trail as $crumb) {
@@ -1195,7 +1223,7 @@
 		 * @param $subject The type of object at the end of the trail.
 		 */
 		function getTrail($subject = null) {
-			global $lang, $conf, $data, $appName;
+			global $lang, $conf, $data, $appName, $plugin_manager;
 
 			$trail = array();
 			$vars = '';
@@ -1347,6 +1375,12 @@
 				}
 			}
 
+			/* TRAIL HOOKS PLACE */
+			$plugin_functions_parameters = array(
+				'trail' => &$trail
+			);
+			$plugin_manager->do_hook('trail', $plugin_functions_parameters);
+			/* * */
 			return $trail;
 		}
 

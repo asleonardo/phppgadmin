@@ -914,4 +914,5 @@
 	//Plugins
 	$lang['strpluginnotfound'] = 'Erro: plugin \'%s\' n&#227;o encontrado. Verifique se esse plugin existe no diret&#243;rio plugins/, ou se esse plugin cont&#233;m um arquivo plugin.php. Os nomes dos plugins s&#227;o case sensitive.';
 	$lang['stractionnotfound'] = 'Erro: a&#231;&#227;o \'%s\' n&#227;o encontrada no plugin \'%s\'.';
+	$lang['strhooknotfound'] = 'Erro: hook \'%s\' n&#227;o dispon&#237;vel.';
 ?>
