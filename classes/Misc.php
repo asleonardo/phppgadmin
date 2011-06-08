@@ -1389,8 +1389,7 @@
 
 			// Trail hook's place
 			$plugin_functions_parameters = array(
-				'trail' => &$trail,
-				'subject' => $subject
+				'trail' => &$trail
 			);
 			$plugin_manager->do_hook('trail', $plugin_functions_parameters);
 
