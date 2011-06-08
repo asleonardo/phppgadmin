@@ -503,7 +503,7 @@
 
 			switch ($section) {
 				case 'root':
-					return array (
+					$tabs = array (
 						'intro' => array (
 							'title' => $lang['strintroduction'],
 							'url'   => "intro.php",
@@ -515,6 +515,7 @@
 							'icon'  => 'Servers',
 						),
 					);
+					break;
 
 				case 'server':
 				case 'report':
@@ -683,7 +684,7 @@
 							'icon'  => 'Export',
 						),
 					);
-					return $tabs;
+					break;
 
 				case 'schema':
 					$tabs = array (
@@ -788,7 +789,7 @@
 						),
 					);
 					if (!$data->hasFTS()) unset($tabs['fulltext']);
-					return $tabs;
+					break;
 
 				case 'table':
 					$tabs = array (
@@ -865,6 +866,7 @@
 							'hide'	=> false,
 						),
 					);
+					break;
 
 				case 'view':
 					$tabs = array (
@@ -904,6 +906,7 @@
 							'hide'	=> false,
 						),
 					);
+					break;
 
 				case 'function':
 					$tabs = array (
@@ -929,6 +932,7 @@
 							'icon'  => 'Privileges',
 						),
 					);
+					break;
 
 				case 'aggregate':
 					$tabs = array (
@@ -944,9 +948,10 @@
 							'icon'  => 'Definition',
 						),
 					);
+					break;
 
 				case 'role':
-					return array (
+					$tabs = array (
 						'definition' => array (
 							'title' => $lang['strdefinition'],
 							'url'   => 'roles.php',
@@ -958,6 +963,7 @@
 							'icon'  => 'Definition',
 						),
 					);
+					break;
 
 				case 'popup':
 					$tabs = array (
@@ -975,6 +981,7 @@
 							'icon'  => 'Search',
 						),
 					);
+					break;
 
 				case 'column':
 					$tabs = array(
@@ -1000,6 +1007,7 @@
 							'icon'  => 'Privileges',
 						)
 					);
+					break;
 
 				case 'fulltext':
 					$tabs = array (
@@ -1031,15 +1039,15 @@
 							'icon'  => 'FtsParser',
 						)
 					);
+					break;
 			}
 
-			/* TABS HOOK'S PLACE */
+			// Tabs hook's place
 			$plugin_functions_parameters = array(
 				'tabs' => &$tabs,
 				'section' => $section
 			);
 			$plugin_manager->do_hook('tabs', $plugin_functions_parameters);
-			/* * */
 
 			return $tabs;
 		}
@@ -1085,15 +1093,12 @@
 				echo "<td style=\"text-align: right\">";
 				echo "<ul class=\"toplink\">\n";
 				foreach ($toplinks as $link) {
-					$tag = "\t<li><a class=\"toplink\"";
-					$tag.=" href=\"{$link['href']}\"";
-
-					if (isset($link['target']))  $tag.=" target=\"{$link['target']}\"";
-					if (isset($link['onclick'])) $tag.=" onclick=\"{$link['onclick']}\"";
-
+					$tag = "\t<li><a";
+					foreach ($link['attr'] as $attr => $value) {
+						$tag.= " ".$attr."=\"".htmlentities($value)."\"";
+					}
 					$tag.=">";
-
-					if (isset($link['text'])) $tag.= $link['text'];
+					$tag.= htmlentities($link['content']);
 					$tag.="</a></li>\n";
 
 					echo $tag;
@@ -1129,43 +1134,50 @@
 
 			$server_info = $this->getServerInfo();
 
-			$sql_url = "sqledit.php?{$this->href}&amp;action=";
+			$sql_url = "sqledit.php?{$this->href}&action=";
 			$sql_window_id = htmlspecialchars('sqledit:'.$_REQUEST['server']);
-			$history_url = "history.php?{$this->href}&amp;action=pophistory";
+			$history_url = "history.php?{$this->href}&action=pophistory";
 			$history_window_id = htmlspecialchars('history:'.$_REQUEST['server']);
 			$logout_shared = isset($_SESSION['sharedUsername']) ? "return confirm('{$lang['strconfdropcred']})" : "";
 
-			$toplinks = array(
-				array(
-					'href' => "{$sql_url}sql",
-					'target' => "sqledit",
-					'onclick' => "window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
-					'text' => $lang['strsql']
+			$toplinks = array (
+				array (
+					'attr' => array (
+						'href' => "{$sql_url}sql",
+						'target' => "sqledit",
+						'onclick' => "window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
+					),
+					'content' => $lang['strsql']
+				),
+				array (
+					'attr' => array (
+						'href' => $history_url,
+						'onclick' => "window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;",
+					),
+					'content' => $lang['strhistory']
+				),
+				array (
+					'attr' => array (
+						'href' => "{$sql_url}find",
+						'target' => "sqledit",
+						'onclick' => "window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
+					),
+					'content' => $lang['strfind']
 				),
 				array(
-					'href' => $history_url,
-					'onclick' => "window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;",
-					'text' => $lang['strhistory']
-				),
-				array(
-					'href' => "{$sql_url}find",
-					'target' => "sqledit",
-					'onclick' => "window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
-					'text' => $lang['strfind']
-				),
-				array(
-					'href' => "servers.php?action=logout&amp;logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode']).$logout_shared,
-					'text' => $lang['strlogout'],
-					'onclick' => $logout_shared
+					'attr' => array (
+						'href' => "servers.php?action=logout&logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode']).$logout_shared,
+						'onclick' => $logout_shared,
+					),
+					'content' => $lang['strlogout']
 				)
 			);
 
-			/* TOPLINK HOOK'S PLACE */
+			// Toplink hook's place
 			$plugin_functions_parameters = array(
 				'toplinks' => &$toplinks
 			);
 			$plugin_manager->do_hook('toplinks', $plugin_functions_parameters);
-			/* * */
 
 			return $toplinks;
 		}
@@ -1375,12 +1387,13 @@
 				}
 			}
 
-			/* TRAIL HOOKS PLACE */
+			// Trail hook's place
 			$plugin_functions_parameters = array(
-				'trail' => &$trail
+				'trail' => &$trail,
+				'subject' => $subject
 			);
 			$plugin_manager->do_hook('trail', $plugin_functions_parameters);
-			/* * */
+
 			return $trail;
 		}
 
@@ -1862,11 +1875,10 @@
 				if (file_exists($path.'.png')) return $path.'.png';
 				if (file_exists($path.'.gif')) return $path.'.gif';
 			} else {
-				/* ICON HOOK'S PLACE */
+				// Icon hook's place
 				$path = "plugins/{$icon['plugin']}/images/{$icon['image']}";
 				if (file_exists($path.'.png')) return $path.'.png';
 				if (file_exists($path.'.gif')) return $path.'.gif';
-				/* * */
 			}
 			return '';
 		}

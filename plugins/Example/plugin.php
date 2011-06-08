@@ -1,25 +1,22 @@
 <?php
-class Example {
+require_once(PPA_CLASS_PATH.'/Plugin.php');
+
+class Example extends Plugin {
 
 	/**
 	 * Attributes
 	 */
 	private $name = 'Example';
-	private $lang;
+	protected $lang;
 
 	/**
 	 * Constructor
-	 * Register the plugin's functions in hooks of PPA.
+	 * Call parent constructor, passing the language that will be used.
 	 * @param $language Current phpPgAdmin language. If it was not found in the plugin, English will be used.
 	 */
 	function __construct($language) {
-		// Set the plugin's language
-		$lang_directory = dirname(__FILE__)."/lang/recoded";
-		require_once("$lang_directory/english.php");
-		if (file_exists("$lang_directory/$language.php")) {
-			include_once("$lang_directory/$language.php");
-		}
-		$this->lang = $plugin_lang;
+		$plugin_directory = dirname(__FILE__);
+		parent::__construct($language, $plugin_directory);
 	}
 
 	/**
@@ -82,13 +79,16 @@ class Example {
 		global $misc;
 
 		$href = "plugin.php?".$misc->href;
-		$href.= "&amp;plugin=".urlencode($this->name);
-		$href.= "&amp;subject=server";
-		$href.= "&amp;action=show_page";
-		
-		$toplink = array(
-			'href' => $href,
-			'text' => $this->lang['strdescription']
+		$href.= "&plugin=".urlencode($this->name);
+		$href.= "&subject=server";
+		$href.= "&action=show_page";
+
+		$toplink = array (
+			'attr' => array (
+				'href' => $href,
+				'class' => 'toplink'
+			),
+			'content' => $this->lang['strdescription']
 		);
 
 		//Add the link in the toplinks array
@@ -177,6 +177,10 @@ class Example {
 	function show_page() {
 		global $lang, $misc;
 
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
 		echo "<div>{$this->lang['strdescription']}</div>\n";
 		echo "<br/>\n";
 
@@ -196,6 +200,8 @@ class Example {
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
+
+		$misc->printFooter();
 	}
 
 	/**
@@ -203,6 +209,10 @@ class Example {
 	 */
 	function show_level_2() {
 		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
 
 		echo "<div>{$this->lang['strdesclevel2']}</div>\n";
 		echo "<br/>\n";
@@ -226,6 +236,8 @@ class Example {
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
+
+		$misc->printFooter();
 	}
 
 	/**
@@ -233,6 +245,10 @@ class Example {
 	 */
 	function show_level_3() {
 		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
 
 		echo "<div>{$this->lang['strdesclevel3']}</div>";
 		echo "<br/>\n";
@@ -256,6 +272,8 @@ class Example {
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
+
+		$misc->printFooter();
 	}
 
 	/**
@@ -263,6 +281,10 @@ class Example {
 	 */
 	function show_level_4() {
 		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
 
 		echo "<div>{$this->lang['strdesclevel4']}</div>\n";
 		echo "<br/>\n";
@@ -274,6 +296,8 @@ class Example {
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
+
+		$misc->printFooter();
 	}
 }
 ?>

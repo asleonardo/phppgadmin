@@ -77,8 +77,8 @@ class PluginManager {
 	function do_hook($hook, &$function_args) {
 		if (isset($this->hooks[$hook])) {
 			foreach ($this->hooks[$hook] as $plugin_name => $functions) {
+				$plugin = $this->plugins_list[$plugin_name];
 				foreach ($functions as $function) {
-					$plugin = $this->plugins_list[$plugin_name];
 					if (method_exists($plugin, $function)) {
 						call_user_func(array($plugin, $function), $function_args);
 					}
@@ -95,13 +95,12 @@ class PluginManager {
 	function do_action($plugin_name, $action) {
 		global $lang;
 
-		if (isset($this->plugins_list[$plugin_name])) {
-			$plugin = $this->plugins_list[$plugin_name];
-		} else {
+		if (!isset($this->plugins_list[$plugin_name])) {
 			// Show an error and stop the application
 			printf($lang['strpluginnotfound']."\t\n", $name);
 			exit;
-		}
+		} 
+		$plugin = $this->plugins_list[$plugin_name];
 
 		// Check if the plugin's method exists and if this method is an declareted action.
 		// The actions are declared in the plugins' constructors.
