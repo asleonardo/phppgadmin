@@ -827,10 +827,20 @@
 
 		$misc->printTable($tables, $columns, $actions, $lang['strnotables']);
 
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"tables.php?action=create&amp;{$misc->href}\">{$lang['strcreatetable']}</a></li>\n";
-		if (($tables->recordCount() > 0) && $data->hasCreateTableLike())
-			echo "\t<li><a href=\"tables.php?action=createlike&amp;{$misc->href}\">{$lang['strcreatetablelike']}</a></li>\n";
-		echo "</ul>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "tables.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatetable']
+			)
+		);
+		if (($tables->recordCount() > 0) && $data->hasCreateTableLike()) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "tables.php?action=createlike&amp;{$misc->href}"),
+				'content' => $lang['strcreatetablelike']
+			);
+		}
+
+		$misc->printNavLinks($navlinks);
 	}
 	
 	require('./admin.php');

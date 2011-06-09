@@ -1183,6 +1183,36 @@
 		}
 
 		/**
+		 * Display the navlinks
+		 *
+		 * @param $navlinks - An array with the the attributes and values that will be shown. 
+		 *
+		 * $navlinks = array (
+		 *	array (
+		 *		'attr'=> array ('href' => 'test.php', 'class' => 'green'),
+		 *		'content' => 'Test'
+		 *	), array (
+		 *		'attr'=> array ('href' => 'anotherlink.php') 
+		 *		'content' => 'Another Link'
+		 *	)
+		 * );
+		 */
+		function printNavLinks($navlinks=array()) {
+			if (count($navlinks) > 0) {
+				echo "<ul class=\"navlink\">\n";
+				foreach ($navlinks as $navlink) {
+					$tag = "\t<li><a ";
+					foreach ($navlink['attr'] as $attr => $value) {
+						$tag.= "{$attr}=\"{$value}\"";
+					}
+					$tag.= ">".$navlink['content']."</a></li>\n";
+					echo $tag;
+				}
+				echo "</ul>\n";
+			}
+		}
+
+		/**
 		 * Display a bread crumb trail.
 		 */
 		function printTrail($trail = array()) {
