@@ -82,12 +82,20 @@
 		$misc->printTable($servers, $columns, $actions, $lang['strnoobjects'], 'svPre');
 		
 		if (isset($conf['srv_groups'])) {
-			echo "<br /><ul class=\"navlink\">\n";
-			echo "\t<li><a href=\"servers.php\">{$lang['strallservers']}</a></li>\n";
+			$navlinks = array (
+				array (
+					'attr'=> array ('href' => "servers.php"),
+					'content' => $lang['strallservers']
+				)
+			);
+
 			foreach ($conf['srv_groups'] as $id => $grp) {
-				echo "\t<li><a href=\"servers.php?group={$id}\">", htmlentities($grp['desc']), "</a></li>\n";
+				$navlinks[] = array (
+					'attr'=> array ('href' => "servers.php?group={$id}"),
+					'content' => htmlentities($grp['desc'])
+				);
 			}
-			echo "</ul>\n";			
+			$misc->printNavLinks($navlinks);
 		}
 	}
 	

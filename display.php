@@ -567,53 +567,83 @@
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 
-		// Navigation links	
-		echo "<ul class=\"navlink\">\n";
+		// Navigation links
+		$navlinks = array();
 
 		// Return
-		if (isset($_REQUEST['return_url']) && isset($_REQUEST['return_desc']))
-			echo "\t<li><a href=\"{$_REQUEST['return_url']}\">{$_REQUEST['return_desc']}</a></li>\n";
+		if (isset($_REQUEST['return_url']) && isset($_REQUEST['return_desc'])) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => $_REQUEST['return_url']),
+				'content' => $_REQUEST['return_desc']
+			);
+		}
 
 		// Edit SQL link
-		if (isset($_REQUEST['query']))
-			echo "\t<li><a href=\"database.php?{$misc->href}&amp;action=sql&amp;paginate=on&amp;query=",
-				urlencode($_REQUEST['query']), "\">{$lang['streditsql']}</a></li>\n";
+		if (isset($_REQUEST['query'])) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "database.php?{$misc->href}&amp;action=sql&amp;paginate=on&amp;query=".urlencode($_REQUEST['query'])),
+				'content' => $lang['streditsql']
+			);
+		}
 
 		// Expand/Collapse
-		if ($_REQUEST['strings'] == 'expanded')
-			echo "\t<li><a href=\"display.php?{$gets}&amp;{$getsort}&amp;strings=collapsed&amp;page=", 
-				urlencode($_REQUEST['page']), "\">{$lang['strcollapse']}</a></li>\n";
-		else
-			echo "\t<li><a href=\"display.php?{$gets}&amp;{$getsort}&amp;strings=expanded&amp;page=", 
-				urlencode($_REQUEST['page']), "\">{$lang['strexpand']}</a></li>\n";
+		if ($_REQUEST['strings'] == 'expanded') {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "display.php?{$gets}&amp;{$getsort}&amp;strings=collapsed&amp;page=".urlencode($_REQUEST['page'])),
+				'content' => $lang['strcollapse']
+			);
+		} else {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "display.php?{$gets}&amp;{$getsort}&amp;strings=expanded&amp;page=".urlencode($_REQUEST['page'])),
+				'content' => $lang['strexpand']
+			);
+		}
 
 		// Create report
-		if (isset($_REQUEST['query']) && ($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0)
-			echo "\t<li><a href=\"reports.php?{$misc->href}&amp;action=create&amp;report_sql=",
-				urlencode($_REQUEST['query']), "&amp;paginate=", (isset($_REQUEST['paginate'])? urlencode($_REQUEST['paginate']):'f'), "\">{$lang['strcreatereport']}</a></li>\n";
+		if (isset($_REQUEST['query']) && ($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "reports.php?{$misc->href}&amp;action=create&amp;report_sql=".urlencode($_REQUEST['query'])."&amp;paginate=", (isset($_REQUEST['paginate'])? urlencode($_REQUEST['paginate']):'f')),
+				'content' => $lang['strcreatereport']
+			);
+		}
 
 		// Create view and download
 		if (isset($_REQUEST['query']) && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
 			// Report views don't set a schema, so we need to disable create view in that case
-			if (isset($_REQUEST['schema'])) 
-				echo "\t<li><a href=\"views.php?action=create&amp;formDefinition=",
-					urlencode($_REQUEST['query']), "&amp;{$misc->href}\">{$lang['strcreateview']}</a></li>\n";
-			echo "\t<li><a href=\"dataexport.php?query=", urlencode($_REQUEST['query']);
+			if (isset($_REQUEST['schema'])) {
+				$navlinks[] = array (
+					'attr'=> array ('href' => "views.php?action=create&amp;formDefinition=".urlencode($_REQUEST['query'])."&amp;{$misc->href}"),
+					'content' => $lang['strcreateview']
+				);
+			}
+			
+			$url = "dataexport.php?query=".urlencode($_REQUEST['query']);
 			if (isset($_REQUEST['search_path']))
-				echo "&amp;search_path=", urlencode($_REQUEST['search_path']);
-			echo "&amp;{$misc->href}\">{$lang['strdownload']}</a></li>\n";
+				$url .= "&amp;search_path=".urlencode($_REQUEST['search_path']);
+			
+			$url .= "&amp;{$misc->href}";
+			$content = $lang['strdownload'];
+			$navlinks[] = array (
+				'attr'=> array ('href' => $url),
+				'content' =>  $content
+			);
 		}
 
 		// Insert
-		if (isset($object) && (isset($subject) && $subject == 'table'))
-			echo "\t<li><a href=\"tables.php?action=confinsertrow&amp;table=",
-				urlencode($object), "&amp;{$misc->href}\">{$lang['strinsert']}</a></li>\n";
+		if (isset($object) && (isset($subject) && $subject == 'table')) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "tables.php?action=confinsertrow&amp;table=".urlencode($object)."&amp;{$misc->href}"),
+				'content' => $lang['strinsert']
+			);
+		}
 
 		// Refresh
-		echo "\t<li><a href=\"display.php?{$gets}&amp;{$getsort}&amp;strings=", urlencode($_REQUEST['strings']), 
-			"&amp;page=" . urlencode($_REQUEST['page']),
-			"\">{$lang['strrefresh']}</a></li>\n";
-		echo "</ul>\n";
+		$navlinks[] = array (
+			'attr'=> array ('href' => "display.php?{$gets}&amp;{$getsort}&amp;strings=".urlencode($_REQUEST['strings'])."&amp;page=" . urlencode($_REQUEST['page'])),
+			'content' => $lang['strrefresh']
+		);
+
+		$misc->printNavLinks($navlinks);
 	}
 
 

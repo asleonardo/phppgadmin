@@ -190,35 +190,48 @@
 	}
 	
 	echo "<p>{$lang['strsqlexecuted']}</p>\n";
-			
-	echo "<ul class=\"navlink\">\n";
-	
+
+	$navlinks = array();
+
 	// Return
 	if (isset($_REQUEST['return_url']) && isset($_REQUEST['return_desc']))
-		echo "\t<li><a href=\"{$_REQUEST['return_url']}\">{$_REQUEST['return_desc']}</a></li>\n";
+		$navlinks[] = array (
+			'attr'=> array ('href' => $_REQUEST['return_url']),
+			'content' => $_REQUEST['return_desc']
+		);
 
 	// Edit		
-	echo "\t<li><a href=\"database.php?database=", urlencode($_REQUEST['database']),
-		"&amp;server=", urlencode($_REQUEST['server']), "&amp;action=sql\">{$lang['streditsql']}</a></li>\n";
-				
+	$navlinks[] = array (
+		'attr'=> array ('href' => "database.php?database=".urlencode($_REQUEST['database'])."&amp;server=".urlencode($_REQUEST['server'])."&amp;action=sql"),
+		'content' => $lang['streditsql']
+	);
+
 	// Create report
 	if (($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0)
-		echo "\t<li><a href=\"reports.php?{$misc->href}&amp;action=create&amp;report_sql=",
-			urlencode($_SESSION['sqlquery']), "\">{$lang['strcreatereport']}</a></li>\n";
-	
+		$navlinks[] = array (
+			'attr'=> array ('href' => "reports.php?{$misc->href}&amp;action=create&amp;report_sql=".urlencode($_SESSION['sqlquery'])),
+			'content' => $lang['strcreatereport']
+		);
+
 	// Create view and download
 	if (isset($_SESSION['sqlquery']) && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
 		// Report views don't set a schema, so we need to disable create view in that case
 		if (isset($_REQUEST['schema'])) 
-			echo "\t<li><a href=\"views.php?action=create&amp;formDefinition=",
-				urlencode($_SESSION['sqlquery']), "&amp;{$misc->href}\">{$lang['strcreateview']}</a></li>\n";
-		echo "\t<li><a href=\"dataexport.php?query=", urlencode($_SESSION['sqlquery']);
-		if (isset($_REQUEST['search_path']))
-			echo "&amp;search_path=", urlencode($_REQUEST['search_path']);
-		echo "&amp;{$misc->href}\">{$lang['strdownload']}</a></li>\n";
-	}
+			$navlinks[] = array (
+				'attr'=> array ('href' => "views.php?action=create&amp;formDefinition=".urlencode($_SESSION['sqlquery'])."&amp;{$misc->href}"),
+				'content' => $lang['strcreateview']
+			);
 
-	echo "</ul>\n";
-	
+		$url = "dataexport.php?query=".urlencode($_SESSION['sqlquery']);
+		if (isset($_REQUEST['search_path']))
+			$url .= "&amp;search_path=".urlencode($_REQUEST['search_path']);
+		$url .= "&amp;{$misc->href}";
+		$navlinks[] = array (
+			'attr'=> array ('href' => $url),
+			'content' => $lang['strdownload']
+		);
+	}
+	$misc->printNavLinks($navlinks);
+
 	$misc->printFooter();
 ?>

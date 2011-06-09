@@ -149,9 +149,14 @@
 			echo "</table>\n";
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
-		
-		echo "<p><a class=\"navlink\" href=\"viewproperties.php?action=edit&amp;{$misc->href}&amp;view=", 
-			urlencode($_REQUEST['view']), "\">{$lang['stralter']}</a></p>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "viewproperties.php?action=edit&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'content' => $lang['stralter']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	/**
@@ -429,14 +434,23 @@
 	
 		echo "<br />\n";
 
-		echo "<ul class=\"navlink\">\n";
-		$return_url = urlencode("viewproperties.php?{$misc->href}&amp;view=" . urlencode($_REQUEST['view']));
-		echo "\t<li><a href=\"display.php?{$misc->href}&amp;view=", urlencode($_REQUEST['view']), "&amp;subject=view&amp;return_url={$return_url}&amp;return_desc=",
-			urlencode($lang['strback']), "\">{$lang['strbrowse']}</a></li>\n";
-		echo "\t<li><a href=\"views.php?action=confselectrows&amp;{$misc->href}&amp;view=", urlencode($_REQUEST['view']),"\">{$lang['strselect']}</a></li>\n";
-		echo "\t<li><a href=\"views.php?action=confirm_drop&amp;{$misc->href}&amp;view=", urlencode($_REQUEST['view']),"\">{$lang['strdrop']}</a></li>\n";
-		echo "\t<li><a href=\"viewproperties.php?action=confirm_alter&amp;{$misc->href}&amp;view=", urlencode($_REQUEST['view']),"\">{$lang['stralter']}</a></li>\n";
-		echo "</ul>\n";
+		$return_url = urlencode("viewproperties.php?{$misc->href}&amp;view=".urlencode($_REQUEST['view']));
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "display.php?{$misc->href}&amp;view=".urlencode($_REQUEST['view'])."&amp;subject=view&amp;return_url={$return_url}&amp;return_desc=".urlencode($lang['strback'])),
+				'content' => $lang['strbrowse']
+			), array (
+				'attr'=> array ('href' => "views.php?action=confselectrows&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'content' => $lang['strselect']
+			), array (
+				'attr'=> array ('href' => "views.php?action=confirm_drop&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'content' => $lang['strdrop']
+			), array (
+				'attr'=> array ('href' => "viewproperties.php?action=confirm_alter&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'content' => $lang['stralter']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	$misc->printHeader($lang['strviews'] . ' - ' . $_REQUEST['view']);

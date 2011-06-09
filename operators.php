@@ -64,7 +64,13 @@
 			}
 			echo "</table>\n";
 
-			echo "<p><a class=\"navlink\" href=\"operators.php?{$misc->href}\">{$lang['strshowalloperators']}</a></p>\n";
+			$navlinks = array (
+				array (
+					'attr'=> array ('href' => "operators.php?{$misc->href}"),
+					'content' => $lang['strshowalloperators']
+				)
+			);
+			$misc->printNavLinks($navlinks);
 		}
 		else
 			doDefault($lang['strinvalidparam']);

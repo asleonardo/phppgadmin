@@ -121,8 +121,16 @@
 		}
 		else echo "<p>{$lang['strinvalidparam']}</p>\n";
 
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"reports.php?{$misc->href}\">{$lang['strshowallreports']}</a></li>\n";
-		echo "\t<li><a href=\"reports.php?action=edit&amp;{$misc->href}&amp;report_id={$report->fields['report_id']}\">{$lang['stredit']}</a></li>\n</ul>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "reports.php?{$misc->href}"),
+				'content' => $lang['strshowallreports']
+			), array (
+				'attr'=> array ('href' => "reports.php?action=edit&amp;{$misc->href}&amp;report_id={$report->fields['report_id']}"),
+				'content' => $lang['stredit']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	/**

@@ -427,7 +427,13 @@
 
 		$misc->printTable($databases, $columns, $actions, $lang['strnodatabases']);
 
-		echo "<p><a class=\"navlink\" href=\"all_db.php?action=create&amp;{$misc->href}\">{$lang['strcreatedatabase']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "all_db.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatedatabase']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 
 	}
 

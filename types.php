@@ -85,7 +85,13 @@
 				echo "</table>\n";
 			}
 
-			echo "<p><a class=\"navlink\" href=\"types.php?{$misc->href}\">{$lang['strshowalltypes']}</a></p>\n";
+			$navlinks = array (
+				array (
+					'attr'=> array ('href' => "types.php?{$misc->href}"),
+					'content' => $lang['strshowalltypes']
+				)
+			);
+			$misc->printNavLinks($navlinks);
 		} else
 			doDefault($lang['strinvalidparam']);
 	}
@@ -575,11 +581,23 @@
 		
 		$misc->printTable($types, $columns, $actions, $lang['strnotypes']);
 
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"types.php?action=create&amp;{$misc->href}\">{$lang['strcreatetype']}</a></li>\n";
-		echo "\t<li><a href=\"types.php?action=create_comp&amp;{$misc->href}\">{$lang['strcreatecomptype']}</a></li>\n";
-		if ($data->hasEnumTypes())
-			echo "\t<li><a href=\"types.php?action=create_enum&amp;{$misc->href}\">{$lang['strcreateenumtype']}</a></li>\n";
-		echo "</ul>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "types.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatetype']
+			), array (
+				'attr'=> array ('href' => "types.php?action=create_comp&amp;{$misc->href}"),
+				'content' => $lang['strcreatecomptype']
+			)
+		);
+
+		if ($data->hasEnumTypes()) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "types.php?action=create_enum&amp;{$misc->href}"),
+				'content' => $lang['strcreateenumtype']
+			);
+		}
+		$misc->printNavLinks($navlinks);
 	}
 	
 	/**

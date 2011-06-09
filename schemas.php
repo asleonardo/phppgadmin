@@ -73,7 +73,13 @@
 
 		$misc->printTable($schemas, $columns, $actions, $lang['strnoschemas']);
 
-		echo "<p><a class=\"navlink\" href=\"schemas.php?action=create&amp;{$misc->href}\">{$lang['strcreateschema']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "schemas.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreateschema']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	/**

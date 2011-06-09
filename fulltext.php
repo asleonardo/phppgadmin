@@ -58,10 +58,13 @@
 
 		$misc->printTable($cfgs, $columns, $actions, $lang['strftsnoconfigs']);
 
-
-		echo "<ul class=\"navlink\">\n";
-		echo "\t<li><a href=\"fulltext.php?action=createconfig&amp;{$misc->href}\">{$lang['strftscreateconfig']}</a></li>\n";
-		echo "</ul>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "fulltext.php?action=createconfig&amp;{$misc->href}"),
+				'content' => $lang['strftscreateconfig']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	function doDropConfig($confirm) {
@@ -345,9 +348,13 @@
 		$misc->printTable($parsers, $columns, $actions, $lang['strftsnoparsers']);
 
 		//TODO: create parser
-		//echo "<ul class=\"navlink\">\n";
-		//echo "\t<li><a href=\"#\">{$lang['strftscreateparser']}</a></li>\n";
-		//echo "</ul>\n";
+		//$navlinks = array (
+		//	array (
+		//		'attr'=> array ('href' => "#"),
+		//		'content' => $lang['strftscreateparser']
+		//	)
+		//);
+		//$misc->printNavLinks($navlinks);
 	}
 
 
@@ -398,9 +405,13 @@
 
 		$misc->printTable($dicts, $columns, $actions, $lang['strftsnodicts']);
 
-		echo "<ul class=\"navlink\">\n";
-		echo "\t<li><a href=\"fulltext.php?action=createdict&amp;{$misc->href}&amp;\">{$lang['strftscreatedict']}</a></li>\n";
-		echo "</ul>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "fulltext.php?action=createdict&amp;{$misc->href}"),
+				'content' => $lang['strftscreatedict']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 
@@ -461,10 +472,13 @@
 
 		$misc->printTable($map, $columns, $actions, $lang['strftsemptymap']);
 
-		echo "<ul class=\"navlink\">\n";
-		echo "\t<li><a href=\"fulltext.php?action=addmapping&amp;{$misc->href}&ftscfg={$ftscfg}\">{$lang['strftsaddmapping']}</a></li>\n";
-		echo "</ul>\n";
-
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "fulltext.php?action=addmapping&amp;{$misc->href}&ftscfg={$ftscfg}"),
+				'content' => $lang['strftsaddmapping']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	/**

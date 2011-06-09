@@ -157,7 +157,13 @@
 
 		$misc->printTable($rules, $columns, $actions, $lang['strnorules']);
 
-		echo "<p><a class=\"navlink\" href=\"rules.php?action=create_rule&amp;{$misc->href}&amp;{$subject}={$object}&amp;subject={$subject}\">{$lang['strcreaterule']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "rules.php?action=create_rule&amp;{$misc->href}&amp;{$subject}={$object}&amp;subject={$subject}"),
+				'content' => $lang['strcreaterule']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	function doTree() {

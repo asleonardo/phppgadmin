@@ -259,13 +259,25 @@
 		else {
 			$alterurl = "privileges.php?action=alter&amp;{$misc->href}&amp;{$subject}={$object}&amp;subject={$subject}&amp;mode=";
 		}
-	
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"{$alterurl}grant\">{$lang['strgrant']}</a></li>\n";
-		echo "\t<li><a href=\"{$alterurl}revoke\">{$lang['strrevoke']}</a></li>\n";
-		if (isset($allurl))
-			echo "\t<li><a href=\"{$allurl}?{$misc->href}\">{$alltxt}</a></li>\n";
-		
-		echo "</ul>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "{$alterurl}grant"),
+				'content' => $lang['strgrant']
+			), array (
+				'attr'=> array ('href' => "{$alterurl}revoke"),
+				'content' => $lang['strrevoke']
+			)
+		);
+
+		if (isset($allurl)) {
+			$navlinks[] = array (
+				'attr'=> array ('href' => "{$allurl}?{$misc->href}"),
+				'content' => $alltxt
+			);
+		}
+
+		$misc->printNavLinks($navlinks);
 	}
 
 	$misc->printHeader($lang['strprivileges']);

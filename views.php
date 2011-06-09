@@ -618,10 +618,17 @@
 		);
 		
 		$misc->printTable($views, $columns, $actions, $lang['strnoviews']);
-		
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"views.php?action=create&amp;{$misc->href}\">{$lang['strcreateview']}</a></li>\n";
-		echo "\t<li><a href=\"views.php?action=wiz_create&amp;{$misc->href}\">{$lang['strcreateviewwiz']}</a></li>\n</ul>\n";
 
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "views.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreateview']
+			), array (
+				'attr'=> array ('href' => "views.php?action=wiz_create&amp;{$misc->href}"),
+				'content' => $lang['strcreateviewwiz']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 	
 	/**

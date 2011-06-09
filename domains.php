@@ -228,14 +228,25 @@
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 		
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"domains.php?action=confirm_drop&amp;{$misc->href}&amp;domain=", urlencode($_REQUEST['domain']),"\">{$lang['strdrop']}</a></li>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "domains.php?action=confirm_drop&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])),
+				'content' => $lang['strdrop']
+			)
+		);
+
 		if ($data->hasAlterDomains()) {
-			echo "\t<li><a href=\"domains.php?action=add_check&amp;{$misc->href}&amp;domain=", urlencode($_REQUEST['domain']),
-				"\">{$lang['straddcheck']}</a></li>\n";
-			echo "\t<li><a href=\"domains.php?action=alter&amp;{$misc->href}&amp;domain=", 
-				urlencode($_REQUEST['domain']), "\">{$lang['stralter']}</a></li>\n";
+			$navlinks[] = array (
+				'attr'=> array ('href' => "domains.php?action=add_check&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])),
+				'content' => $lang['straddcheck']
+			);
+
+			$navlinks[] = array (
+				'attr'=> array ('href' => "domains.php?action=alter&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])),
+				'content' => $lang['stralter']
+			);
 		}
-		echo "</ul>\n";
+		$misc->printNavLinks($navlinks);
 	}
 	
 	/**

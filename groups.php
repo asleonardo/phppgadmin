@@ -104,8 +104,14 @@
 		echo "<input type=\"hidden\" name=\"group\" value=\"", htmlspecialchars($_REQUEST['group']), "\" />\n";
 		echo "<input type=\"hidden\" name=\"action\" value=\"add_member\" />\n";
 		echo "</form>\n";
-		
-		echo "<p><a class=\"navlink\" href=\"groups.php?{$misc->href}\">{$lang['strshowallgroups']}</a></p>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "groups.php?{$misc->href}"),
+				'content' => $lang['strshowallgroups']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 	
 	/**
@@ -236,8 +242,14 @@
 		);
 		
 		$misc->printTable($groups, $columns, $actions, $lang['strnogroups']);
-		
-		echo "<p><a class=\"navlink\" href=\"groups.php?action=create&amp;{$misc->href}\">{$lang['strcreategroup']}</a></p>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "groups.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreategroup']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 
 	}
 

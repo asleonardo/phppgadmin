@@ -71,7 +71,13 @@
 
 		$misc->printTable($sequences, $columns, $actions, $lang['strnosequences']);
 
-		echo "<p><a class=\"navlink\" href=\"sequences.php?action=create&amp;{$misc->href}\">{$lang['strcreatesequence']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "sequences.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatesequence']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 
 	/**
@@ -152,15 +158,33 @@
 			echo "</tr>";
 			echo "</table>";
 
-			echo "<ul class=\"navlink\">\n";
-			echo "\t<li><a href=\"sequences.php?action=confirm_alter&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname']), "\">{$lang['stralter']}</a></li>\n";
-			echo "\t<li><a href=\"sequences.php?action=confirm_setval&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname']), "\">{$lang['strsetval']}</a></li>\n";
-			echo "\t<li><a href=\"sequences.php?action=nextval&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname']), "\">{$lang['strnextval']}</a></li>\n";
+			$navlinks = array (
+				array (
+					'attr'=> array ('href' => "sequences.php?action=confirm_alter&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
+					'content' => $lang['stralter']
+				), array (
+					'attr'=> array ('href' => "sequences.php?action=confirm_setval&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
+					'content' => $lang['strsetval']
+				), array (
+					'attr'=> array ('href' => "sequences.php?action=nextval&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
+					'content' => $lang['strnextval']
+				)
+			);
+			$misc->printNavLinks($navlinks);
 			if ($data->hasAlterSequenceStart()) {
-				echo "\t<li><a href=\"sequences.php?action=restart&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname']), "\">{$lang['strrestart']}</a></li>\n";
+				$navlinks[] = array (
+					'attr'=> array ('href' => "sequences.php?action=restart&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname'])),
+					'content' => $lang['strrestart']
+				);
 			}
-			echo "\t<li><a href=\"sequences.php?action=reset&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname']), "\">{$lang['strreset']}</a></li>\n";
-			echo "\t<li><a href=\"sequences.php?{$misc->href}\">{$lang['strshowallsequences']}</a></li>\n</ul>\n";
+			$navlinks[] = array (
+				'attr'=> array ('href' => "sequences.php?action=reset&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
+				'content' => $lang['strreset']
+			);
+			$navlinks[] = array (
+				'attr'=> array ('href' => "sequences.php?{$misc->href}"),
+				'content' => $lang['strshowallsequences']
+			);
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 	}

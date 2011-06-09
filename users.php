@@ -46,8 +46,14 @@
 			echo "</tr>\n</table>\n";
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
-		
-		echo "<p><a class=\"navlink\" href=\"users.php?action=confchangepassword&amp;{$misc->href}\">{$lang['strchangepassword']}</a></p>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "users.php?action=confchangepassword&amp;{$misc->href}"),
+				'content' => $lang['strchangepassword']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 	
 	/**
@@ -330,7 +336,13 @@
 		
 		$misc->printTable($users, $columns, $actions, $lang['strnousers']);
 
-		echo "<p><a class=\"navlink\" href=\"users.php?action=create&amp;{$misc->href}\">{$lang['strcreateuser']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "users.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreateuser']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 
 	}
 

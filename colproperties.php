@@ -230,7 +230,6 @@
 
 			echo "<br />\n";
 
-			echo "<ul class=\"navlink\">\n";
 			$f_attname = $_REQUEST['column'];
 			$f_table = $tableName;
 			$f_schema = $data->_schema;
@@ -246,28 +245,42 @@
 				/* Browse link */
 				/* FIXME browsing a col should somehow be a action so we don't
 				 * send an ugly SQL in the URL */
-				echo "\t<li><a href=\"display.php?{$misc->href}&amp;subject=column&amp;table=",
-					urlencode($_REQUEST['table']),
-					"&amp;column=", urlencode($_REQUEST['column']),
-					"&amp;return_url={$return_url}&amp;return_desc=", urlencode($lang['strback']), 
-					"&amp;query={$query_url}\">{$lang['strbrowse']}</a></li>\n";
+				$url = "display.php?{$misc->href}&amp;subject=column&amp;table=";
+				$url.= urlencode($_REQUEST['table']);
+				$url.= "&amp;column=". urlencode($_REQUEST['column']);
+				$url.= "&amp;return_url={$return_url}&amp;return_desc=". urlencode($lang['strback']); 
+				$url.= "&amp;query={$query_url}";
+				$navlinks = array (
+					array (
+						'attr'=> array ('href' => $url),
+						'content' => $lang['strbrowse']
+					), array (
+						'attr'=> array ('href' => "colproperties.php?action=properties&amp;{$misc->href}&amp;table=".urlencode($tableName)."&amp;column=".urlencode($_REQUEST['column'])),
+						'content' => $lang['stralter']
+					), array (
+						'attr'=> array ('href' => "tblproperties.php?action=confirm_drop&amp;{$misc->href}&amp;table=".urlencode($tableName)."&amp;column=".urlencode($_REQUEST['column'])),
+						'content' => $lang['strdrop']
+					)
+				);
 
-				/* Edit link */
-				echo "\t<li><a href=\"colproperties.php?action=properties&amp;{$misc->href}&amp;table=", urlencode($tableName),
-				    "&amp;column=", urlencode($_REQUEST['column']) . "\">{$lang['stralter']}</a></li>\n";
-				
-					echo "\t<li><a href=\"tblproperties.php?action=confirm_drop&amp;{$misc->href}&amp;table=", urlencode($tableName),
-						"&amp;column=" . urlencode($_REQUEST['column']) . "\">{$lang['strdrop']}</a></li>\n";
 			} else {
 				$return_url = urlencode("colproperties.php?{$misc->href}&amp;view=". urlencode($tableName)
 					."&amp;column=". urlencode($_REQUEST['column']));
+				$url = "\t<li><a href=\"display.php?{$misc->href}&amp;subject=column&amp;column=";
+				$url.= urlencode($_REQUEST['column']). "&amp;return_url={$return_url}&amp;return_desc=". urlencode($lang['strback']);
+				$url.= "&amp;query={$query_url}";
 				/* Browse link */
-				echo "\t<li><a href=\"display.php?{$misc->href}&amp;subject=column&amp;column=",
-					urlencode($_REQUEST['column']), "&amp;return_url={$return_url}&amp;return_desc=", urlencode($lang['strback']),
-					"&amp;query={$query_url}\">{$lang['strbrowse']}</a></li>\n";
-			}
+				$navlinks = array (
+					array (
+						'attr'=> array ('href' => $url),
+						'content' => $lang['strbrowse']
+					)
+				);
 
-			echo "</ul>\n";
+			}
+			$misc->printNavLinks($navlinks);
+			
+			
 		}
 	}
 

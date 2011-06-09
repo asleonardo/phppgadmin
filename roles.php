@@ -425,11 +425,20 @@
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 
-		echo "<ul class=\"navlink\">\n\t<li><a href=\"roles.php?{$misc->href}\">{$lang['strshowallroles']}</a></li>\n";
-		echo "\t<li><a href=\"roles.php?action=alter&amp;{$misc->href}&amp;rolename=", 
-			urlencode($_REQUEST['rolename']), "\">{$lang['stralter']}</a></li>\n";
-		echo "\t<li><a href=\"roles.php?action=confirm_drop&amp;{$misc->href}&amp;rolename=",
-			urlencode($_REQUEST['rolename']), "\">{$lang['strdrop']}</li>\n</ul>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "roles.php?{$misc->href}"),
+				'content' => $lang['strshowallroles']
+			), array (
+				'attr'=> array ('href' => "roles.php?action=alter&amp;{$misc->href}&amp;rolename=".urlencode($_REQUEST['rolename'])),
+				'content' => $lang['stralter']
+			), array (
+				'attr'=> array ('href' => "roles.php?action=confirm_drop&amp;{$misc->href}&amp;rolename=".urlencode($_REQUEST['rolename'])),
+				'content' => $lang['strdrop']
+			)
+		);
+
+		$misc->printNavLinks($navlinks);
 	}
 
 	/**
@@ -477,8 +486,14 @@
 			echo "\t</tr>\n</table>\n";
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
-		
-		echo "<p><a class=\"navlink\" href=\"roles.php?action=confchangepassword&amp;{$misc->href}\">{$lang['strchangepassword']}</a></p>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "roles.php?action=confchangepassword&amp;{$misc->href}"),
+				'content' => $lang['strchangepassword']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 	}
 	
 	/**
@@ -618,7 +633,13 @@
 		
 		$misc->printTable($roles, $columns, $actions, $lang['strnoroles']);
 
-		echo "<p><a class=\"navlink\" href=\"roles.php?action=create&amp;{$misc->href}\">{$lang['strcreaterole']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "roles.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreaterole']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 
 	}
 

@@ -255,8 +255,14 @@
 		);
 				
 		$misc->printTable($tablespaces, $columns, $actions, $lang['strnotablespaces']);
-		
-		echo "<p><a class=\"navlink\" href=\"tablespaces.php?action=create&amp;{$misc->href}\">{$lang['strcreatetablespace']}</a></p>\n";
+
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "tablespaces.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatetablespace']
+			)
+		);
+		$misc->printNavLinks($navlinks);
 
 	}
 
