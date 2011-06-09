@@ -135,14 +135,12 @@ class Example extends Plugin {
 		}
 
 		if (in_array($subject, array('show_page', 'show_level_2', 'show_level_3'))) {
-			if (!$done) {
-				$trail['show_page'] = array(
-					'title' => $this->lang['strlinktoplevel'],
-					'text'  => $this->lang['strlinktoplevel'],
-					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_page&subject=server",
-					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
-				);
-			}
+			$trail['show_page'] = array(
+				'title' => $this->lang['strlinktoplevel'],
+				'text'  => $this->lang['strlinktoplevel'],
+				'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_page&subject=server",
+				'icon' => array('plugin' => 'Example', 'image' => 'Hook')
+			);
 
 			if ($subject == 'show_page') $done = true;
 
