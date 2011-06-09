@@ -5,18 +5,25 @@
 	 * for new translations.
 	 */
 
+  // Language and character set
+	$lang['applang'] = 'Português-Brasileiro';
+	$lang['appcharset'] = 'ISO-8859-1';
+	$lang['applocale'] = 'pt_BR';
+	$lang['appdbencoding'] = 'LATIN1';
+	$lang['applangdir'] = 'ltr';
+
 	//Dados do plugin
 	$plugin_lang['strdescription'] = 'Plugin Exemplo';
 
 	//Links
 	$plugin_lang['strlinktoplevel'] = 'Exemplo';
-	$plugin_lang['strlinklevel2'] = 'NÃ­vel 2';
-	$plugin_lang['strlinklevel3'] = 'NÃ­vel 3';
-	$plugin_lang['strlinklevel4'] = 'NÃ­vel 4';
+	$plugin_lang['strlinklevel2'] = 'Nível 2';
+	$plugin_lang['strlinklevel3'] = 'Nível 3';
+	$plugin_lang['strlinklevel4'] = 'Nível 4';
 
 	//Paginas
-	$plugin_lang['strdesclevel2'] = 'Este Ã© o nÃ­vel 2';
-	$plugin_lang['strdesclevel3'] = 'Este Ã© o nÃ­vel 3';
-	$plugin_lang['strdesclevel4'] = 'Este Ã© o nÃ­vel 4';
+	$plugin_lang['strdesclevel2'] = 'Este é o nível 2';
+	$plugin_lang['strdesclevel3'] = 'Este é o nível 3';
+	$plugin_lang['strdesclevel4'] = 'Este é o nível 4';
 
 ?>

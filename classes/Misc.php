@@ -1216,7 +1216,7 @@
 				if (isset($crumb['icon']) && $icon = $this->icon($crumb['icon']))
 					$crumblink .= "<span class=\"icon\"><img src=\"{$icon}\" alt=\"{$iconalt}\" /></span>";
 
-				$crumblink .= "<span class=\"label\">" . htmlspecialchars($crumb['text']) . "</span></a>";
+				$crumblink .= "<span class=\"label\">" . $crumb['text'] . "</span></a>";
 
 				if (isset($crumb['help']))
 					$this->printHelp($crumblink, $crumb['help']);
