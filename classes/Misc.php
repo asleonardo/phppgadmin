@@ -1098,7 +1098,7 @@
 						$tag.= " ".$attr."=\"".htmlentities($value)."\"";
 					}
 					$tag.=">";
-					$tag.= htmlentities($link['content']);
+					$tag.= $link['content'];
 					$tag.="</a></li>\n";
 
 					echo $tag;
