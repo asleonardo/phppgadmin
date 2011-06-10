@@ -10,7 +10,7 @@ class PluginManager {
 	 * Attributes
 	 */
 	private $plugins_list = array();
-	private $avaliable_hooks = array('toplinks', 'tabs', 'trail');
+	private $avaliable_hooks = array('toplinks', 'tabs', 'trail', 'navlinks');
 	private $actions = array();
 	private $hooks = array();
 

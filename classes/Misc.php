@@ -1198,6 +1198,14 @@
 		 * );
 		 */
 		function printNavLinks($navlinks=array()) {
+			global $plugin_manager;
+
+			// Navlinks hook's place
+			$plugin_functions_parameters = array(
+				'navlinks' => &$navlinks
+			);
+			$plugin_manager->do_hook('navlinks', $plugin_functions_parameters);
+			
 			if (count($navlinks) > 0) {
 				echo "<ul class=\"navlink\">\n";
 				foreach ($navlinks as $navlink) {

@@ -37,7 +37,8 @@ class Example extends Plugin {
 		$hooks = array(
 			'toplinks' => array('add_plugin_toplinks'),
 			'tabs' => array('add_plugin_tabs'),
-			'trail' => array('add_plugin_trail')
+			'trail' => array('add_plugin_trail'),
+			'navlinks' => array('add_plugin_navlinks'),
 		);
 		return $hooks;
 	}
@@ -164,6 +165,27 @@ class Example extends Plugin {
 				);
 			}
 		}
+	}
+
+	/**
+	 * Add plugin in the navlinks
+	 * @param $plugin_functions_parameters
+	 */
+	function add_plugin_navlinks(&$plugin_functions_parameters) {
+		global $misc;
+
+		$href = "plugin.php?".$misc->href;
+		$href.= "&plugin=".urlencode($this->name);
+		$href.= "&subject=server";
+		$href.= "&action=show_page";
+
+		$navlinks  = array (
+				'attr'=> array ('href' => $href),
+				'content' => $this->lang['strdescription']
+		);
+
+		//Add the link in the toplinks array
+		$plugin_functions_parameters['navlinks'][] = $navlinks;
 	}
 
 	/**
