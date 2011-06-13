@@ -1,5 +1,5 @@
 <?php
-require_once(PPA_CLASS_PATH.'/Plugin.php');
+require_once('classes/Plugin.php');
 
 class Example extends Plugin {
 

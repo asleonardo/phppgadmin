@@ -22,9 +22,6 @@
 	$postgresqlMinVer = '7.4';
 	$phpMinVer = '5.0';
 
-	// Constants
-	define('PPA_CLASS_PATH', dirname(__FILE__).'/../classes');
-
 	// Check the version of PHP
 	if (version_compare(phpversion(), $phpMinVer, '<'))
 		exit(sprintf('Version of PHP not supported. Please upgrade to version %s or later.', $phpMinVer));
