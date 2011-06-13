@@ -10,7 +10,7 @@ class PluginManager {
 	 * Attributes
 	 */
 	private $plugins_list = array();
-	private $avaliable_hooks = array('toplinks', 'tabs', 'trail', 'navlinks');
+	private $available_hooks = array('toplinks', 'tabs', 'trail', 'navlinks');
 	private $actions = array();
 	private $hooks = array();
 
@@ -55,7 +55,7 @@ class PluginManager {
 		//Register the plugin's functions
 		$hooks = $plugin->get_hooks();
 		foreach ($hooks as $hook => $functions) {
-			if (!in_array($hook, $this->avaliable_hooks)) {
+			if (!in_array($hook, $this->available_hooks)) {
 				printf($lang['strhooknotfound']."\t\n", $hook);
 				exit;
 			}

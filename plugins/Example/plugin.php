@@ -6,7 +6,7 @@ class Example extends Plugin {
 	/**
 	 * Attributes
 	 */
-	private $name = 'Example';
+	protected $name = 'Example';
 	protected $lang;
 
 	/**
@@ -63,14 +63,6 @@ class Example extends Plugin {
 		);
 		return $actions;
 	}
-
-	/**
-	 * Get the plugin name, that will be used as identification
-	 * @return $plugin_name
-	 */
-	 function get_name() {
-	 	 return $this->name;
-	 }
 
 	/**
 	 * Add plugin in the top links
