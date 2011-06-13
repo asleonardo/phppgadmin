@@ -103,7 +103,7 @@ class Example extends Plugin {
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => urlencode($this->name)),
 					'hide' => false,
-					'icon' => array('plugin' => 'Example', 'image' => 'Hook')
+					'icon' => 'Plugins'
 				);
 				break;
 		}
@@ -132,7 +132,7 @@ class Example extends Plugin {
 				'title' => $this->lang['strlinktoplevel'],
 				'text'  => $this->lang['strlinktoplevel'],
 				'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_page&subject=server",
-				'icon' => array('plugin' => 'Example', 'image' => 'Hook')
+				'icon' => 'Plugins'
 			);
 
 			if ($subject == 'show_page') $done = true;
