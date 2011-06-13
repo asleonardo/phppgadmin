@@ -6,11 +6,7 @@
 	 */
 
   // Language and character set
-	$lang['applang'] = 'Português-Brasileiro';
 	$lang['appcharset'] = 'ISO-8859-1';
-	$lang['applocale'] = 'pt_BR';
-	$lang['appdbencoding'] = 'LATIN1';
-	$lang['applangdir'] = 'ltr';
 
 	//Dados do plugin
 	$plugin_lang['strdescription'] = 'Plugin Exemplo';
