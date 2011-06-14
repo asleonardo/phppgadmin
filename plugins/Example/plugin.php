@@ -59,7 +59,9 @@ class Example extends Plugin {
 			'show_page',
 			'show_level_2',
 			'show_level_3',
-			'show_level_4'
+			'show_level_4',
+			'show_display_extension',
+			'show_databases_extension'
 		);
 		return $actions;
 	}
@@ -166,18 +168,40 @@ class Example extends Plugin {
 	function add_plugin_navlinks(&$plugin_functions_parameters) {
 		global $misc;
 
-		$href = "plugin.php?".$misc->href;
-		$href.= "&plugin=".urlencode($this->name);
-		$href.= "&subject=server";
-		$href.= "&action=show_page";
+		$navlinks = array();
+		switch ($plugin_functions_parameters['place']) {
 
-		$navlinks  = array (
-				'attr'=> array ('href' => $href),
-				'content' => $this->lang['strdescription']
-		);
+			case 'display-browse':
+				$href = "plugin.php?".$misc->href;
+				$href.= "&amp;plugin=".urlencode($this->name);
+				$href.= "&amp;subject=show_page";
+				$href.= "&amp;action=show_display_extension";
+				$href.= "&amp;database=".urlencode($_REQUEST['database']);
+				$href.= "&amp;table=".urlencode($_REQUEST['table']);
 
-		//Add the link in the toplinks array
-		$plugin_functions_parameters['navlinks'][] = $navlinks;
+				$navlinks[] = array (
+					'attr'=> array ('href' => $href),
+					'content' => $this->lang['strdisplayext']
+				);
+				break;
+
+			case 'all_db-databases':
+				$href = "plugin.php?".$misc->href;
+				$href.= "&amp;plugin=".urlencode($this->name);
+				$href.= "&amp;subject=show_page";
+				$href.= "&amp;action=show_databases_extension";
+
+				$navlinks[] = array (
+					'attr'=> array ('href' => $href),
+					'content' => $this->lang['strdbext']
+				);
+				break;
+		}
+
+		if (count($navlinks) > 0) {
+			//Merge the original navlinks array with Examples' navlinks 
+			$plugin_functions_parameters['navlinks'] = array_merge($plugin_functions_parameters['navlinks'], $navlinks);
+		}
 	}
 
 	/**
@@ -305,6 +329,44 @@ class Example extends Plugin {
 		$back_link.= "&amp;plugin=".urlencode($this->name);
 		$back_link.= "&amp;action=show_level_3";
 		$back_link.= "&amp;subject=show_level_2\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+	
+	function show_display_extension() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
+		echo "<div>{$this->lang['strdisplayext']}</div>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"display.php?{$misc->href}";
+		$back_link.= "&amp;table=".urlencode($_REQUEST['table']);
+		$back_link.= "&amp;subject=table\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+
+	function show_databases_extension() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
+		echo "<div>{$this->lang['strdbext']}</div>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"all_db.php?{$misc->href}\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;

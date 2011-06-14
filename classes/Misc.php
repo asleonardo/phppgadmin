@@ -1185,7 +1185,9 @@
 		/**
 		 * Display the navlinks
 		 *
-		 * @param $navlinks - An array with the the attributes and values that will be shown. 
+		 * @param $navlinks - An array with the the attributes and values that will be shown.
+		 * @param $place - Place where the $navlinks are displayed. Like 'display-browse', where 'display' is the file (display.php)
+		 * and 'browse' is the place inside that code (doBrowse).
 		 *
 		 * $navlinks = array (
 		 *	array (
@@ -1197,12 +1199,13 @@
 		 *	)
 		 * );
 		 */
-		function printNavLinks($navlinks=array()) {
+		function printNavLinks($navlinks=array(), $place) {
 			global $plugin_manager;
 
 			// Navlinks hook's place
 			$plugin_functions_parameters = array(
-				'navlinks' => &$navlinks
+				'navlinks' => &$navlinks,
+				'place' => $place
 			);
 			$plugin_manager->do_hook('navlinks', $plugin_functions_parameters);
 			
