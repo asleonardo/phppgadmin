@@ -95,7 +95,7 @@
 					'content' => htmlentities($grp['desc'])
 				);
 			}
-			$misc->printNavLinks($navlinks);
+			$misc->printNavLinks($navlinks, 'servers-servers');
 		}
 	}
 	

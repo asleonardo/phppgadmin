@@ -77,7 +77,7 @@
 				'content' => $lang['strcreatesequence']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'sequences-sequences');
 	}
 
 	/**
@@ -170,7 +170,7 @@
 					'content' => $lang['strnextval']
 				)
 			);
-			$misc->printNavLinks($navlinks);
+
 			if ($data->hasAlterSequenceStart()) {
 				$navlinks[] = array (
 					'attr'=> array ('href' => "sequences.php?action=restart&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname'])),
@@ -185,6 +185,7 @@
 				'attr'=> array ('href' => "sequences.php?{$misc->href}"),
 				'content' => $lang['strshowallsequences']
 			);
+			$misc->printNavLinks($navlinks, 'sequences-properties');
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 	}

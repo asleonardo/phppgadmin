@@ -591,7 +591,7 @@
 				'content' => $lang['stralter']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'tblproperties-tblproperties');
 	}
 
 	$misc->printHeader($lang['strtables'] . ' - ' . $_REQUEST['table']);

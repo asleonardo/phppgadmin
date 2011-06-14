@@ -79,7 +79,7 @@
 				'content' => $lang['strcreateschema']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'schemas-schemas');
 	}
 
 	/**

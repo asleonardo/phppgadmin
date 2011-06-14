@@ -231,7 +231,7 @@
 			'content' => $lang['strdownload']
 		);
 	}
-	$misc->printNavLinks($navlinks);
+	$misc->printNavLinks($navlinks, 'sql');
 
 	$misc->printFooter();
 ?>

@@ -130,7 +130,7 @@
 				'content' => $lang['stredit']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'reports-properties');
 	}
 
 	/**

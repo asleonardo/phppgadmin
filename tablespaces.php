@@ -262,8 +262,7 @@
 				'content' => $lang['strcreatetablespace']
 			)
 		);
-		$misc->printNavLinks($navlinks);
-
+		$misc->printNavLinks($navlinks, 'tablespaces-tablespaces');
 	}
 
 	$misc->printHeader($lang['strtablespaces']);

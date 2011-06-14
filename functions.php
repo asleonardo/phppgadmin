@@ -338,7 +338,7 @@
 				'content' => $lang['strdrop']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'functions-properties');
 	}
 
 	/**
@@ -845,7 +845,7 @@
 				'content' => $lang['strcreatecfunction']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'functions-functions');
 	}
 
 	/**

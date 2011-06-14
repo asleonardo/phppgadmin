@@ -643,7 +643,7 @@
 			'content' => $lang['strrefresh']
 		);
 
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'display-browse');
 	}
 
 

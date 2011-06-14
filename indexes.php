@@ -317,7 +317,7 @@
 				'content' => $lang['strcreateindex']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'indexes-indexes');
 	}
 
 	function doTree() {

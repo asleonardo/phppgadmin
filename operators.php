@@ -70,7 +70,7 @@
 					'content' => $lang['strshowalloperators']
 				)
 			);
-			$misc->printNavLinks($navlinks);
+			$misc->printNavLinks($navlinks, 'operators-properties');
 		}
 		else
 			doDefault($lang['strinvalidparam']);

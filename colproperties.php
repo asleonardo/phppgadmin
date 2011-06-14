@@ -278,9 +278,7 @@
 				);
 
 			}
-			$misc->printNavLinks($navlinks);
-			
-			
+			$misc->printNavLinks($navlinks, 'colproperties-colproperties');
 		}
 	}
 

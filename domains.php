@@ -246,7 +246,7 @@
 				'content' => $lang['stralter']
 			);
 		}
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'domains-properties');
 	}
 	
 	/**
@@ -429,8 +429,13 @@
 		
 		$misc->printTable($domains, $columns, $actions, $lang['strnodomains']);
 		
-		echo "<p><a class=\"navlink\" href=\"domains.php?action=create&amp;{$misc->href}\">{$lang['strcreatedomain']}</a></p>\n";
-
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "domains.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatedomain']
+			)
+		);
+		$misc->printNavLinks($navlinks, 'domains-domains');
 	}
 	
 	/**

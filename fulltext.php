@@ -64,7 +64,7 @@
 				'content' => $lang['strftscreateconfig']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'fulltext-fulltext');
 	}
 
 	function doDropConfig($confirm) {
@@ -354,7 +354,7 @@
 		//		'content' => $lang['strftscreateparser']
 		//	)
 		//);
-		//$misc->printNavLinks($navlinks);
+		//$misc->printNavLinks($navlinks, 'fulltext-viewparsers');
 	}
 
 
@@ -411,7 +411,7 @@
 				'content' => $lang['strftscreatedict']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'fulltext-viewdicts');
 	}
 
 
@@ -478,7 +478,7 @@
 				'content' => $lang['strftsaddmapping']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'fulltext-viewconfig');
 	}
 
 	/**

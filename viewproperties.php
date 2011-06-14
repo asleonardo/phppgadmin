@@ -156,7 +156,7 @@
 				'content' => $lang['stralter']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'viewproperties-definition');
 	}
 
 	/**
@@ -450,7 +450,7 @@
 				'content' => $lang['stralter']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'viewproperties-viewproperties');
 	}
 
 	$misc->printHeader($lang['strviews'] . ' - ' . $_REQUEST['view']);

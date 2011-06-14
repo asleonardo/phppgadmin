@@ -337,7 +337,7 @@
 				'content' => $lang['strcreatetrigger']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'triggers-triggers');
 	}
 
 	function doTree() {

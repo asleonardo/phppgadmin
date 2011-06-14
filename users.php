@@ -53,7 +53,7 @@
 				'content' => $lang['strchangepassword']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'users-account');
 	}
 	
 	/**
@@ -342,8 +342,7 @@
 				'content' => $lang['strcreateuser']
 			)
 		);
-		$misc->printNavLinks($navlinks);
-
+		$misc->printNavLinks($navlinks, 'users-users');
 	}
 
 	$misc->printHeader($lang['strusers']);

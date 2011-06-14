@@ -163,7 +163,7 @@
 				'content' => $lang['strcreaterule']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'rules-rules');
 	}
 
 	function doTree() {

@@ -433,8 +433,7 @@
 				'content' => $lang['strcreatedatabase']
 			)
 		);
-		$misc->printNavLinks($navlinks);
-
+		$misc->printNavLinks($navlinks, 'all_db-databases');
 	}
 
 	function doTree() {

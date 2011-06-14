@@ -91,7 +91,7 @@
 					'content' => $lang['strshowalltypes']
 				)
 			);
-			$misc->printNavLinks($navlinks);
+			$misc->printNavLinks($navlinks, 'types-properties');
 		} else
 			doDefault($lang['strinvalidparam']);
 	}
@@ -597,7 +597,7 @@
 				'content' => $lang['strcreateenumtype']
 			);
 		}
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'types-types');
 	}
 	
 	/**

@@ -84,7 +84,7 @@
 			'attr'=> array ('href' => "history.php?action=download&amp;{$misc->href}"),
 			'content' => $lang['strdownload']
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'history-history');
 	}
 
 	function doDelHistory($qid, $confirm) {

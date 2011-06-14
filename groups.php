@@ -111,7 +111,7 @@
 				'content' => $lang['strshowallgroups']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'groups-properties');
 	}
 	
 	/**
@@ -249,8 +249,7 @@
 				'content' => $lang['strcreategroup']
 			)
 		);
-		$misc->printNavLinks($navlinks);
-
+		$misc->printNavLinks($navlinks, 'groups-groups');
 	}
 
 	$misc->printHeader($lang['strgroups']);

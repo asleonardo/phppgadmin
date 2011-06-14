@@ -840,7 +840,7 @@
 			);
 		}
 
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'tables-tables');
 	}
 	
 	require('./admin.php');

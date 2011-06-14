@@ -487,7 +487,7 @@
 				'content' => $lang['straddfk']
 			)
 		);
-		$misc->printNavLinks($navlinks);
+		$misc->printNavLinks($navlinks, 'constraints-constraints');
 	}
 
 	function doTree() {
