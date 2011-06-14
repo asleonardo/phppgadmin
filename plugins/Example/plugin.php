@@ -336,6 +336,9 @@ class Example extends Plugin {
 		$misc->printFooter();
 	}
 	
+	/**
+	 * Simple example of how to put a hook in the display page.
+	 */
 	function show_display_extension() {
 		global $lang, $misc;
 
@@ -356,6 +359,9 @@ class Example extends Plugin {
 		$misc->printFooter();
 	}
 
+	/**
+	 * Simple example of how to put a hook in the databases list page.
+	 */
 	function show_databases_extension() {
 		global $lang, $misc;
 
