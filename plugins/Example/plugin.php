@@ -39,6 +39,7 @@ class Example extends Plugin {
 			'tabs' => array('add_plugin_tabs'),
 			'trail' => array('add_plugin_trail'),
 			'navlinks' => array('add_plugin_navlinks'),
+			'actionbuttons' => array('add_plugin_actionbuttons') 
 		);
 		return $hooks;
 	}
@@ -214,29 +215,16 @@ class Example extends Plugin {
 		$actionbuttons = array();
 		switch ($plugin_functions_parameters['place']) {
 
-			case 'display-browse':
-				$href = "plugin.php?".$misc->href;
-				$href.= "&amp;plugin=".urlencode($this->name);
-				$href.= "&amp;subject=show_page";
-				$href.= "&amp;action=show_display_extension";
-				$href.= "&amp;database=".urlencode($_REQUEST['database']);
-				$href.= "&amp;table=".urlencode($_REQUEST['table']);
-
-				$actionbuttons[] = array (
-					'attr'=> array ('href' => $href),
-					'content' => $this->lang['strdisplayext']
-				);
-				break;
-
 			case 'all_db-databases':
 				$href = "plugin.php?".$misc->href;
 				$href.= "&amp;plugin=".urlencode($this->name);
 				$href.= "&amp;subject=show_page";
-				$href.= "&amp;action=show_databases_extension";
+				$href.= "&amp;action=show_databases_extension&amp;";
 
-				$actionbuttons[] = array (
-					'attr'=> array ('href' => $href),
-					'content' => $this->lang['strdbext']
+				$actionbuttons['privileges2'] = array (
+					'title' => $this->lang['strextraaction'],
+					'url'   => $href,
+					'vars'  => array('database' => 'datname')
 				);
 				break;
 		}

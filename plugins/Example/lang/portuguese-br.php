@@ -18,6 +18,7 @@
 	$plugin_lang['strlinklevel4'] = 'Nível 4';
 	$plugin_lang['strdisplayext'] = 'Extensão de exibição';
 	$plugin_lang['strdbext'] = 'Extensão das bases de dados';
+	$plugin_lang['strextraaction'] = 'Ação extra';
 
 	//Paginas
 	$plugin_lang['strdesclevel2'] = 'Este é o nível 2';
