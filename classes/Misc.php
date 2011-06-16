@@ -1678,9 +1678,20 @@
 		 *					 (see tblproperties.php and constraints.php for examples)
 		 *					 The function must not must not store urls because
 		 *					 they are relative and won't work out of context.
+		 * @param $place - Place where the $actions are displayed. Like 'display-browse', where 'display' is the file (display.php)
+		 *					 and 'browse' is the place inside that code (doBrowse).
 		 */
-		function printTable(&$tabledata, &$columns, &$actions, $nodata = null, $pre_fn = null) {
-			global $data, $conf, $misc, $lang;
+		function printTable(&$tabledata, &$columns, &$actions, $nodata = null, $pre_fn = null, $place = null) {
+			global $data, $conf, $misc, $lang, $plugin_manager;
+
+			if (strlen($place) > 0) {
+				// Action buttons hook's place
+				$plugin_functions_parameters = array(
+					'actionbuttons' => &$actions,
+					'place' => $place
+				);
+				$plugin_manager->do_hook('actionbuttons', $plugin_functions_parameters);
+			}
 
 			if ($has_ma = isset($actions['multiactions']))
 				$ma = $actions['multiactions'];

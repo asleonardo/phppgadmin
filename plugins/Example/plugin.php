@@ -205,6 +205,49 @@ class Example extends Plugin {
 	}
 
 	/**
+	 * Add plugin in the actionbuttons
+	 * @param $plugin_functions_parameters
+	 */
+	function add_plugin_actionbuttons(&$plugin_functions_parameters) {
+		global $misc;
+
+		$actionbuttons = array();
+		switch ($plugin_functions_parameters['place']) {
+
+			case 'display-browse':
+				$href = "plugin.php?".$misc->href;
+				$href.= "&amp;plugin=".urlencode($this->name);
+				$href.= "&amp;subject=show_page";
+				$href.= "&amp;action=show_display_extension";
+				$href.= "&amp;database=".urlencode($_REQUEST['database']);
+				$href.= "&amp;table=".urlencode($_REQUEST['table']);
+
+				$actionbuttons[] = array (
+					'attr'=> array ('href' => $href),
+					'content' => $this->lang['strdisplayext']
+				);
+				break;
+
+			case 'all_db-databases':
+				$href = "plugin.php?".$misc->href;
+				$href.= "&amp;plugin=".urlencode($this->name);
+				$href.= "&amp;subject=show_page";
+				$href.= "&amp;action=show_databases_extension";
+
+				$actionbuttons[] = array (
+					'attr'=> array ('href' => $href),
+					'content' => $this->lang['strdbext']
+				);
+				break;
+		}
+
+		if (count($actionbuttons) > 0) {
+			//Merge the original actionbuttons array with Examples' actionbuttons 
+			$plugin_functions_parameters['actionbuttons'] = array_merge($plugin_functions_parameters['actionbuttons'], $actionbuttons);
+		}
+	}
+
+	/**
 	 * Show a simple page
 	 * This function will be used as an action
 	 *
