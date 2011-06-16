@@ -221,7 +221,7 @@ class Example extends Plugin {
 				$href.= "&amp;subject=show_page";
 				$href.= "&amp;action=show_databases_extension&amp;";
 
-				$actionbuttons['privileges2'] = array (
+				$actionbuttons['extraaction'] = array (
 					'title' => $this->lang['strextraaction'],
 					'url'   => $href,
 					'vars'  => array('database' => 'datname')
