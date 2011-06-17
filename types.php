@@ -54,7 +54,7 @@
 				
 				$actions = array();
 				
-				$misc->printTable($attrs, $columns, $actions, null, 'attPre');
+				$misc->printTable($attrs, $columns, $actions, null, 'attPre', 'types-properties');
 				
 				break;
 			case 'e':
@@ -579,7 +579,7 @@
 			),
 		);
 		
-		$misc->printTable($types, $columns, $actions, $lang['strnotypes']);
+		$misc->printTable($types, $columns, $actions, $lang['strnotypes'], null, 'types-types');
 
 		$navlinks = array (
 			array (

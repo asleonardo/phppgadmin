@@ -69,7 +69,7 @@
 			),
 		);
 
-		$misc->printTable($sequences, $columns, $actions, $lang['strnosequences']);
+		$misc->printTable($sequences, $columns, $actions, $lang['strnosequences'], null, 'sequences-sequences');
 
 		$navlinks = array (
 			array (

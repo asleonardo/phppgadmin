@@ -322,7 +322,7 @@
 		);
 
 		if (!$data->hasAlterAggregate()) unset($actions['alter']);
-		$misc->printTable($aggregates, $columns, $actions, $lang['strnoaggregates']);
+		$misc->printTable($aggregates, $columns, $actions, $lang['strnoaggregates'], null, 'aggregates-aggregates');
 
 		$navlinks = array (
 			array (

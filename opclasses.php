@@ -51,7 +51,7 @@
 		
 		$actions = array();
 		
-		$misc->printTable($opclasses, $columns, $actions, $lang['strnoopclasses']);
+		$misc->printTable($opclasses, $columns, $actions, $lang['strnoopclasses'], null, 'opclasses');
 	}
 	
 	/**

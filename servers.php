@@ -79,7 +79,7 @@
 			$actions['logout']['url'] .= "group=" . htmlentities($group) . "&amp;";
 		}
 		
-		$misc->printTable($servers, $columns, $actions, $lang['strnoobjects'], 'svPre');
+		$misc->printTable($servers, $columns, $actions, $lang['strnoobjects'], 'svPre', 'servers-servers');
 		
 		if (isset($conf['srv_groups'])) {
 			$navlinks = array (

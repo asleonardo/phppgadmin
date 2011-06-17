@@ -831,7 +831,7 @@
 			),
 		);
 
-		$misc->printTable($funcs, $columns, $actions, $lang['strnofunctions']);
+		$misc->printTable($funcs, $columns, $actions, $lang['strnofunctions'], null, 'functions-functions');
 
 		$navlinks = array (
 			array (

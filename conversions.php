@@ -51,7 +51,7 @@
 		
 		$actions = array();
 		
-		$misc->printTable($conversions, $columns, $actions, $lang['strnoconversions']);
+		$misc->printTable($conversions, $columns, $actions, $lang['strnoconversions'], null, 'conversions-conversions');
 	}
 	
 	/**

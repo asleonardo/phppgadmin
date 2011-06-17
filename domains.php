@@ -427,7 +427,7 @@
 
 		if (!$data->hasAlterDomains()) unset($actions['alter']);
 		
-		$misc->printTable($domains, $columns, $actions, $lang['strnodomains']);
+		$misc->printTable($domains, $columns, $actions, $lang['strnodomains'], null, 'domains-domains');
 		
 		$navlinks = array (
 			array (

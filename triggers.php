@@ -329,7 +329,7 @@
 				);
 		}
 
-		$misc->printTable($triggers, $columns, $actions, $lang['strnotriggers'], 'tgPre');
+		$misc->printTable($triggers, $columns, $actions, $lang['strnotriggers'], 'tgPre', 'triggers-triggers');
 
 		$navlinks = array (
 			array (

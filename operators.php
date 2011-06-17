@@ -158,7 +158,7 @@
 			),
 		);
 		
-		$misc->printTable($operators, $columns, $actions, $lang['strnooperators']);
+		$misc->printTable($operators, $columns, $actions, $lang['strnooperators'], null, 'operators-operators');
 		
 //		echo "<p><a class=\"navlink\" href=\"operators.php?action=create&amp;{$misc->href}\">{$lang['strcreateoperator']}</a></p>\n";
 	}

@@ -241,7 +241,7 @@
 			),
 		);
 		
-		$misc->printTable($groups, $columns, $actions, $lang['strnogroups']);
+		$misc->printTable($groups, $columns, $actions, $lang['strnogroups'], null, 'groups-groups');
 
 		$navlinks = array (
 			array (

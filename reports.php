@@ -303,9 +303,15 @@
 			),
 		);
 		
-		$misc->printTable($reports, $columns, $actions, $lang['strnoreports']);
+		$misc->printTable($reports, $columns, $actions, $lang['strnoreports'], null, 'reports-reports');
 		
-		echo "<p><a class=\"navlink\" href=\"reports.php?action=create&amp;{$misc->href}\">{$lang['strcreatereport']}</a></p>\n";
+		$navlinks = array (
+			array (
+				'attr'=> array ('href' => "reports.php?action=create&amp;{$misc->href}"),
+				'content' => $lang['strcreatereport']
+			)
+		);
+		$misc->printNavLinks($navlinks, 'reports-reports');
 	}
 	
 	$misc->printHeader($lang['strreports']);

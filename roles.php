@@ -631,7 +631,7 @@
 			),
 		);
 		
-		$misc->printTable($roles, $columns, $actions, $lang['strnoroles']);
+		$misc->printTable($roles, $columns, $actions, $lang['strnoroles'], null, 'roles-roles');
 
 		$navlinks = array (
 			array (

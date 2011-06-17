@@ -617,7 +617,7 @@
 			),
 		);
 		
-		$misc->printTable($views, $columns, $actions, $lang['strnoviews']);
+		$misc->printTable($views, $columns, $actions, $lang['strnoviews'], null, 'views-views');
 
 		$navlinks = array (
 			array (

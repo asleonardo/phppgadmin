@@ -71,7 +71,7 @@
 
 		if (!$data->hasAlterSchema()) unset($actions['alter']);
 
-		$misc->printTable($schemas, $columns, $actions, $lang['strnoschemas']);
+		$misc->printTable($schemas, $columns, $actions, $lang['strnoschemas'], null, 'schemas-schemas');
 
 		$navlinks = array (
 			array (

@@ -653,7 +653,7 @@
 				);
 			}
 
-			$misc->printTable($autovac, $columns, $actions, $lang['strnovacuumconf']);
+			$misc->printTable($autovac, $columns, $actions, $lang['strnovacuumconf'], null, 'admin-admin');
 			
 			if (($type == 'table') and ($autovac->recordCount() == 0)) {
 				echo "<br />";

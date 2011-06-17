@@ -56,7 +56,7 @@
 			),
 		);
 
-		$misc->printTable($cfgs, $columns, $actions, $lang['strftsnoconfigs']);
+		$misc->printTable($cfgs, $columns, $actions, $lang['strftsnoconfigs'], null, 'fulltext-fulltext');
 
 		$navlinks = array (
 			array (
@@ -345,7 +345,7 @@
 
 		$actions = array();
 
-		$misc->printTable($parsers, $columns, $actions, $lang['strftsnoparsers']);
+		$misc->printTable($parsers, $columns, $actions, $lang['strftsnoparsers'], null, 'fulltext-viewparsers');
 
 		//TODO: create parser
 		//$navlinks = array (
@@ -403,7 +403,7 @@
 			),
 		);
 
-		$misc->printTable($dicts, $columns, $actions, $lang['strftsnodicts']);
+		$misc->printTable($dicts, $columns, $actions, $lang['strftsnodicts'], null, 'fulltext-viewdicts');
 
 		$navlinks = array (
 			array (
@@ -470,7 +470,7 @@
 
 		);
 
-		$misc->printTable($map, $columns, $actions, $lang['strftsemptymap']);
+		$misc->printTable($map, $columns, $actions, $lang['strftsemptymap'], null, 'fulltext-viewconfig');
 
 		$navlinks = array (
 			array (

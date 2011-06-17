@@ -206,7 +206,7 @@ class Example extends Plugin {
 	}
 
 	/**
-	 * Add plugin in the actionbuttons
+	 * Add plugin in the action buttons
 	 * @param $plugin_functions_parameters
 	 */
 	function add_plugin_actionbuttons(&$plugin_functions_parameters) {
