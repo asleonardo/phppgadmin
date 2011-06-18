@@ -200,30 +200,33 @@
 			echo "</table>\n";
 			
 			// Display domain constraints
+			echo "<h3>{$lang['strconstraints']}</h3>\n";
 			if ($data->hasDomainConstraints()) {
 				$domaincons = $data->getDomainConstraints($_REQUEST['domain']);
-				if ($domaincons->recordCount() > 0) {
-					echo "<h3>{$lang['strconstraints']}</h3>\n";
-					echo "<table>\n";
-					echo "<tr><th class=\"data\">{$lang['strname']}</th><th class=\"data\">{$lang['strdefinition']}</th><th class=\"data\">{$lang['stractions']}</th>\n";
-					$i = 0;
-					
-					while (!$domaincons->EOF) {
-						$id = (($i % 2 ) == 0 ? '1' : '2');
-						echo "<tr class=\"data{$id}\"><td>", $misc->printVal($domaincons->fields['conname']), "</td>";
-						echo "<td>";
-						echo $misc->printVal($domaincons->fields['consrc']);
-						echo "</td>";
-						echo "<td class=\"opbutton{$id}\">";
-						echo "<a href=\"domains.php?action=confirm_drop_con&amp;{$misc->href}&amp;constraint=", urlencode($domaincons->fields['conname']),
-							"&amp;domain=", urlencode($_REQUEST['domain']), "&amp;type=", urlencode($domaincons->fields['contype']), "\">{$lang['strdrop']}</a></td></tr>\n";
-		
-						$domaincons->moveNext();
-						$i++;
-					}
-					
-					echo "</table>\n";
-				}
+				$columns = array (
+					'name' => array (
+						'title' => $lang['strdatabase'],
+						'field' => field('conname')
+					),
+					'definition' => array (
+						'title' => $lang['strdefinition'],
+						'field' => field('consrc'),
+					),
+					'actions' => array (
+						'title' => $lang['stractions'],
+					)
+				);
+
+				$actions = array (
+					'drop' => array (
+						'title' => $lang['strdrop'],
+						'url'   => "domains.php?action=confirm_drop_con&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])."&amp;",
+						'vars'  => array ('constraint' => 'conname', 'type' => 'contype'),
+						'multiaction' => 'confirm_drop_con',
+					)
+				);
+
+				$misc->printTable($domaincons, $columns, $actions, $lang['strnodata'], null, 'domains-properties');
 			}
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
