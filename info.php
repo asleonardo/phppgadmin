@@ -134,7 +134,7 @@
 					)
 				);
 
-				$misc->printTable($parents, $columns, $actions, $lang['strnodata'], null, 'info-parents');
+				$misc->printTable($parents, $columns, $actions, $lang['strnodata'], null, 'info-child');
 			}
 
 			// Row performance
