@@ -110,7 +110,6 @@
 			// Child tables
 			if ($children->recordCount() > 0) {
 				echo "<h3>{$lang['strchildtables']}</h3>\n";
-				echo "<h3>{$lang['strparenttables']}</h3>\n";
 
 				$columns = array (
 					'schema' => array (
@@ -134,7 +133,7 @@
 					)
 				);
 
-				$misc->printTable($parents, $columns, $actions, $lang['strnodata'], null, 'info-child');
+				$misc->printTable($children, $columns, $actions, $lang['strnodata'], null, 'info-children');
 			}
 
 			// Row performance

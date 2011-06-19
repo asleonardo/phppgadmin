@@ -74,20 +74,27 @@
 		$users = $data->getUsers();
 		
 		if ($groupdata->recordCount() > 0) {
-			echo "<table>\n";
-           	echo "<tr><th class=\"data\">{$lang['strmembers']}</th><th class=\"data\">{$lang['stractions']}</th></tr>\n";
-           	$i = 0;
-           	while (!$groupdata->EOF) {
-					$id = (($i % 2) == 0 ? '1' : '2');
-            	echo "<tr class=\"data{$id}\"><td>", $misc->printVal($groupdata->fields['usename']), "</td>\n";
-					echo "<td class=\"opbutton{$id}\"><a href=\"groups.php?action=confirm_drop_member&{$misc->href}&group=",
-						urlencode($_REQUEST['group']), "&user=", urlencode($groupdata->fields['usename']), "\">{$lang['strdrop']}</a></td>\n";
-            	echo "</tr>\n";
-            	$groupdata->moveNext();
-           	}
-			echo "</table>\n";
+			$columns = array (
+				'members' => array (
+					'title' => $lang['strmembers'],
+					'field' => field('usename')
+				),
+				'actions' => array (
+					'title' => $lang['stractions'],
+				)
+			);
+
+			$actions = array (
+				'drop' => array (
+					'title' => $lang['strdrop'],
+					'url'   => "groups.php?action=confirm_drop_member&{$misc->href}&group=".urlencode($_REQUEST['group'])."&amp;",
+					'vars'  => array ('user' => 'usename'),
+					'multiaction' => 'confirm_drop_member',
+				)
+			);
+
+			$misc->printTable($groupdata, $columns, $actions, $lang['strnodata'], null, 'groups-properties');
 		}
-		else echo "<p>{$lang['strnousers']}</p>\n";
 
 		// Display form for adding a user to the group			
 		echo "<form action=\"groups.php\" method=\"post\">\n";
