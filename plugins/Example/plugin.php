@@ -63,7 +63,8 @@ class Example extends Plugin {
 			'show_level_3',
 			'show_level_4',
 			'show_display_extension',
-			'show_databases_extension'
+			'show_databases_extension',
+			'show_display_example'
 		);
 		return $actions;
 	}
@@ -248,7 +249,8 @@ class Example extends Plugin {
 		$href = "plugin.php?".$misc->href;
 		$href.= "&amp;plugin=".urlencode($this->name);
 		$href.= "&amp;subject=show_page";
-		$href.= "&amp;action=show_databases_extension&amp;";
+		$href.= "&amp;action=show_display_example";
+		$href.= "&amp;table=".urlencode($_REQUEST['table']);
 
 		$buttons['extraaction'] = array (
 			'title' => $this->lang['strextraaction'],
@@ -430,6 +432,29 @@ class Example extends Plugin {
 		echo "<br/>\n";
 
 		$back_link = "<a href=\"all_db.php?{$misc->href}\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+	
+	/**
+	 * Simple example of how to put a hook in the display page.
+	 */
+	function show_display_example() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
+		echo "<div>{$this->lang['strextraaction']}</div>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"display.php?{$misc->href}";
+		$back_link.= "&amp;table=".urlencode($_REQUEST['table']);
+		$back_link.= "&amp;subject=table\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
