@@ -404,7 +404,7 @@
 	 * Displays requested data
 	 */
 	function doBrowse($msg = '') {
-		global $data, $conf, $misc, $lang;
+		global $data, $conf, $misc, $lang, $plugin_manager;
 
 		$save_history = false;
 		// If current page is not set, default to first page
@@ -515,9 +515,17 @@
 					break;
 				}
 			}
+			
+			$buttons = array();
+			$plugin_functions_parameters = array(
+				'displaybuttons' => &$buttons
+			);
+			$plugin_manager->do_hook('displaybuttons', $plugin_functions_parameters);
+
 			// Display edit and delete actions if we have a key
-			if (sizeof($key) > 0)
-				echo "<th colspan=\"2\" class=\"data\">{$lang['stractions']}</th>\n";
+			$colspan = count($buttons) + 2;
+			if (sizeof($key) > 0) 
+				echo "<th colspan=\"{$colspan}\" class=\"data\">{$lang['stractions']}</th>\n";
 
 			/* we show OIDs only if we are in TABLE or SELECT type browsing */
 			printTableHeaderCells($rs, $gets, isset($object));
@@ -542,14 +550,19 @@
 						$key_str .= urlencode("key[{$v}]") . '=' . urlencode($rs->fields[$v]);
 					}
 					if ($has_nulls) {
-						echo "<td colspan=\"2\">&nbsp;</td>\n";
+						echo "<td colspan=\"{$colspan}\">&nbsp;</td>\n";
 					} else {
-						echo "<td class=\"opbutton{$id}\"><a href=\"display.php?action=confeditrow&amp;strings=", 
-							urlencode($_REQUEST['strings']), "&amp;page=", 
-							urlencode($_REQUEST['page']), "&amp;{$key_str}&amp;{$gets}&amp;{$getsort}\">{$lang['stredit']}</a></td>\n";
-						echo "<td class=\"opbutton{$id}\"><a href=\"display.php?action=confdelrow&amp;strings=", 
-							urlencode($_REQUEST['strings']), "&amp;page=", 
-							urlencode($_REQUEST['page']), "&amp;{$key_str}&amp;{$gets}&amp;{$getsort}\">{$lang['strdelete']}</a></td>\n";
+						// Display action buttons
+						$buttons['edit'] = array (
+								'title' => $lang['stredit'],
+								'url'   => "display.php?action=confeditrow&amp;strings=" . urlencode($_REQUEST['strings']) . "&amp;page=" . urlencode($_REQUEST['page']) . "&amp;{$key_str}&amp;{$gets}&amp;{$getsort}");
+						$buttons['delete'] = array (
+								'title' => $lang['strdelete'],
+								'url'   => "display.php?action=confdelrow&amp;strings=" . urlencode($_REQUEST['strings']) . "&amp;page=" . urlencode($_REQUEST['page']) . "&amp;{$key_str}&amp;{$gets}&amp;{$getsort}");
+
+						foreach ($buttons as $button) {
+							echo "<td class=\"opbutton{$id}\"><a href=\"{$button['url']}\">{$button['title']}</a></td>\n";
+						}
 					}
 				}
 
