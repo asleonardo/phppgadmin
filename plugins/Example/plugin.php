@@ -103,10 +103,11 @@ class Example extends Plugin {
 	function add_plugin_tabs(&$plugin_functions_parameters) {
 		global $misc;
 
-		$tabs = array();
+		$tabs = &$plugin_functions_parameters['tabs'];
+
 		switch ($plugin_functions_parameters['section']) {
 			case 'server':
-				$tabs = array (
+				$tabs['show_page'] = array (
 					'title' => $this->lang['strdescription'],
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => urlencode($this->name)),
@@ -115,7 +116,7 @@ class Example extends Plugin {
 				);
 				break;
 			case 'schema':
-				$tabs = array (
+				$tabs['show_schema_extension'] = array (
 					'title' => $this->lang['strdescription'],
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'show_schema_extension', 'plugin' => urlencode($this->name)),
@@ -123,10 +124,6 @@ class Example extends Plugin {
 					'icon' => 'Plugins'
 				);
 				break;
-		}
-		//Add the link in the tabs array
-		if (count($tabs) > 0) {
-			$plugin_functions_parameters['tabs']['Example'] = $tabs;
 		}
 	}
 
