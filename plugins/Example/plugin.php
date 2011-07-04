@@ -64,7 +64,10 @@ class Example extends Plugin {
 			'show_level_4',
 			'show_display_extension',
 			'show_databases_extension',
-			'show_display_example'
+			'show_display_example',
+			'show_schema_extension',
+			'show_schema_extension_level_2_1',
+			'show_schema_extension_level_2_2'
 		);
 		return $actions;
 	}
@@ -107,6 +110,15 @@ class Example extends Plugin {
 					'title' => $this->lang['strdescription'],
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => urlencode($this->name)),
+					'hide' => false,
+					'icon' => 'Plugins'
+				);
+				break;
+			case 'schema':
+				$tabs = array (
+					'title' => $this->lang['strdescription'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'server', 'action' => 'show_schema_extension', 'plugin' => urlencode($this->name)),
 					'hide' => false,
 					'icon' => 'Plugins'
 				);
@@ -455,6 +467,88 @@ class Example extends Plugin {
 		$back_link = "<a href=\"display.php?{$misc->href}";
 		$back_link.= "&amp;table=".urlencode($_REQUEST['table']);
 		$back_link.= "&amp;subject=table\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+
+
+
+	function show_schema_extension() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
+		echo "<div>{$this->lang['strschemaext']}</div>\n";
+		echo "<br/>\n";
+
+		//link to schema level 2.1
+		$link = "<a href=\"plugin.php?".$misc->href;
+		$link.= "&amp;plugin=".urlencode($this->name);
+		$link.= "&amp;action=show_schema_extension_level_2_1";
+		$link.= "&amp;subject=show_schema_extension\">";
+		$link.= $this->lang['strlinklevel2s1'];
+		$link.= "</a>\n";
+		echo $link;
+		echo "<br/>\n";
+
+		//link to schema level 2.2
+		$link = "<a href=\"plugin.php?".$misc->href;
+		$link.= "&amp;plugin=".urlencode($this->name);
+		$link.= "&amp;action=show_schema_extension_level_2_2";
+		$link.= "&amp;subject=show_schema_extension\">";
+		$link.= $this->lang['strlinklevel2s2'];
+		$link.= "</a>\n";
+		echo $link;
+
+		echo "<br/>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"schemas.php?{$misc->href}\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+
+	function show_schema_extension_level_2_1() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
+		echo "<div>{$this->lang['strlinklevel2s1']}</div>\n";
+
+		echo "<br/>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"schemas.php?{$misc->href}\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+
+	function show_schema_extension_level_2_2() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail($_REQUEST['subject']);
+
+		echo "<div>{$this->lang['strlinklevel2s2']}</div>\n";
+
+		echo "<br/>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"schemas.php?{$misc->href}\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;

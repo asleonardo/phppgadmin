@@ -19,10 +19,14 @@
 	$plugin_lang['strdisplayext'] = 'Display extension';
 	$plugin_lang['strdbext'] = 'Databases extension';
 	$plugin_lang['strextraaction'] = 'Extra action';
+	$plugin_lang['strlinklevel2s1'] = 'Level 2.1';
+	$plugin_lang['strlinklevel2s2'] = 'Level 2.2';
 
 	//Pages
 	$plugin_lang['strdesclevel2'] = 'This is the level 2';
 	$plugin_lang['strdesclevel3'] = 'This is the level 3';
 	$plugin_lang['strdesclevel4'] = 'This is the level 4';
+	$plugin_lang['strschemaext'] = 'Schema extention';
 
+	
 ?>
