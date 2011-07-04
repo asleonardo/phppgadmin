@@ -133,7 +133,7 @@ class Example extends Plugin {
 					'icon' => 'Plugins'
 				);
 				$tabs['show_schema_extension_level_2_2'] = array (
-					'title' => $this->lang['strlinklevel2s1'],
+					'title' => $this->lang['strlinklevel2s2'],
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2_2', 'plugin' => urlencode($this->name)),
 					'hide' => false,
