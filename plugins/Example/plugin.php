@@ -124,6 +124,22 @@ class Example extends Plugin {
 					'icon' => 'Plugins'
 				);
 				break;
+			case 'show_schema_extension':
+				$tabs['show_schema_extension_level_2_1'] = array (
+					'title' => $this->lang['strlinklevel2s1'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2_1', 'plugin' => urlencode($this->name)),
+					'hide' => false,
+					'icon' => 'Plugins'
+				);
+				$tabs['show_schema_extension_level_2_2'] = array (
+					'title' => $this->lang['strlinklevel2s1'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2_2', 'plugin' => urlencode($this->name)),
+					'hide' => false,
+					'icon' => 'Plugins'
+				);
+				break;
 		}
 	}
 
@@ -479,6 +495,7 @@ class Example extends Plugin {
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
+		$misc->printTabs('schema','show_schema_extension');
 
 		echo "<div>{$this->lang['strschemaext']}</div>\n";
 		echo "<br/>\n";
@@ -519,13 +536,17 @@ class Example extends Plugin {
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
+		$misc->printTabs('show_schema_extension','show_schema_extension_level_2_1');
 
 		echo "<div>{$this->lang['strlinklevel2s1']}</div>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"schemas.php?{$misc->href}\">";
+		$back_link = "<a href=\"plugin.php?".$misc->href;
+		$back_link.= "&amp;plugin=".urlencode($this->name);
+		$back_link.= "&amp;action=show_schema_extension";
+		$back_link.= "&amp;subject=schema\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
@@ -539,13 +560,17 @@ class Example extends Plugin {
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
+		$misc->printTabs('show_schema_extension','show_schema_extension_level_2_2');
 
 		echo "<div>{$this->lang['strlinklevel2s2']}</div>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"schemas.php?{$misc->href}\">";
+		$back_link = "<a href=\"plugin.php?".$misc->href;
+		$back_link.= "&amp;plugin=".urlencode($this->name);
+		$back_link.= "&amp;action=show_schema_extension";
+		$back_link.= "&amp;subject=schema\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
