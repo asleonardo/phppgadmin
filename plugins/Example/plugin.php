@@ -534,14 +534,6 @@ class Example extends Plugin {
 		$link.= "</a>\n";
 		echo $link;
 
-		echo "<br/>\n";
-		echo "<br/>\n";
-
-		$back_link = "<a href=\"schemas.php?{$misc->href}\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
-
 		$misc->printFooter();
 	}
 
@@ -558,7 +550,7 @@ class Example extends Plugin {
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"plugin.php?".$misc->href;
+		$back_link = "<a href=\"redirect.php?".$misc->href;
 		$back_link.= "&amp;plugin=".urlencode($this->name);
 		$back_link.= "&amp;action=show_schema_extension";
 		$back_link.= "&amp;subject=schema\">";
@@ -582,7 +574,7 @@ class Example extends Plugin {
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"plugin.php?".$misc->href;
+		$back_link = "<a href=\"redirect.php?".$misc->href;
 		$back_link.= "&amp;plugin=".urlencode($this->name);
 		$back_link.= "&amp;action=show_schema_extension";
 		$back_link.= "&amp;subject=schema\">";
