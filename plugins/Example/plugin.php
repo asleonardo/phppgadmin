@@ -67,7 +67,8 @@ class Example extends Plugin {
 			'show_display_example',
 			'show_schema_extension',
 			'show_schema_extension_level_2_1',
-			'show_schema_extension_level_2_2'
+			'show_schema_extension_level_2_2',
+			'tree'
 		);
 		return $actions;
 	}
@@ -583,6 +584,26 @@ class Example extends Plugin {
 		echo $back_link;
 
 		$misc->printFooter();
+	}
+
+	function tree() {
+		global $misc;
+
+		$reqvars = $misc->getRequestVars('show_schema_extension');
+		$tabs = $misc->getNavTabs('show_schema_extension');
+		$items = $misc->adjustTabsForTree($tabs);
+		$attrs = array(
+			'text'   => noEscape(field('title')),
+			'icon'   => field('icon'),
+			'action' => url(field('url'),
+							$reqvars,
+							field('urlvars', array())
+						),
+		);
+		
+		$misc->printTreeXML($items, $attrs);
+
+		exit;
 	}
 }
 ?>
