@@ -119,7 +119,12 @@ class Example extends Plugin {
 				$tabs['show_schema_extension'] = array (
 					'title' => $this->lang['strdescription'],
 					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'server', 'action' => 'show_schema_extension', 'plugin' => urlencode($this->name)),
+					'urlvars' => array(
+						'subject' => 'server', 
+						'database' => $_REQUEST['database'],
+						'schema' => $_REQUEST['schema'],
+						'action' => 'show_schema_extension', 
+						'plugin' => urlencode($this->name)),
 					'hide' => false,
 					'icon' => 'Plugins'
 				);
@@ -186,6 +191,16 @@ class Example extends Plugin {
 					'icon' => array('plugin' => 'Example', 'image' => 'Level3')
 				);
 			}
+		}
+
+		//schema extension 
+		if (in_array($subject, array('show_schema_extension'))) {
+				$trail['show_schema_extension'] = array(
+				'title' => $this->lang['strschemaext'],
+				'text'  => $this->lang['strschemaext'],
+				'url'   => "redirect.php?server=".urlencode($_REQUEST['server'])."&database=".urlencode($_REQUEST['database'])."&schema=".urlencode($_REQUEST['schema'])."&plugin=".urlencode($this->name)."&action=show_schema_extension&subject=show_schema_extension",
+				'icon' => 'Plugins'
+			);
 		}
 	}
 
@@ -494,7 +509,7 @@ class Example extends Plugin {
 
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
-		$misc->printTrail($_REQUEST['subject']);
+		$misc->printTrail('schema');
 		$misc->printTabs('schema','show_schema_extension');
 
 		echo "<div>{$this->lang['strschemaext']}</div>\n";
@@ -535,7 +550,7 @@ class Example extends Plugin {
 
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
-		$misc->printTrail($_REQUEST['subject']);
+		$misc->printTrail('show_schema_extension');
 		$misc->printTabs('show_schema_extension','show_schema_extension_level_2_1');
 
 		echo "<div>{$this->lang['strlinklevel2s1']}</div>\n";
@@ -559,7 +574,7 @@ class Example extends Plugin {
 
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
-		$misc->printTrail($_REQUEST['subject']);
+		$misc->printTrail('show_schema_extension');
 		$misc->printTabs('show_schema_extension','show_schema_extension_level_2_2');
 
 		echo "<div>{$this->lang['strlinklevel2s2']}</div>\n";
