@@ -1214,7 +1214,7 @@
 				foreach ($navlinks as $navlink) {
 					$tag = "\t<li><a ";
 					foreach ($navlink['attr'] as $attr => $value) {
-						$tag.= htmlentities($attr)."=\"".htmlentities($value)."\"";
+						$tag.= htmlspecialchars($attr)."=\"".$value."\"";
 					}
 					$tag.= ">".$navlink['content']."</a></li>\n";
 					echo $tag;
