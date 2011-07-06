@@ -1134,7 +1134,7 @@
 
 			$server_info = $this->getServerInfo();
 
-			$sql_url = "sqledit.php?{$this->href}&action=";
+			$sql_url = "sqledit.php?".$this->href;
 			$sql_window_id = htmlspecialchars('sqledit:'.$_REQUEST['server']);
 			$history_url = "history.php?{$this->href}&action=pophistory";
 			$history_window_id = htmlspecialchars('history:'.$_REQUEST['server']);
@@ -1143,9 +1143,9 @@
 			$toplinks = array (
 				array (
 					'attr' => array (
-						'href' => "{$sql_url}sql",
+						'href' => "{$sql_url}&action=sql",
 						'target' => "sqledit",
-						'onclick' => "window.open('{$sql_url}sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
+						'onclick' => "window.open('{$sql_url}&action=sql','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
 					),
 					'content' => $lang['strsql']
 				),
@@ -1158,9 +1158,9 @@
 				),
 				array (
 					'attr' => array (
-						'href' => "{$sql_url}find",
+						'href' => "{$sql_url}&action=find",
 						'target' => "sqledit",
-						'onclick' => "window.open('{$sql_url}find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
+						'onclick' => "window.open('{$sql_url}&action=find','{$sql_window_id}','toolbar=no,width=700,height=500,resizable=yes,scrollbars=yes').focus(); return false;",
 					),
 					'content' => $lang['strfind']
 				),
