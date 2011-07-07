@@ -266,7 +266,7 @@
 			} else {
 				$return_url = urlencode("colproperties.php?{$misc->href}&amp;view=". urlencode($tableName)
 					."&amp;column=". urlencode($_REQUEST['column']));
-				$url = "\t<li><a href=\"display.php?{$misc->href}&amp;subject=column&amp;column=";
+				$url = "display.php?{$misc->href}&amp;subject=column&amp;column=";
 				$url.= urlencode($_REQUEST['column']). "&amp;return_url={$return_url}&amp;return_desc=". urlencode($lang['strback']);
 				$url.= "&amp;query={$query_url}";
 				/* Browse link */
