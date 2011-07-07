@@ -635,10 +635,10 @@
 				$url .= "&amp;search_path=".urlencode($_REQUEST['search_path']);
 			
 			$url .= "&amp;{$misc->href}";
-			$content = $lang['strdownload'];
+
 			$navlinks[] = array (
 				'attr'=> array ('href' => $url),
-				'content' =>  $content
+				'content' =>  $lang['strdownload']
 			);
 		}
 
