@@ -1684,14 +1684,12 @@
 		function printTable(&$tabledata, &$columns, &$actions, $place, $nodata = null, $pre_fn = null) {
 			global $data, $conf, $misc, $lang, $plugin_manager;
 
-			if ($place != '') {
-				// Action buttons hook's place
-				$plugin_functions_parameters = array(
-					'actionbuttons' => &$actions,
-					'place' => $place
-				);
-				$plugin_manager->do_hook('actionbuttons', $plugin_functions_parameters);
-			}
+			// Action buttons hook's place
+			$plugin_functions_parameters = array(
+				'actionbuttons' => &$actions,
+				'place' => $place
+			);
+			$plugin_manager->do_hook('actionbuttons', $plugin_functions_parameters);
 
 			if ($has_ma = isset($actions['multiactions']))
 				$ma = $actions['multiactions'];
