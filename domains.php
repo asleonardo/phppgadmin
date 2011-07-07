@@ -205,7 +205,7 @@
 				$domaincons = $data->getDomainConstraints($_REQUEST['domain']);
 				$columns = array (
 					'name' => array (
-						'title' => $lang['strdatabase'],
+						'title' => $lang['strname'],
 						'field' => field('conname')
 					),
 					'definition' => array (
@@ -221,8 +221,7 @@
 					'drop' => array (
 						'title' => $lang['strdrop'],
 						'url'   => "domains.php?action=confirm_drop_con&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])."&amp;",
-						'vars'  => array ('constraint' => 'conname', 'type' => 'contype'),
-						'multiaction' => 'confirm_drop_con',
+						'vars'  => array ('constraint' => 'conname', 'type' => 'contype')
 					)
 				);
 
