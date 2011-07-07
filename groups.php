@@ -88,12 +88,11 @@
 				'drop' => array (
 					'title' => $lang['strdrop'],
 					'url'   => "groups.php?action=confirm_drop_member&{$misc->href}&group=".urlencode($_REQUEST['group'])."&amp;",
-					'vars'  => array ('user' => 'usename'),
-					'multiaction' => 'confirm_drop_member',
+					'vars'  => array ('user' => 'usename')
 				)
 			);
 
-			$misc->printTable($groupdata, $columns, $actions, 'groups-properties', $lang['strnodata']);
+			$misc->printTable($groupdata, $columns, $actions, 'groups-properties', $lang['strnousers']);
 		}
 
 		// Display form for adding a user to the group			
