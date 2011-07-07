@@ -565,7 +565,7 @@
 			),
 		);
 
-		$misc->printTable($attrs, $columns, $actions, null, 'attPre', 'tblproperties-tblproperties');
+		$misc->printTable($attrs, $columns, $actions, 'tblproperties-tblproperties', null, 'attPre');
 
 		$navlinks = array (
 			array (

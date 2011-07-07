@@ -303,7 +303,7 @@
 			),
 		);
 		
-		$misc->printTable($reports, $columns, $actions, $lang['strnoreports'], null, 'reports-reports');
+		$misc->printTable($reports, $columns, $actions, 'reports-reports', $lang['strnoreports']);
 		
 		$navlinks = array (
 			array (

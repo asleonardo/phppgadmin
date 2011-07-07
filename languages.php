@@ -43,7 +43,7 @@
 
 		$actions = array();
 
-		$misc->printTable($languages, $columns, $actions, $lang['strnolanguages'], null, 'languages-languages');
+		$misc->printTable($languages, $columns, $actions, 'languages-languages', $lang['strnolanguages']);
 	}
 
 	/**

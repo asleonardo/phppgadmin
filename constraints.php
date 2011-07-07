@@ -470,7 +470,7 @@
 			),
 		);
 
-		$misc->printTable($constraints, $columns, $actions, $lang['strnoconstraints'], 'cnPre', 'constraints-constraints');
+		$misc->printTable($constraints, $columns, $actions, 'constraints-constraints', $lang['strnoconstraints'], 'cnPre');
 
 		$navlinks = array (
 			array (

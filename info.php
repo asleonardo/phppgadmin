@@ -75,7 +75,7 @@
 					)
 				);
 
-				$misc->printTable($referrers, $columns, $actions, $lang['strnodata'], null, 'info-referrers');
+				$misc->printTable($referrers, $columns, $actions, 'info-referrers', $lang['strnodata']);
 			}
 			
 			// Parent tables
@@ -104,7 +104,7 @@
 					)
 				);
 
-				$misc->printTable($parents, $columns, $actions, $lang['strnodata'], null, 'info-parents');
+				$misc->printTable($parents, $columns, $actions, 'info-parents', $lang['strnodata']);
 			}
 	
 			// Child tables
@@ -133,7 +133,7 @@
 					)
 				);
 
-				$misc->printTable($children, $columns, $actions, $lang['strnodata'], null, 'info-children');
+				$misc->printTable($children, $columns, $actions, 'info-children', $lang['strnodata']);
 			}
 
 			// Row performance

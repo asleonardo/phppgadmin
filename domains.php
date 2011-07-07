@@ -226,7 +226,7 @@
 					)
 				);
 
-				$misc->printTable($domaincons, $columns, $actions, $lang['strnodata'], null, 'domains-properties');
+				$misc->printTable($domaincons, $columns, $actions, 'domains-properties', $lang['strnodata']);
 			}
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
@@ -430,7 +430,7 @@
 
 		if (!$data->hasAlterDomains()) unset($actions['alter']);
 		
-		$misc->printTable($domains, $columns, $actions, $lang['strnodomains'], null, 'domains-domains');
+		$misc->printTable($domains, $columns, $actions, 'domains-domains', $lang['strnodomains']);
 		
 		$navlinks = array (
 			array (

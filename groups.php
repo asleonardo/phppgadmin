@@ -93,7 +93,7 @@
 				)
 			);
 
-			$misc->printTable($groupdata, $columns, $actions, $lang['strnodata'], null, 'groups-properties');
+			$misc->printTable($groupdata, $columns, $actions, 'groups-properties', $lang['strnodata']);
 		}
 
 		// Display form for adding a user to the group			
@@ -248,7 +248,7 @@
 			),
 		);
 		
-		$misc->printTable($groups, $columns, $actions, $lang['strnogroups'], null, 'groups-groups');
+		$misc->printTable($groups, $columns, $actions, 'groups-groups', $lang['strnogroups']);
 
 		$navlinks = array (
 			array (

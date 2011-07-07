@@ -155,7 +155,7 @@
 			),
 		);
 
-		$misc->printTable($rules, $columns, $actions, $lang['strnorules'], null, 'rules-rules');
+		$misc->printTable($rules, $columns, $actions, 'rules-rules', $lang['strnorules']);
 
 		$navlinks = array (
 			array (

@@ -430,7 +430,7 @@
 			),
 		);
 		
-		$misc->printTable($attrs, $columns, $actions, null, 'attPre', 'viewproperties-viewproperties');
+		$misc->printTable($attrs, $columns, $actions, 'viewproperties-viewproperties', null, 'attPre');
 	
 		echo "<br />\n";
 

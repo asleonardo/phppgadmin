@@ -64,7 +64,7 @@
 				),
 			);
 
-			$misc->printTable($history, $columns, $actions, $lang['strnohistory'], null, 'history-history');
+			$misc->printTable($history, $columns, $actions, 'history-history', $lang['strnohistory']);
 		}
 		else echo "<p>{$lang['strnohistory']}</p>\n";
 

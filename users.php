@@ -334,7 +334,7 @@
 			),
 		);
 		
-		$misc->printTable($users, $columns, $actions, $lang['strnousers'], null, 'users-users');
+		$misc->printTable($users, $columns, $actions, 'users-users', $lang['strnousers']);
 
 		$navlinks = array (
 			array (

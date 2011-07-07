@@ -309,7 +309,7 @@
 			),
 		);
 		
-		$misc->printTable($indexes, $columns, $actions, $lang['strnoindexes'], 'indPre', 'indexes-indexes');
+		$misc->printTable($indexes, $columns, $actions, 'indexes-indexes', $lang['strnoindexes'], 'indPre');
 
 		$navlinks = array (
 			array (

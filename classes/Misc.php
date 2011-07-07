@@ -1681,10 +1681,10 @@
 		 * @param $place - Place where the $actions are displayed. Like 'display-browse', where 'display' is the file (display.php)
 		 *					 and 'browse' is the place inside that code (doBrowse).
 		 */
-		function printTable(&$tabledata, &$columns, &$actions, $nodata = null, $pre_fn = null, $place = null) {
+		function printTable(&$tabledata, &$columns, &$actions, $place, $nodata = null, $pre_fn = null) {
 			global $data, $conf, $misc, $lang, $plugin_manager;
 
-			if (strlen($place) > 0) {
+			if ($place != '') {
 				// Action buttons hook's place
 				$plugin_functions_parameters = array(
 					'actionbuttons' => &$actions,

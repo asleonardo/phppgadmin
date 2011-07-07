@@ -254,7 +254,7 @@
 			)
 		);
 				
-		$misc->printTable($tablespaces, $columns, $actions, $lang['strnotablespaces'], null, 'tablespaces-tablespaces');
+		$misc->printTable($tablespaces, $columns, $actions, 'tablespaces-tablespaces', $lang['strnotablespaces']);
 
 		$navlinks = array (
 			array (

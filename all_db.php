@@ -425,7 +425,7 @@
 		if (!$data->hasDatabaseCollation()) unset($columns['lc_collate'], $columns['lc_ctype']);
 		if (!isset($data->privlist['database'])) unset($actions['privileges']);
 
-		$misc->printTable($databases, $columns, $actions, $lang['strnodatabases'], null, 'all_db-databases');
+		$misc->printTable($databases, $columns, $actions, 'all_db-databases', $lang['strnodatabases']);
 
 		$navlinks = array (
 			array (

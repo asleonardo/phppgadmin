@@ -825,7 +825,7 @@
 
 		if (!$data->hasTablespaces()) unset($columns['tablespace']);
 
-		$misc->printTable($tables, $columns, $actions, $lang['strnotables'], null, 'tables-tables');
+		$misc->printTable($tables, $columns, $actions, 'tables-tables', $lang['strnotables']);
 
 		$navlinks = array (
 			array (

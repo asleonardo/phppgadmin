@@ -376,7 +376,7 @@
 		
 		$actions = array();
 		
-		$misc->printTable($variables, $columns, $actions, $lang['strnodata'], null, 'database-variables');
+		$misc->printTable($variables, $columns, $actions, 'database-variables', $lang['strnodata']);
 	}
 
 	/**
@@ -429,7 +429,7 @@
 
 			$actions = array();
 
-			$misc->printTable($prep_xacts, $columns, $actions, $lang['strnodata'], null, 'database-processes-preparedxacts');
+			$misc->printTable($prep_xacts, $columns, $actions, 'database-processes-preparedxacts', $lang['strnodata']);
 		}
 
 		// Fetch the processes from the database
@@ -483,7 +483,7 @@
 		// Remove query start time for <7.4
 		if (!isset($processes->fields['query_start'])) unset($columns['start_time']);
 
-		$misc->printTable($processes, $columns, $actions, $lang['strnodata'], null, 'database-processes');
+		$misc->printTable($processes, $columns, $actions, 'database-processes', $lang['strnodata']);
 		
 		if ($isAjax) exit;
 	}
@@ -529,7 +529,7 @@
 		if (!$data->hasVirtualTransactionId()) unset($columns['vxid']);
 
 		$actions = array();
-		$misc->printTable($variables, $columns, $actions, $lang['strnodata'], null, 'database-locks');
+		$misc->printTable($variables, $columns, $actions, 'database-locks', $lang['strnodata']);
 		
 		if ($isAjax) exit;
 	}
