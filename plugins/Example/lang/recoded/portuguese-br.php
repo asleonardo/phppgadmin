@@ -21,6 +21,8 @@
 	$plugin_lang['strextraaction'] = 'A&#231;&#227;o extra';
 	$plugin_lang['strlinklevel2s1'] = 'N&#237;vel 2.1';
 	$plugin_lang['strlinklevel2s2'] = 'N&#237;vel 2.2';
+	$plugin_lang['strlinklevel2s2s1'] = 'N&#237;vel 2.2.1';
+	$plugin_lang['strlinklevel2s2s2'] = 'N&#237;vel 2.2.2';
 
 	//Paginas
 	$plugin_lang['strdesclevel2'] = 'Este &#233; o n&#237;vel 2';
