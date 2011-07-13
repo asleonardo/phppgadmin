@@ -70,7 +70,8 @@ class Example extends Plugin {
 			'show_schema_extension_level_2_2',
 			'show_schema_extension_level_2_2_1',
 			'show_schema_extension_level_2_2_2',
-			'tree'
+			'tree',
+			'show_level_2_2_tree'
 		);
 		return $actions;
 	}
@@ -138,6 +139,7 @@ class Example extends Plugin {
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2_1', 'plugin' => urlencode($this->name)),
 					'hide' => false,
+					'branch' => false,
 					'icon' => 'Plugins'
 				);
 				$tabs['show_schema_extension_level_2_2'] = array (
@@ -695,10 +697,33 @@ class Example extends Plugin {
 							$reqvars,
 							field('urlvars', array())
 						),
+			'branch' => url('plugin.php', $reqvars,
+				array (
+					'action' => 'show_level_2_2_tree',
+					'plugin' => urlencode($this->name),
+					'level' => 'show_schema_extension_level_2_2'
+				)
+			)
 		);
-		
 		$misc->printTreeXML($items, $attrs);
+		exit;
+	}
+	
+	function show_level_2_2_tree() {
+		global $misc;
 
+		$reqvars = $misc->getRequestVars('show_schema_extension_level_2_2');
+		$tabs = $misc->getNavTabs('show_schema_extension_level_2_2');
+		$items = $misc->adjustTabsForTree($tabs);
+		$attrs = array(
+			'text'   => noEscape(field('title')),
+			'icon'   => field('icon'),
+			'action' => url(field('url'),
+							$reqvars,
+							field('urlvars', array())
+						),
+		);
+		$misc->printTreeXML($items, $attrs);
 		exit;
 	}
 }
