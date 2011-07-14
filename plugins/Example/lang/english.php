@@ -13,6 +13,7 @@
 
 	//Links strings
 	$plugin_lang['strlinktoplevel'] = 'Example';
+	$plugin_lang['strlinklevel1'] = 'Level 1';
 	$plugin_lang['strlinklevel2'] = 'Level 2';
 	$plugin_lang['strlinklevel3'] = 'Level 3';
 	$plugin_lang['strlinklevel4'] = 'Level 4';
@@ -21,8 +22,6 @@
 	$plugin_lang['strextraaction'] = 'Extra action';
 	$plugin_lang['strlinklevel2s1'] = 'Level 2.1';
 	$plugin_lang['strlinklevel2s2'] = 'Level 2.2';
-	$plugin_lang['strlinklevel2s2s1'] = 'Level 2.2.1';
-	$plugin_lang['strlinklevel2s2s2'] = 'Level 2.2.2';
 
 	//Pages
 	$plugin_lang['strdesclevel2'] = 'This is the level 2';

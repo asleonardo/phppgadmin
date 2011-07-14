@@ -66,12 +66,12 @@ class Example extends Plugin {
 			'show_databases_extension',
 			'show_display_example',
 			'show_schema_extension',
+			'show_schema_extension_level_1',
+			'show_schema_extension_level_2',
 			'show_schema_extension_level_2_1',
 			'show_schema_extension_level_2_2',
-			'show_schema_extension_level_2_2_1',
-			'show_schema_extension_level_2_2_2',
 			'tree',
-			'show_level_2_2_tree'
+			'show_level_2_tree'
 		);
 		return $actions;
 	}
@@ -134,34 +134,38 @@ class Example extends Plugin {
 				);
 				break;
 			case 'show_schema_extension':
+				$tabs['show_schema_extension_level_1'] = array (
+					'title' => $this->lang['strlinklevel1'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_1', 'plugin' => urlencode($this->name)),
+					'icon' => 'Plugins'
+				);
+				$tabs['show_schema_extension_level_2'] = array (
+					'title' => $this->lang['strlinklevel2'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2', 'plugin' => urlencode($this->name)),
+					'icon' => 'Plugins',
+					'branch' => true,
+				);
+				break;
+			case 'show_schema_extension_level_2':
 				$tabs['show_schema_extension_level_2_1'] = array (
 					'title' => $this->lang['strlinklevel2s1'],
 					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2_1', 'plugin' => urlencode($this->name)),
+					'urlvars' => array(
+						'subject' => 'show_schema_extension_level_2', 
+						'action' => 'show_schema_extension_level_2_1', 
+						'plugin' => urlencode($this->name)),
 					'hide' => false,
-					'branch' => false,
 					'icon' => 'Plugins'
 				);
 				$tabs['show_schema_extension_level_2_2'] = array (
 					'title' => $this->lang['strlinklevel2s2'],
 					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2_2', 'plugin' => urlencode($this->name)),
-					'hide' => false,
-					'icon' => 'Plugins'
-				);
-				break;
-			case 'show_schema_extension_level_2_2':
-				$tabs['show_schema_extension_level_2_2_1'] = array (
-					'title' => $this->lang['strlinklevel2s2s1'],
-					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'show_schema_extension_level_2_2', 'action' => 'show_schema_extension_level_2_2_1', 'plugin' => urlencode($this->name)),
-					'hide' => false,
-					'icon' => 'Plugins'
-				);
-				$tabs['show_schema_extension_level_2_2_2'] = array (
-					'title' => $this->lang['strlinklevel2s2s2'],
-					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'show_schema_extension_level_2_2', 'action' => 'show_schema_extension_level_2_2_2', 'plugin' => urlencode($this->name)),
+					'urlvars' => array(
+						'subject' => 'show_schema_extension_level_2', 
+						'action' => 'show_schema_extension_level_2_2', 
+						'plugin' => urlencode($this->name)),
 					'hide' => false,
 					'icon' => 'Plugins'
 				);
@@ -215,7 +219,7 @@ class Example extends Plugin {
 		}
 
 		//schema extension 
-		if (in_array($subject, array('show_schema_extension', 'show_schema_extension_level_2_2'))) {
+		if (in_array($subject, array('show_schema_extension', 'show_schema_extension_level_2'))) {
 				$trail['show_schema_extension'] = array(
 				'title' => $this->lang['strschemaext'],
 				'text'  => $this->lang['strschemaext'],
@@ -226,10 +230,10 @@ class Example extends Plugin {
 			if ($subject == 'show_schema_extension') $done = true;
 
 			if (!$done) {
-				$trail['show_schema_extension_level_2_2'] = array(
-					'title' => $this->lang['strlinklevel2s2'],
-					'text'  => $this->lang['strlinklevel2s2'],
-					'url'   => "redirect.php?server=".urlencode($_REQUEST['server'])."&database=".urlencode($_REQUEST['database'])."&schema=".urlencode($_REQUEST['schema'])."&plugin=".urlencode($this->name)."&action=show_schema_extension_level_2_2&subject=show_schema_extension_level_2_2",
+				$trail['show_schema_extension_level_2'] = array(
+					'title' => $this->lang['strlinklevel2'],
+					'text'  => $this->lang['strlinklevel2'],
+					'url'   => "redirect.php?server=".urlencode($_REQUEST['server'])."&database=".urlencode($_REQUEST['database'])."&schema=".urlencode($_REQUEST['schema'])."&plugin=".urlencode($this->name)."&action=show_schema_extension_level_2&subject=show_schema_extension_level_2",
 					'icon' => 'Plugins'
 				);
 			}
@@ -569,15 +573,15 @@ class Example extends Plugin {
 		$misc->printFooter();
 	}
 
-	function show_schema_extension_level_2_1() {
+	function show_schema_extension_level_1() {
 		global $lang, $misc;
 
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
 		$misc->printTrail('show_schema_extension');
-		$misc->printTabs('show_schema_extension','show_schema_extension_level_2_1');
+		$misc->printTabs('show_schema_extension','show_schema_extension_level_1');
 
-		echo "<div>{$this->lang['strlinklevel2s1']}</div>\n";
+		echo "<div>{$this->lang['strlinklevel1']}</div>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
@@ -586,6 +590,73 @@ class Example extends Plugin {
 		$back_link.= "&amp;plugin=".urlencode($this->name);
 		$back_link.= "&amp;action=show_schema_extension";
 		$back_link.= "&amp;subject=schema\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+
+	function show_schema_extension_level_2() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail('show_schema_extension');
+		$misc->printTabs('show_schema_extension','show_schema_extension_level_2');
+
+		echo "<div>{$this->lang['strlinklevel2']}</div>\n";
+
+		//link to schema level 2.1
+		$link = "<a href=\"plugin.php?".$misc->href;
+		$link.= "&amp;plugin=".urlencode($this->name);
+		$link.= "&amp;action=show_schema_extension_level_2_1";
+		$link.= "&amp;subject=show_schema_extension_level_2\">";
+		$link.= $this->lang['strlinklevel2s1'];
+		$link.= "</a>\n";
+		echo $link;
+		echo "<br/>\n";
+
+		//link to schema level 2.2
+		$link = "<a href=\"plugin.php?".$misc->href;
+		$link.= "&amp;plugin=".urlencode($this->name);
+		$link.= "&amp;action=show_schema_extension_level_2_2";
+		$link.= "&amp;subject=show_schema_extension_level_2\">";
+		$link.= $this->lang['strlinklevel2s2'];
+		$link.= "</a>\n";
+		echo $link;
+
+		echo "<br/>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"redirect.php?".$misc->href;
+		$back_link.= "&amp;plugin=".urlencode($this->name);
+		$back_link.= "&amp;action=show_schema_extension";
+		$back_link.= "&amp;subject=schema\">";
+		$back_link.= $lang['strback'];
+		$back_link.= "</a>\n";
+		echo $back_link;
+
+		$misc->printFooter();
+	}
+
+	function show_schema_extension_level_2_1() {
+		global $lang, $misc;
+
+		$misc->printHeader($lang['strdatabase']);
+		$misc->printBody();
+		$misc->printTrail('show_schema_extension_level_2');
+		$misc->printTabs('show_schema_extension_level_2','show_schema_extension_level_2_1');
+
+		echo "<div>{$this->lang['strlinklevel2s1']}</div>\n";
+
+		echo "<br/>\n";
+		echo "<br/>\n";
+
+		$back_link = "<a href=\"redirect.php?".$misc->href;
+		$back_link.= "&amp;plugin=".urlencode($this->name);
+		$back_link.= "&amp;action=show_schema_extension_level_2";
+		$back_link.= "&amp;subject=show_schema_extension\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
 		echo $back_link;
@@ -598,84 +669,17 @@ class Example extends Plugin {
 
 		$misc->printHeader($lang['strdatabase']);
 		$misc->printBody();
-		$misc->printTrail('show_schema_extension');
-		$misc->printTabs('show_schema_extension','show_schema_extension_level_2_2');
+		$misc->printTrail('show_schema_extension_level_2');
+		$misc->printTabs('show_schema_extension_level_2','show_schema_extension_level_2_2');
 
 		echo "<div>{$this->lang['strlinklevel2s2']}</div>\n";
 
-		//link to schema level 2.2.1
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_schema_extension_level_2_2_1";
-		$link.= "&amp;subject=show_schema_extension_level_2_2\">";
-		$link.= $this->lang['strlinklevel2s2s1'];
-		$link.= "</a>\n";
-		echo $link;
-		echo "<br/>\n";
-
-		//link to schema level 2.2.2
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_schema_extension_level_2_2_2";
-		$link.= "&amp;subject=show_schema_extension_level_2_2\">";
-		$link.= $this->lang['strlinklevel2s2s2'];
-		$link.= "</a>\n";
-		echo $link;
-
 		echo "<br/>\n";
 		echo "<br/>\n";
 
 		$back_link = "<a href=\"redirect.php?".$misc->href;
 		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_schema_extension";
-		$back_link.= "&amp;subject=schema\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
-
-		$misc->printFooter();
-	}
-
-	function show_schema_extension_level_2_2_1() {
-		global $lang, $misc;
-
-		$misc->printHeader($lang['strdatabase']);
-		$misc->printBody();
-		$misc->printTrail('show_schema_extension_level_2_2');
-		$misc->printTabs('show_schema_extension_level_2_2','show_schema_extension_level_2_2_1');
-
-		echo "<div>{$this->lang['strlinklevel2s2s1']}</div>\n";
-
-		echo "<br/>\n";
-		echo "<br/>\n";
-
-		$back_link = "<a href=\"redirect.php?".$misc->href;
-		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_schema_extension_level_2_2";
-		$back_link.= "&amp;subject=show_schema_extension\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
-
-		$misc->printFooter();
-	}
-
-	function show_schema_extension_level_2_2_2() {
-		global $lang, $misc;
-
-		$misc->printHeader($lang['strdatabase']);
-		$misc->printBody();
-		$misc->printTrail('show_schema_extension_level_2_2');
-		$misc->printTabs('show_schema_extension_level_2_2','show_schema_extension_level_2_2_2');
-
-		echo "<div>{$this->lang['strlinklevel2s2s2']}</div>\n";
-
-		echo "<br/>\n";
-		echo "<br/>\n";
-
-		$back_link = "<a href=\"redirect.php?".$misc->href;
-		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_schema_extension_level_2_2";
+		$back_link.= "&amp;action=show_schema_extension_level_2";
 		$back_link.= "&amp;subject=show_schema_extension\">";
 		$back_link.= $lang['strback'];
 		$back_link.= "</a>\n";
@@ -699,9 +703,9 @@ class Example extends Plugin {
 						),
 			'branch' => url('plugin.php', $reqvars,
 				array (
-					'action' => 'show_level_2_2_tree',
+					'action' => 'show_level_2_tree',
 					'plugin' => urlencode($this->name),
-					'level' => 'show_schema_extension_level_2_2'
+					'level' => 'show_schema_extension_level_2'
 				)
 			)
 		);
@@ -709,11 +713,11 @@ class Example extends Plugin {
 		exit;
 	}
 	
-	function show_level_2_2_tree() {
+	function show_level_2_tree() {
 		global $misc;
 
 		$reqvars = $misc->getRequestVars('show_schema_extension_level_2_2');
-		$tabs = $misc->getNavTabs('show_schema_extension_level_2_2');
+		$tabs = $misc->getNavTabs('show_schema_extension_level_2');
 		$items = $misc->adjustTabsForTree($tabs);
 		$attrs = array(
 			'text'   => noEscape(field('title')),
