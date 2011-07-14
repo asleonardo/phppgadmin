@@ -71,7 +71,7 @@ class Example extends Plugin {
 			'show_schema_extension_level_2_1',
 			'show_schema_extension_level_2_2',
 			'tree',
-			'show_level_2_tree'
+			'sub_tree'
 		);
 		return $actions;
 	}
@@ -137,15 +137,24 @@ class Example extends Plugin {
 				$tabs['show_schema_extension_level_1'] = array (
 					'title' => $this->lang['strlinklevel1'],
 					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_1', 'plugin' => urlencode($this->name)),
-					'icon' => 'Plugins'
+					'urlvars' => array(
+						'subject' => 'show_schema_extension', 
+						'action' => 'show_schema_extension_level_1', 
+						'plugin' => urlencode($this->name)
+					),
+					'level' => 'show_schema_extension_level_1',
+					'icon' => 'Plugins',
 				);
 				$tabs['show_schema_extension_level_2'] = array (
 					'title' => $this->lang['strlinklevel2'],
 					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'show_schema_extension', 'action' => 'show_schema_extension_level_2', 'plugin' => urlencode($this->name)),
+					'urlvars' => array(
+						'subject' => 'show_schema_extension', 
+						'action' => 'show_schema_extension_level_2', 
+						'plugin' => urlencode($this->name)
+					),
+					'level' => 'show_schema_extension_level_2',
 					'icon' => 'Plugins',
-					'branch' => true,
 				);
 				break;
 			case 'show_schema_extension_level_2':
@@ -155,9 +164,9 @@ class Example extends Plugin {
 					'urlvars' => array(
 						'subject' => 'show_schema_extension_level_2', 
 						'action' => 'show_schema_extension_level_2_1', 
-						'plugin' => urlencode($this->name)),
-					'hide' => false,
-					'icon' => 'Plugins'
+						'plugin' => urlencode($this->name)
+					),
+					'icon' => 'Plugins',
 				);
 				$tabs['show_schema_extension_level_2_2'] = array (
 					'title' => $this->lang['strlinklevel2s2'],
@@ -165,9 +174,9 @@ class Example extends Plugin {
 					'urlvars' => array(
 						'subject' => 'show_schema_extension_level_2', 
 						'action' => 'show_schema_extension_level_2_2', 
-						'plugin' => urlencode($this->name)),
-					'hide' => false,
-					'icon' => 'Plugins'
+						'plugin' => urlencode($this->name)
+					),
+					'icon' => 'Plugins',
 				);
 				break;
 		}
@@ -694,38 +703,43 @@ class Example extends Plugin {
 		$reqvars = $misc->getRequestVars('show_schema_extension');
 		$tabs = $misc->getNavTabs('show_schema_extension');
 		$items = $misc->adjustTabsForTree($tabs);
+		
 		$attrs = array(
 			'text'   => noEscape(field('title')),
 			'icon'   => field('icon'),
-			'action' => url(field('url'),
-							$reqvars,
-							field('urlvars', array())
-						),
-			'branch' => url('plugin.php', $reqvars,
+			'action' => url(
+				field('url'),
+				$reqvars,
+				field('urlvars', array())
+			),
+			'branch' => url('plugin.php',
+				$reqvars,
 				array (
-					'action' => 'show_level_2_tree',
+					'action' => 'sub_tree',
 					'plugin' => urlencode($this->name),
-					'level' => 'show_schema_extension_level_2'
+					'level' => field('level')
 				)
 			)
 		);
+		
 		$misc->printTreeXML($items, $attrs);
 		exit;
 	}
-	
-	function show_level_2_tree() {
+
+	function sub_tree() {
 		global $misc;
 
-		$reqvars = $misc->getRequestVars('show_schema_extension_level_2_2');
-		$tabs = $misc->getNavTabs('show_schema_extension_level_2');
+		$reqvars = $misc->getRequestVars($_REQUEST['level']);
+		$tabs = $misc->getNavTabs($_REQUEST['level']);
 		$items = $misc->adjustTabsForTree($tabs);
 		$attrs = array(
-			'text'   => noEscape(field('title')),
-			'icon'   => field('icon'),
-			'action' => url(field('url'),
-							$reqvars,
-							field('urlvars', array())
-						),
+			'text' => noEscape(field('title')),
+			'icon' => field('icon'),
+			'action' => url(
+				field('url'),
+				$reqvars,
+				field('urlvars', array())
+			),
 		);
 		$misc->printTreeXML($items, $attrs);
 		exit;
