@@ -516,10 +516,11 @@ class Example extends Plugin {
 		echo "<div>{$this->lang['strdbext']}</div>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"all_db.php?{$misc->href}\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array (
+			'url' => 'all_db.php',
+			'urlvars' => array ('server' => field('server'))
+		);
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
 
 		$misc->printFooter();
 	}
