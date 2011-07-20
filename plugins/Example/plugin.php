@@ -627,34 +627,42 @@ class Example extends Plugin {
 		echo "<div>{$this->lang['strlinklevel2']}</div>\n";
 
 		//link to schema level 2.1
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_schema_extension_level_2_1";
-		$link.= "&amp;subject=show_schema_extension_level_2\">";
-		$link.= $this->lang['strlinklevel2s1'];
-		$link.= "</a>\n";
-		echo $link;
+		$level2_1 = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'plugin' => $this->name,
+				'subject' => 'show_schema_extension_level_2', 
+				'action' => 'show_schema_extension_level_2_1'
+			),
+		);
+		echo "<a {$misc->printActionUrl($level2_1, $_REQUEST, 'href')}> {$this->lang['strlinklevel2s1']}</a>\n";
 		echo "<br/>\n";
 
 		//link to schema level 2.2
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_schema_extension_level_2_2";
-		$link.= "&amp;subject=show_schema_extension_level_2\">";
-		$link.= $this->lang['strlinklevel2s2'];
-		$link.= "</a>\n";
-		echo $link;
-
+		$level2_2 = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'plugin' => $this->name,
+				'subject' => 'show_schema_extension_level_2',
+				'action' => 'show_schema_extension_level_2_2'
+			),
+		);
+		echo "<a {$misc->printActionUrl($level2_2, $_REQUEST, 'href')}> {$this->lang['strlinklevel2s2']}</a>\n";
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"redirect.php?".$misc->href;
-		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_schema_extension";
-		$back_link.= "&amp;subject=schema\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'plugin' => $this->name,
+				'subject' => 'schema', 
+				'action' => 'show_schema_extension'
+			),
+		);
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
 
 		$misc->printFooter();
 	}
