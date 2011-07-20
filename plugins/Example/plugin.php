@@ -469,13 +469,15 @@ class Example extends Plugin {
 		echo "<div>{$this->lang['strdesclevel4']}</div>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"plugin.php?".$misc->href;
-		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_level_3";
-		$back_link.= "&amp;subject=show_level_2\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'plugin' => $this->name,
+				'subject' => 'show_level_2',
+				'action' => 'show_level_3'
+			),
+		);
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
 
 		$misc->printFooter();
 	}
