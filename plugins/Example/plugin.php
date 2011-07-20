@@ -493,12 +493,16 @@ class Example extends Plugin {
 		echo "<div>{$this->lang['strdisplayext']}</div>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"display.php?{$misc->href}";
-		$back_link.= "&amp;table=".urlencode($_REQUEST['table']);
-		$back_link.= "&amp;subject=table\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array (
+			'url' => 'display.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'table' => field('table'),
+				'subject' => 'table'
+			),
+		);
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		
 
 		$misc->printFooter();
 	}
