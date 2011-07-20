@@ -398,24 +398,28 @@ class Example extends Plugin {
 		echo "<br/>\n";
 
 		//level 3
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_level_3";
-		$link.= "&amp;subject=show_level_2\">";
-		$link.= $this->lang['strlinklevel3'];
-		$link.= "</a>\n";
-		echo $link;
+		$level3 = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'plugin' => $this->name,
+				'subject' => 'show_level_2',
+				'action' => 'show_level_3'
+			),
+		);
+		echo "<a {$misc->printActionUrl($level3, $_REQUEST, 'href')}> {$this->lang['strlinklevel3']}</a>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"plugin.php?".$misc->href;
-		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_page"; 
-		$back_link.= "&amp;subject=server\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'plugin' => $this->name,
+				'subject' => 'server',
+				'action' => 'show_page'
+			),
+		);
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
 
 		$misc->printFooter();
 	}
