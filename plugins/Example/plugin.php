@@ -560,24 +560,31 @@ class Example extends Plugin {
 		echo "<div>{$this->lang['strschemaext']}</div>\n";
 		echo "<br/>\n";
 
-		//link to schema level 2.1
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_schema_extension_level_2_1";
-		$link.= "&amp;subject=show_schema_extension\">";
-		$link.= $this->lang['strlinklevel2s1'];
-		$link.= "</a>\n";
-		echo $link;
-		echo "<br/>\n";
+		//link to schema level 1
+		$level1 = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'plugin' => $this->name,
+				'subject' => 'show_schema_extension', 
+				'action' => 'show_schema_extension_level_1'
+			),
+		);
+		echo "<a {$misc->printActionUrl($level1, $_REQUEST, 'href')}> {$this->lang['strlinklevel1']}</a>\n";
 
-		//link to schema level 2.2
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_schema_extension_level_2_2";
-		$link.= "&amp;subject=show_schema_extension\">";
-		$link.= $this->lang['strlinklevel2s2'];
-		$link.= "</a>\n";
-		echo $link;
+		echo "<br />\n";
+
+		//link to schema level 2
+		$level2 = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'plugin' => $this->name,
+				'subject' => 'show_schema_extension', 
+				'action' => 'show_schema_extension_level_2'
+			),
+		);
+		echo "<a {$misc->printActionUrl($level2, $_REQUEST, 'href')}> {$this->lang['strlinklevel2']}</a>\n";
 
 		$misc->printFooter();
 	}
