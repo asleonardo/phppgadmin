@@ -602,13 +602,16 @@ class Example extends Plugin {
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"redirect.php?".$misc->href;
-		$back_link.= "&amp;plugin=".urlencode($this->name);
-		$back_link.= "&amp;action=show_schema_extension";
-		$back_link.= "&amp;subject=schema\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'schema' => field('schema'),
+				'plugin' => $this->name,
+				'subject' => 'schema',
+				'action' => 'show_schema_extension'
+			),
+		);
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
 
 		$misc->printFooter();
 	}
