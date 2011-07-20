@@ -365,21 +365,21 @@ class Example extends Plugin {
 		echo "<br/>\n";
 
 		//link to level 2
-		$link = "<a href=\"plugin.php?".$misc->href;
-		$link.= "&amp;plugin=".urlencode($this->name);
-		$link.= "&amp;action=show_level_2";
-		$link.= "&amp;subject=show_page\">";
-		$link.= $this->lang['strlinklevel2'];
-		$link.= "</a>\n";
-		echo $link;
+		$level3 = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'plugin' => $this->name,
+				'subject' => 'show_page',
+				'action' => 'show_level_2'
+			),
+		);
+		echo "<a {$misc->printActionUrl($level3, $_REQUEST, 'href')}> {$this->lang['strlinklevel2']}</a>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
 
-		$back_link = "<a href=\"servers.php\">";
-		$back_link.= $lang['strback'];
-		$back_link.= "</a>\n";
-		echo $back_link;
+		$back = array ('url' => 'servers.php');
+		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
 
 		$misc->printFooter();
 	}
