@@ -260,27 +260,33 @@ class Example extends Plugin {
 		switch ($plugin_functions_parameters['place']) {
 
 			case 'display-browse':
-				$href = "plugin.php?".$misc->href;
-				$href.= "&amp;plugin=".urlencode($this->name);
-				$href.= "&amp;subject=show_page";
-				$href.= "&amp;action=show_display_extension";
-				$href.= "&amp;database=".urlencode($_REQUEST['database']);
-				$href.= "&amp;table=".urlencode($_REQUEST['table']);
-
+				$link = array (
+					'url' => 'plugin.php',
+					'urlvars' => array (
+						'plugin' => $this->name,
+						'subject' => 'show_page',
+						'action' => 'show_display_extension',
+						'database' => field('database'),
+						'table' => field('table'),
+					),
+				);
 				$navlinks[] = array (
-					'attr'=> array ('href' => $href),
+					'attr'=> array('href' => $misc->printActionUrl($link, $_REQUEST)),
 					'content' => $this->lang['strdisplayext']
 				);
 				break;
 
 			case 'all_db-databases':
-				$href = "plugin.php?".$misc->href;
-				$href.= "&amp;plugin=".urlencode($this->name);
-				$href.= "&amp;subject=show_page";
-				$href.= "&amp;action=show_databases_extension";
-
+				$link = array (
+					'url' => 'plugin.php',
+					'urlvars' => array (
+						'plugin' => $this->name,
+						'subject' => 'show_page',
+						'action' => 'show_databases_extension'
+					),
+				);
 				$navlinks[] = array (
-					'attr'=> array ('href' => $href),
+					'attr'=> array('href' => $misc->printActionUrl($link, $_REQUEST)),
 					'content' => $this->lang['strdbext']
 				);
 				break;
