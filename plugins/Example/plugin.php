@@ -330,16 +330,20 @@ class Example extends Plugin {
 		global $misc;
 
 		$buttons = array();
-		
-		$href = "plugin.php?".$misc->href;
-		$href.= "&amp;plugin=".urlencode($this->name);
-		$href.= "&amp;subject=show_page";
-		$href.= "&amp;action=show_display_example";
-		$href.= "&amp;table=".urlencode($_REQUEST['table']);
 
+		$link = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'plugin' => $this->name,
+				'table' => field('table'),
+				'subject' => 'show_page',
+				'action' => 'show_display_example'
+			),
+		);
+		
 		$buttons['extraaction'] = array (
 			'title' => $this->lang['strextraaction'],
-			'url'   => $href,
+			'url' => $misc->printActionUrl($link, $_REQUEST),
 		);
 
 		if (count($buttons) > 0) {
