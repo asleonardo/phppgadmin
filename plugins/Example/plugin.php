@@ -303,15 +303,19 @@ class Example extends Plugin {
 		switch ($plugin_functions_parameters['place']) {
 
 			case 'all_db-databases':
-				$href = "plugin.php?".$misc->href;
-				$href.= "&amp;plugin=".urlencode($this->name);
-				$href.= "&amp;subject=show_page";
-				$href.= "&amp;action=show_databases_extension&amp;";
+				$link = array (
+					'url' => 'plugin.php',
+					'urlvars' => array (
+						'plugin' => $this->name,
+						'subject' => 'show_page',
+						'action' => 'show_databases_extension',
+					)
+				);
 
 				$actionbuttons['extraaction'] = array (
 					'title' => $this->lang['strextraaction'],
-					'url'   => $href,
-					'vars'  => array('database' => 'datname')
+					'url' => $misc->printActionUrl($link, $_REQUEST)."&amp;",
+					'vars' => array('database' => 'datname')
 				);
 				break;
 		}
