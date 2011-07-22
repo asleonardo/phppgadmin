@@ -83,14 +83,18 @@ class Example extends Plugin {
 	function add_plugin_toplinks(&$plugin_functions_parameters) {
 		global $misc;
 
-		$href = "plugin.php?".$misc->href;
-		$href.= "&plugin=".urlencode($this->name);
-		$href.= "&subject=server";
-		$href.= "&action=show_page";
+		$link = array (
+			'url' => 'plugin.php',
+			'urlvars' => array (
+				'plugin' => $this->name,
+				'subject' => 'server',
+				'action' => 'show_page'
+			),
+		);
 
 		$toplink = array (
 			'attr' => array (
-				'href' => $href,
+				'href' => $misc->printActionUrl($link, $_REQUEST),
 				'class' => 'toplink'
 			),
 			'content' => $this->lang['strdescription']

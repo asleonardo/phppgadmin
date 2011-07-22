@@ -1095,7 +1095,7 @@
 				foreach ($toplinks as $link) {
 					$tag = "\t<li><a";
 					foreach ($link['attr'] as $attr => $value) {
-						$tag.= " ".htmlentities($attr)."=\"".htmlentities($value)."\"";
+						$tag.= " ".htmlentities($attr)."=\"".$value."\"";
 					}
 					$tag.=">";
 					$tag.= $link['content'];
