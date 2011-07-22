@@ -201,20 +201,36 @@ class Example extends Plugin {
 		}
 
 		if (in_array($subject, array('show_page', 'show_level_2', 'show_level_3'))) {
+			$url = array (
+				'url' => 'plugin.php',
+				'urlvars' => array (
+					'plugin' => $this->name,
+					'subject' => 'show_page',
+					'action' => 'show_page'
+				)
+			);
 			$trail['show_page'] = array(
 				'title' => $this->lang['strlinktoplevel'],
 				'text'  => $this->lang['strlinktoplevel'],
-				'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_page&subject=server",
+				'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
 				'icon' => 'Plugins'
 			);
 
 			if ($subject == 'show_page') $done = true;
 
 			if (!$done) {
+				$url = array (
+				'url' => 'plugin.php',
+				'urlvars' => array (
+					'plugin' => $this->name,
+					'subject' => 'show_level_2',
+					'action' => 'show_level_2'
+				)
+			);
 				$trail['show_level_2'] = array(
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
-					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_level_2&subject=show_page",
+					'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
 					'icon' => array('plugin' => 'Example', 'image' => 'Level2')
 				);
 			}
@@ -222,10 +238,18 @@ class Example extends Plugin {
 			if ($subject == 'show_level_2') $done = true;
 
 			if (!$done) {
+				$url = array (
+					'url' => 'plugin.php',
+					'urlvars' => array (
+						'plugin' => $this->name,
+						'subject' => 'show_level_3',
+						'action' => 'show_level_3'
+					)
+				);
 				$trail['show_level_3'] = array(
 					'title' => $this->lang['strlinklevel3'],
 					'text'  => $this->lang['strlinklevel3'],
-					'url'   => "plugin.php?".$misc->href."&plugin=".urlencode($this->name)."&action=show_level_3&subject=show_level_2",
+					'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
 					'icon' => array('plugin' => 'Example', 'image' => 'Level3')
 				);
 			}
@@ -233,20 +257,42 @@ class Example extends Plugin {
 
 		//schema extension 
 		if (in_array($subject, array('show_schema_extension', 'show_schema_extension_level_2'))) {
+				$url = array (
+					'url' => 'redirect.php',
+					'urlvars' => array (
+						'server' => field('server'),
+						'database' => field('database'),
+						'schema' => field('schema'),
+						'plugin' => $this->name,
+						'subject' => 'show_schema_extension',
+						'action' => 'show_schema_extension'
+					)
+				);
 				$trail['show_schema_extension'] = array(
 				'title' => $this->lang['strschemaext'],
 				'text'  => $this->lang['strschemaext'],
-				'url'   => "redirect.php?server=".urlencode($_REQUEST['server'])."&database=".urlencode($_REQUEST['database'])."&schema=".urlencode($_REQUEST['schema'])."&plugin=".urlencode($this->name)."&action=show_schema_extension&subject=show_schema_extension",
+				'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
 				'icon' => 'Plugins'
 			);
 
 			if ($subject == 'show_schema_extension') $done = true;
 
 			if (!$done) {
+				$url = array (
+					'url' => 'redirect.php',
+					'urlvars' => array (
+						'server' => field('server'),
+						'database' => field('database'),
+						'schema' => field('schema'),
+						'plugin' => $this->name,
+						'subject' => 'show_schema_extension_level_2',
+						'action' => 'show_schema_extension_level_2'
+					)
+				);
 				$trail['show_schema_extension_level_2'] = array(
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
-					'url'   => "redirect.php?server=".urlencode($_REQUEST['server'])."&database=".urlencode($_REQUEST['database'])."&schema=".urlencode($_REQUEST['schema'])."&plugin=".urlencode($this->name)."&action=show_schema_extension_level_2&subject=show_schema_extension_level_2",
+					'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)), 
 					'icon' => 'Plugins'
 				);
 			}
