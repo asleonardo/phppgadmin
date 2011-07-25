@@ -1095,10 +1095,10 @@
 				foreach ($toplinks as $link) {
 					$tag = "\t<li><a";
 					foreach ($link['attr'] as $attr => $value) {
-						$tag.= " ".htmlentities($attr)."=\"".$value."\"";
+						$tag.= " ".htmlentities($attr)."=\"".htmlentities($value)."\"";
 					}
 					$tag.=">";
-					$tag.= $link['content'];
+					$tag.= htmlentities($link['content']);
 					$tag.="</a></li>\n";
 
 					echo $tag;
@@ -1134,10 +1134,10 @@
 
 			$server_info = $this->getServerInfo();
 
-			$sql_url = "sqledit.php?".$this->href;
-			$sql_window_id = htmlspecialchars('sqledit:'.$_REQUEST['server']);
-			$history_url = "history.php?{$this->href}&action=pophistory";
-			$history_window_id = htmlspecialchars('history:'.$_REQUEST['server']);
+			$sql_url = "sqledit.php?".html_entity_decode($this->href);
+			$sql_window_id = "sqledit:".$_REQUEST['server'];
+			$history_url = "history.php?".html_entity_decode($this->href)."&action=pophistory";
+			$history_window_id = "history:".$_REQUEST['server'];
 			$logout_shared = isset($_SESSION['sharedUsername']) ? "return confirm('{$lang['strconfdropcred']})" : "";
 
 			$toplinks = array (
@@ -1154,7 +1154,7 @@
 						'href' => $history_url,
 						'onclick' => "window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;",
 					),
-					'content' => $lang['strhistory']
+					'content' => html_entity_decode($lang['strhistory'])
 				),
 				array (
 					'attr' => array (
@@ -1166,7 +1166,7 @@
 				),
 				array(
 					'attr' => array (
-						'href' => "servers.php?action=logout&logoutServer=".htmlspecialchars($server_info['host']).":".htmlspecialchars($server_info['port']).":".htmlspecialchars($server_info['sslmode']).$logout_shared,
+						'href' => "servers.php?action=logout&logoutServer=".$server_info['host'].":".($server_info['port']).":".($server_info['sslmode']).$logout_shared,
 						'onclick' => $logout_shared,
 					),
 					'content' => $lang['strlogout']
