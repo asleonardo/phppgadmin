@@ -1214,9 +1214,13 @@
 				foreach ($navlinks as $navlink) {
 					$tag = "\t<li><a ";
 					foreach ($navlink['attr'] as $attr => $value) {
-						$tag.= htmlspecialchars($attr)."=\"".$value."\"";
+						if ($attr == 'href') {
+							$tag.= $this->printActionUrl($value, $_REQUEST, 'href');
+						} else {
+							$tag.= htmlentities($attr)."=\"".htmlentities($value)."\"";
+						}
 					}
-					$tag.= ">".$navlink['content']."</a></li>\n";
+					$tag.= ">".htmlentities($navlink['content'])."</a></li>\n";
 					echo $tag;
 				}
 				echo "</ul>\n";

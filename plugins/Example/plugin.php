@@ -322,21 +322,22 @@ class Example extends Plugin {
 				);
 				$navlinks[] = array (
 					'attr'=> array('href' => $misc->printActionUrl($link, $_REQUEST)),
-					'content' => $this->lang['strdisplayext']
+					'content' => html_entity_decode($this->lang['strdisplayext'])
 				);
 				break;
 
 			case 'all_db-databases':
-				$link = array (
-					'url' => 'plugin.php',
-					'urlvars' => array (
-						'plugin' => $this->name,
-						'subject' => 'show_page',
-						'action' => 'show_databases_extension'
-					),
-				);
 				$navlinks[] = array (
-					'attr'=> array('href' => $misc->printActionUrl($link, $_REQUEST)),
+					'attr'=> array (
+						'href' => array (
+							'url' => 'plugin.php',
+							'urlvars' => array (
+								'plugin' => $this->name,
+								'subject' => 'show_page',
+								'action' => 'show_databases_extension'
+							)
+						)
+					),
 					'content' => $this->lang['strdbext']
 				);
 				break;

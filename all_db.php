@@ -429,8 +429,16 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "all_db.php?action=create&amp;{$misc->href}"),
-				'content' => $lang['strcreatedatabase']
+				'attr'=> array (
+					'href' => array (
+						'url' => 'all_db.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server')
+						)
+					)
+				),
+			'content' => $lang['strcreatedatabase']
 			)
 		);
 		$misc->printNavLinks($navlinks, 'all_db-databases');
