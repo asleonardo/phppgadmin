@@ -1135,9 +1135,9 @@
 			$server_info = $this->getServerInfo();
 
 			$sql_url = "sqledit.php?".$this->href;
-			$sql_window_id = "sqledit:".$_REQUEST['server'];
+			$sql_window_id = htmlentities("sqledit:".$_REQUEST['server']);
 			$history_url = "history.php?".$this->href."&action=pophistory";
-			$history_window_id = "history:".$_REQUEST['server'];
+			$history_window_id = htmlentities("history:".$_REQUEST['server']);
 			$logout_shared = isset($_SESSION['sharedUsername']) ? "return confirm('{$lang['strconfdropcred']})" : "";
 
 			$toplinks = array (
@@ -1166,7 +1166,7 @@
 				),
 				array(
 					'attr' => array (
-						'href' => "servers.php?action=logout&logoutServer=".$server_info['host'].":".($server_info['port']).":".($server_info['sslmode']).$logout_shared,
+						'href' => "servers.php?action=logout&logoutServer=".htmlentities($server_info['host']).":".htmlentities($server_info['port']).":".htmlentities($server_info['sslmode']).$logout_shared,
 						'onclick' => $logout_shared,
 					),
 					'content' => $lang['strlogout']
