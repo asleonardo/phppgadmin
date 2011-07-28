@@ -212,7 +212,7 @@ class Example extends Plugin {
 			$trail['show_page'] = array(
 				'title' => $this->lang['strlinktoplevel'],
 				'text'  => $this->lang['strlinktoplevel'],
-				'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
+				'url'   => $misc->printActionUrl($url, $_REQUEST),
 				'icon' => 'Plugins'
 			);
 
@@ -230,7 +230,7 @@ class Example extends Plugin {
 				$trail['show_level_2'] = array(
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
-					'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
+					'url'   => $misc->printActionUrl($url, $_REQUEST),
 					'icon' => array('plugin' => 'Example', 'image' => 'Level2')
 				);
 			}
@@ -249,7 +249,7 @@ class Example extends Plugin {
 				$trail['show_level_3'] = array(
 					'title' => $this->lang['strlinklevel3'],
 					'text'  => $this->lang['strlinklevel3'],
-					'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
+					'url'   => $misc->printActionUrl($url, $_REQUEST),
 					'icon' => array('plugin' => 'Example', 'image' => 'Level3')
 				);
 			}
@@ -271,7 +271,7 @@ class Example extends Plugin {
 				$trail['show_schema_extension'] = array(
 				'title' => $this->lang['strschemaext'],
 				'text'  => $this->lang['strschemaext'],
-				'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)),
+				'url'   => $misc->printActionUrl($url, $_REQUEST),
 				'icon' => 'Plugins'
 			);
 
@@ -292,7 +292,7 @@ class Example extends Plugin {
 				$trail['show_schema_extension_level_2'] = array(
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
-					'url'   => html_entity_decode($misc->printActionUrl($url, $_REQUEST)), 
+					'url'   => $misc->printActionUrl($url, $_REQUEST), 
 					'icon' => 'Plugins'
 				);
 			}
@@ -322,7 +322,7 @@ class Example extends Plugin {
 				);
 				$navlinks[] = array (
 					'attr'=> array('href' => $misc->printActionUrl($link, $_REQUEST)),
-					'content' => html_entity_decode($this->lang['strdisplayext'])
+					'content' => $this->lang['strdisplayext']
 				);
 				break;
 
