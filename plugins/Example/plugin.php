@@ -438,13 +438,13 @@ class Example extends Plugin {
 				'action' => 'show_level_2'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level3, $_REQUEST, 'href')}> {$this->lang['strlinklevel2']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level3, $_REQUEST, 'href').">".$this->lang['strlinklevel2']."</a>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
 
 		$back = array ('url' => 'servers.php');
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -459,7 +459,7 @@ class Example extends Plugin {
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
 
-		echo "<div>{$this->lang['strdesclevel2']}</div>\n";
+		echo "<div>".$this->lang['strdesclevel2']."</div>\n";
 		echo "<br/>\n";
 
 		//level 3
@@ -471,7 +471,7 @@ class Example extends Plugin {
 				'action' => 'show_level_3'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level3, $_REQUEST, 'href')}> {$this->lang['strlinklevel3']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level3, $_REQUEST, 'href').">".$this->lang['strlinklevel3']."</a>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
@@ -484,7 +484,7 @@ class Example extends Plugin {
 				'action' => 'show_page'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -499,7 +499,7 @@ class Example extends Plugin {
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
 
-		echo "<div>{$this->lang['strdesclevel3']}</div>";
+		echo "<div>".$this->lang['strdesclevel3']."</div>";
 		echo "<br/>\n";
 
 		//level 4
@@ -511,7 +511,7 @@ class Example extends Plugin {
 				'action' => 'show_level_4'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level4, $_REQUEST, 'href')}> {$this->lang['strlinklevel4']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level4, $_REQUEST, 'href').">".$this->lang['strlinklevel4']."</a>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
@@ -524,7 +524,7 @@ class Example extends Plugin {
 				'action' => 'show_level_2'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -539,7 +539,7 @@ class Example extends Plugin {
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
 
-		echo "<div>{$this->lang['strdesclevel4']}</div>\n";
+		echo "<div>".$this->lang['strdesclevel4']."</div>\n";
 		echo "<br/>\n";
 
 		$back = array (
@@ -550,7 +550,7 @@ class Example extends Plugin {
 				'action' => 'show_level_3'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -565,7 +565,7 @@ class Example extends Plugin {
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
 
-		echo "<div>{$this->lang['strdisplayext']}</div>\n";
+		echo "<div>".$this->lang['strdisplayext']."</div>\n";
 		echo "<br/>\n";
 
 		$back = array (
@@ -576,7 +576,7 @@ class Example extends Plugin {
 				'subject' => 'table'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 		
 
 		$misc->printFooter();
@@ -592,14 +592,14 @@ class Example extends Plugin {
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
 
-		echo "<div>{$this->lang['strdbext']}</div>\n";
+		echo "<div>".$this->lang['strdbext']."</div>\n";
 		echo "<br/>\n";
 
 		$back = array (
 			'url' => 'all_db.php',
 			'urlvars' => array ('server' => field('server'))
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -614,7 +614,7 @@ class Example extends Plugin {
 		$misc->printBody();
 		$misc->printTrail($_REQUEST['subject']);
 
-		echo "<div>{$this->lang['strextraaction']}</div>\n";
+		echo "<div>".$this->lang['strextraaction']."</div>\n";
 		echo "<br/>\n";
 
 		$back = array (
@@ -625,7 +625,7 @@ class Example extends Plugin {
 				'subject' => 'table'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 
 		$misc->printFooter();
@@ -641,7 +641,7 @@ class Example extends Plugin {
 		$misc->printTrail('schema');
 		$misc->printTabs('schema','show_schema_extension');
 
-		echo "<div>{$this->lang['strschemaext']}</div>\n";
+		echo "<div>".$this->lang['strschemaext']."</div>\n";
 		echo "<br/>\n";
 
 		//link to schema level 1
@@ -654,7 +654,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension_level_1'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level1, $_REQUEST, 'href')}> {$this->lang['strlinklevel1']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level1, $_REQUEST, 'href').">".$this->lang['strlinklevel1']."</a>\n";
 
 		echo "<br />\n";
 
@@ -668,7 +668,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension_level_2'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level2, $_REQUEST, 'href')}> {$this->lang['strlinklevel2']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level2, $_REQUEST, 'href').">".$this->lang['strlinklevel2']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -681,7 +681,7 @@ class Example extends Plugin {
 		$misc->printTrail('show_schema_extension');
 		$misc->printTabs('show_schema_extension','show_schema_extension_level_1');
 
-		echo "<div>{$this->lang['strlinklevel1']}</div>\n";
+		echo "<div>".$this->lang['strlinklevel1']."</div>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
@@ -695,7 +695,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -708,7 +708,7 @@ class Example extends Plugin {
 		$misc->printTrail('show_schema_extension');
 		$misc->printTabs('show_schema_extension','show_schema_extension_level_2');
 
-		echo "<div>{$this->lang['strlinklevel2']}</div>\n";
+		echo "<div>".$this->lang['strlinklevel2']."</div>\n";
 
 		//link to schema level 2.1
 		$level2_1 = array (
@@ -720,7 +720,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension_level_2_1'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level2_1, $_REQUEST, 'href')}> {$this->lang['strlinklevel2s1']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level2_1, $_REQUEST, 'href').">".$this->lang['strlinklevel2s1']."</a>\n";
 		echo "<br/>\n";
 
 		//link to schema level 2.2
@@ -733,7 +733,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension_level_2_2'
 			),
 		);
-		echo "<a {$misc->printActionUrl($level2_2, $_REQUEST, 'href')}> {$this->lang['strlinklevel2s2']}</a>\n";
+		echo "<a ".$misc->printActionUrl($level2_2, $_REQUEST, 'href').">".$this->lang['strlinklevel2s2']."</a>\n";
 		echo "<br/>\n";
 		echo "<br/>\n";
 
@@ -746,7 +746,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -759,7 +759,7 @@ class Example extends Plugin {
 		$misc->printTrail('show_schema_extension_level_2');
 		$misc->printTabs('show_schema_extension_level_2','show_schema_extension_level_2_1');
 
-		echo "<div>{$this->lang['strlinklevel2s1']}</div>\n";
+		echo "<div>".$this->lang['strlinklevel2s1']."</div>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
@@ -773,7 +773,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension_level_2'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
@@ -786,7 +786,7 @@ class Example extends Plugin {
 		$misc->printTrail('show_schema_extension_level_2');
 		$misc->printTabs('show_schema_extension_level_2','show_schema_extension_level_2_2');
 
-		echo "<div>{$this->lang['strlinklevel2s2']}</div>\n";
+		echo "<div>".$this->lang['strlinklevel2s2']."</div>\n";
 
 		echo "<br/>\n";
 		echo "<br/>\n";
@@ -800,7 +800,7 @@ class Example extends Plugin {
 				'action' => 'show_schema_extension_level_2'
 			),
 		);
-		echo "<a {$misc->printActionUrl($back, $_REQUEST, 'href')}> {$lang['strback']}</a>\n";
+		echo "<a ".$misc->printActionUrl($back, $_REQUEST, 'href').">".$lang['strback']."</a>\n";
 
 		$misc->printFooter();
 	}
