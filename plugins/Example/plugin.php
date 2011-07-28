@@ -118,7 +118,7 @@ class Example extends Plugin {
 				$tabs['show_page'] = array (
 					'title' => $this->lang['strdescription'],
 					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => urlencode($this->name)),
+					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => $this->name),
 					'hide' => false,
 					'icon' => 'Plugins'
 				);
@@ -132,7 +132,7 @@ class Example extends Plugin {
 						'database' => $_REQUEST['database'],
 						'schema' => $_REQUEST['schema'],
 						'action' => 'show_schema_extension', 
-						'plugin' => urlencode($this->name)),
+						'plugin' => $this->name),
 					'hide' => false,
 					'icon' => 'Plugins'
 				);
@@ -144,7 +144,7 @@ class Example extends Plugin {
 					'urlvars' => array(
 						'subject' => 'show_schema_extension', 
 						'action' => 'show_schema_extension_level_1', 
-						'plugin' => urlencode($this->name)
+						'plugin' => $this->name
 					),
 					'level' => 'show_schema_extension_level_1',
 					'icon' => 'Plugins',
@@ -155,7 +155,7 @@ class Example extends Plugin {
 					'urlvars' => array(
 						'subject' => 'show_schema_extension', 
 						'action' => 'show_schema_extension_level_2', 
-						'plugin' => urlencode($this->name)
+						'plugin' => $this->name
 					),
 					'level' => 'show_schema_extension_level_2',
 					'icon' => 'Plugins',
@@ -168,7 +168,7 @@ class Example extends Plugin {
 					'urlvars' => array(
 						'subject' => 'show_schema_extension_level_2', 
 						'action' => 'show_schema_extension_level_2_1', 
-						'plugin' => urlencode($this->name)
+						'plugin' => $this->name
 					),
 					'icon' => 'Plugins',
 				);
@@ -178,7 +178,7 @@ class Example extends Plugin {
 					'urlvars' => array(
 						'subject' => 'show_schema_extension_level_2', 
 						'action' => 'show_schema_extension_level_2_2', 
-						'plugin' => urlencode($this->name)
+						'plugin' => $this->name
 					),
 					'icon' => 'Plugins',
 				);
@@ -824,7 +824,7 @@ class Example extends Plugin {
 				$reqvars,
 				array (
 					'action' => 'sub_tree',
-					'plugin' => urlencode($this->name),
+					'plugin' => $this->name,
 					'level' => field('level')
 				)
 			)
