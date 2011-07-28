@@ -1134,9 +1134,9 @@
 
 			$server_info = $this->getServerInfo();
 
-			$sql_url = "sqledit.php?".html_entity_decode($this->href);
+			$sql_url = "sqledit.php?".$this->href;
 			$sql_window_id = "sqledit:".$_REQUEST['server'];
-			$history_url = "history.php?".html_entity_decode($this->href)."&action=pophistory";
+			$history_url = "history.php?".$this->href."&action=pophistory";
 			$history_window_id = "history:".$_REQUEST['server'];
 			$logout_shared = isset($_SESSION['sharedUsername']) ? "return confirm('{$lang['strconfdropcred']})" : "";
 
@@ -1154,7 +1154,7 @@
 						'href' => $history_url,
 						'onclick' => "window.open('{$history_url}','{$history_window_id}','toolbar=no,width=800,height=600,resizable=yes,scrollbars=yes').focus(); return false;",
 					),
-					'content' => html_entity_decode($lang['strhistory'])
+					'content' => $lang['strhistory']
 				),
 				array (
 					'attr' => array (
