@@ -1093,16 +1093,18 @@
 				echo "<td style=\"text-align: right\">";
 				echo "<ul class=\"toplink\">\n";
 				foreach ($toplinks as $link) {
-					$tag = "\t<li><a";
+					$tag = "\t<li><a ";
 					foreach ($link['attr'] as $attr => $value) {
-						$tag.= " ".htmlentities($attr)."=\"".htmlentities($value)."\"";
+						if ($attr == 'href') {
+							$tag.= $this->printActionUrl($value, $_REQUEST, 'href');
+						} else {
+							$tag.= htmlentities($attr)."=\"".htmlentities($value)."\"";
+						}
 					}
-					$tag.=">";
-					$tag.= htmlentities($link['content']);
-					$tag.="</a></li>\n";
-
+					$tag.= ">".htmlentities($link['content'])."</a></li>\n";
 					echo $tag;
 				}
+				
  				echo "</ul>\n";
 				echo "</td>";
 			}
