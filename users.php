@@ -49,7 +49,15 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "users.php?action=confchangepassword&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'users.php',
+						'urlvars' => array (
+							'action' => 'confchangepassword',
+							'server' => field('server'),
+						)
+					)
+				),
 				'content' => $lang['strchangepassword']
 			)
 		);
@@ -338,7 +346,15 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "users.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'users.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server')
+						)
+					)
+				),
 				'content' => $lang['strcreateuser']
 			)
 		);
