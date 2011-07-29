@@ -123,10 +123,30 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "reports.php?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'reports.php',
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strshowallreports']
 			), array (
-				'attr'=> array ('href' => "reports.php?action=edit&amp;{$misc->href}&amp;report_id={$report->fields['report_id']}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'reports.php',
+						'urlvars' => array (
+							'action' => 'edit',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'report_id' => $report->fields['report_id']
+						)
+					)
+				),
 				'content' => $lang['stredit']
 			)
 		);
@@ -307,7 +327,15 @@
 		
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "reports.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'reports.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server')
+						)
+					)
+				),
 				'content' => $lang['strcreatereport']
 			)
 		);
