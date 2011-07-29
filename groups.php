@@ -113,7 +113,16 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "groups.php?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'groups.php',
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strshowallgroups']
 			)
 		);
@@ -251,7 +260,17 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "groups.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'groups.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema')
+						)
+					)
+				),
 				'content' => $lang['strcreategroup']
 			)
 		);
