@@ -73,7 +73,17 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "sequences.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'sequences.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreatesequence']
 			)
 		);
@@ -160,29 +170,93 @@
 
 			$navlinks = array (
 				array (
-					'attr'=> array ('href' => "sequences.php?action=confirm_alter&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
-					'content' => $lang['stralter']
-				), array (
-					'attr'=> array ('href' => "sequences.php?action=confirm_setval&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
-					'content' => $lang['strsetval']
-				), array (
-					'attr'=> array ('href' => "sequences.php?action=nextval&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
-					'content' => $lang['strnextval']
-				)
-			);
+				'attr'=> array (
+					'href' => array (
+						'url' => 'sequences.php',
+						'urlvars' => array (
+							'action' => 'confirm_alter',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'sequence' => $sequence->fields['seqname']
+						)
+					)
+				),
+				'content' => $lang['stralter']
+			), array (
+				'attr'=> array (
+					'href' => array (
+						'url' => 'sequences.php',
+						'urlvars' => array (
+							'action' => 'confirm_setval',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'sequence' => $sequence->fields['seqname']
+						)
+					)
+				),
+				'content' => $lang['strsetval']
+			), array (
+				'attr'=> array (
+					'href' => array (
+						'url' => 'sequences.php',
+						'urlvars' => array (
+							'action' => 'nextval',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'sequence' => $sequence->fields['seqname']
+						)
+					)
+				),
+				'content' => $lang['strnextval']
+			)
+		);
 
 			if ($data->hasAlterSequenceStart()) {
 				$navlinks[] = array (
-					'attr'=> array ('href' => "sequences.php?action=restart&amp;{$misc->href}&amp;sequence=", urlencode($sequence->fields['seqname'])),
+					'attr'=> array (
+						'href' => array (
+							'url' => 'sequences.php',
+							'urlvars' => array (
+								'action' => 'restart',
+								'server' => field('server'),
+								'database' => field('database'),
+								'schema' => field('schema'),
+								'sequence' => $sequence->fields['seqname']
+							)
+						)
+					),
 					'content' => $lang['strrestart']
 				);
 			}
 			$navlinks[] = array (
-				'attr'=> array ('href' => "sequences.php?action=reset&amp;{$misc->href}&amp;sequence=".urlencode($sequence->fields['seqname'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'sequences.php',
+						'urlvars' => array (
+							'action' => 'reset',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'sequence' => $sequence->fields['seqname']
+						)
+					)
+				),
 				'content' => $lang['strreset']
 			);
 			$navlinks[] = array (
-				'attr'=> array ('href' => "sequences.php?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'sequences.php',
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strshowallsequences']
 			);
 			$misc->printNavLinks($navlinks, 'sequences-properties');
