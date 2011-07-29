@@ -313,7 +313,18 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "indexes.php?action=create_index&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'indexes.php',
+						'urlvars' => array (
+							'action' => 'create_index',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['strcreateindex']
 			)
 		);
