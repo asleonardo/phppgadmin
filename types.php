@@ -87,7 +87,16 @@
 
 			$navlinks = array (
 				array (
-					'attr'=> array ('href' => "types.php?{$misc->href}"),
+					'attr'=> array (
+						'href' => array (
+							'url' => 'types.php',
+							'urlvars' => array (
+								'server' => field('server'),
+								'database' => field('database'),
+								'schema' => field('schema'),
+							)
+						)
+					),
 					'content' => $lang['strshowalltypes']
 				)
 			);
