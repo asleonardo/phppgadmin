@@ -35,14 +35,21 @@
 		/**
 		 * Get a href query string, excluding objects below the given object type (inclusive)
 		 */
-		function getHREF($exclude_from = null) {
+		function getHREF($exclude_from = null, $escape_sep = true) {
 			$href = '';
+
+			if ($escape_sep) {
+				$sep = '&amp;';
+			} else {
+				$sep = '&';
+			}
+
 			if (isset($_REQUEST['server']) && $exclude_from != 'server') {
 				$href .= 'server=' . urlencode($_REQUEST['server']);
 				if (isset($_REQUEST['database']) && $exclude_from != 'database') {
-					$href .= '&amp;database=' . urlencode($_REQUEST['database']);
+					$href .= $sep . 'database=' . urlencode($_REQUEST['database']);
 					if (isset($_REQUEST['schema']) && $exclude_from != 'schema') {
-						$href .= '&amp;schema=' . urlencode($_REQUEST['schema']);
+						$href .= $sep . 'schema=' . urlencode($_REQUEST['schema']);
 					}
 				}
 			}
