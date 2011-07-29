@@ -261,10 +261,15 @@
 				'attr'=> array (
 					'href' => array (
 						'url' => 'tablespaces.php',
-						'urlvars' => array ('action' => 'create', 'server' => field('server'))
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
 					)
 				),
-				'content' => $lang['strftscreatedict']
+				'content' => $lang['strcreatetablespace']
 			)
 		);
 		$misc->printNavLinks($navlinks, 'tablespaces-tablespaces');
