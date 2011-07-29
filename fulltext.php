@@ -60,7 +60,17 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "fulltext.php?action=createconfig&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'fulltext.php',
+						'urlvars' => array (
+							'action' => 'createconfig',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strftscreateconfig']
 			)
 		);
@@ -407,7 +417,17 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "fulltext.php?action=createdict&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'fulltext.php',
+						'urlvars' => array (
+							'action' => 'createdict',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strftscreatedict']
 			)
 		);
@@ -474,7 +494,18 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "fulltext.php?action=addmapping&amp;{$misc->href}&ftscfg={$ftscfg}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'fulltext.php',
+						'urlvars' => array (
+							'action' => 'addmapping',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'ftscfg' => $ftscfg
+						)
+					)
+				),
 				'content' => $lang['strftsaddmapping']
 			)
 		);
