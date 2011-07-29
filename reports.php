@@ -330,10 +330,7 @@
 				'attr'=> array (
 					'href' => array (
 						'url' => 'reports.php',
-						'urlvars' => array (
-							'action' => 'create',
-							'server' => field('server')
-						)
+						'urlvars' => array ('server' => field('server'))
 					)
 				),
 				'content' => $lang['strcreatereport']
