@@ -239,44 +239,90 @@
 			$query_url = urlencode("SELECT \"{$f_attname}\", count(*) AS \"count\" FROM \"{$f_schema}\".\"{$f_table}\" GROUP BY \"{$f_attname}\" ORDER BY \"{$f_attname}\"") ;
 
 			if ($isTable) {
-				$return_url = urlencode("colproperties.php?{$misc->href}&amp;table=". urlencode($tableName)
-					."&amp;column=". urlencode($_REQUEST['column']));
+				$return_url = "colproperties.php?" . $misc->href . "&table=". urlencode($tableName) . "&column=" . urlencode($_REQUEST['column']);
 
 				/* Browse link */
 				/* FIXME browsing a col should somehow be a action so we don't
 				 * send an ugly SQL in the URL */
-				$url = "display.php?{$misc->href}&amp;subject=column&amp;table=";
-				$url.= urlencode($_REQUEST['table']);
-				$url.= "&amp;column=". urlencode($_REQUEST['column']);
-				$url.= "&amp;return_url={$return_url}&amp;return_desc=". urlencode($lang['strback']); 
-				$url.= "&amp;query={$query_url}";
+				$urlvars = 
+				
 				$navlinks = array (
 					array (
-						'attr'=> array ('href' => $url),
+						'attr'=> array (
+							'href' => array (
+								'url' => 'display.php',
+								'urlvars' => array (
+									'subject' => 'column',
+									'server' => field('server'),
+									'database' => field('database'),
+									'schema' => field('schema'),
+									'table' => field('table'),
+									'column' => field('column'),
+									'return_url' => $return_url,
+									'return_desc' => $lang['strback'],
+									'query' => $query_url
+								);
+							)
+						),
 						'content' => $lang['strbrowse']
 					), array (
-						'attr'=> array ('href' => "colproperties.php?action=properties&amp;{$misc->href}&amp;table=".urlencode($tableName)."&amp;column=".urlencode($_REQUEST['column'])),
+						'attr'=> array (
+							'href' => array (
+								'url' => 'colproperties.php',
+								'urlvars' => array (
+									'action' => 'properties',
+									'server' => field('server'),
+									'database' => field('database'),
+									'schema' => field('schema'),
+									'table' => field('table'),
+									'column' => field('column'),
+								);
+							)
+						),
 						'content' => $lang['stralter']
 					), array (
-						'attr'=> array ('href' => "tblproperties.php?action=confirm_drop&amp;{$misc->href}&amp;table=".urlencode($tableName)."&amp;column=".urlencode($_REQUEST['column'])),
+						'attr'=> array (
+							'href' => array (
+								'url' => 'colproperties.php',
+								'urlvars' => array (
+									'action' => 'confirm_drop',
+									'server' => field('server'),
+									'database' => field('database'),
+									'schema' => field('schema'),
+									'table' => $tableName,
+									'column' => field('column'),
+									'return_url' => $return_url,
+									'return_desc' => $lang['strback'],
+									'query' => $query_url
+								);
+							)
+						),
 						'content' => $lang['strdrop']
 					)
 				);
 
 			} else {
-				$return_url = urlencode("colproperties.php?{$misc->href}&amp;view=". urlencode($tableName)
-					."&amp;column=". urlencode($_REQUEST['column']));
-				$url = "display.php?{$misc->href}&amp;subject=column&amp;column=";
-				$url.= urlencode($_REQUEST['column']). "&amp;return_url={$return_url}&amp;return_desc=". urlencode($lang['strback']);
-				$url.= "&amp;query={$query_url}";
-				/* Browse link */
+				$return_url = "colproperties.php?" . $misc->href . "&view=" . urlencode($tableName) . "&column=" . urlencode($_REQUEST['column']);
 				$navlinks = array (
 					array (
-						'attr'=> array ('href' => $url),
+						'attr'=> array (
+							'href' => array (
+								'url' => 'display.php',
+								'urlvars' => array (
+									'subject' => 'column'
+									'server' => field('server'),
+									'database' => field('database'),
+									'schema' => field('schema'),
+									'column' => field('column'),
+									'return_url' => $return_url,
+									'return_desc' => $lang['strback'],
+									'query' => $query_url
+								)
+							)
+						),
 						'content' => $lang['strbrowse']
 					)
 				);
-
 			}
 			$misc->printNavLinks($navlinks, 'colproperties-colproperties');
 		}
