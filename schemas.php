@@ -75,7 +75,16 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "schemas.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'schemas.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database')
+						)
+					)
+				),
 				'content' => $lang['strcreateschema']
 			)
 		);
