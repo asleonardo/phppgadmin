@@ -333,8 +333,19 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "triggers.php?action=create&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
-				'content' => $lang['strcreatetrigger']
+				'attr'=> array (
+					'href' => array (
+						'url' => 'triggers.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table')
+						)
+					)
+				),
+			'content' => $lang['strcreatetrigger']
 			)
 		);
 		$misc->printNavLinks($navlinks, 'triggers-triggers');
