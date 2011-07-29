@@ -425,15 +425,45 @@
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 
+			), array (
+				'attr'=> array ('href' => "?action=&amp;{$misc->href}&amp;rolename=".urlencode($_REQUEST['rolename'])),
+				'content' => $lang['']
+			)
+		);
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "roles.php?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'roles.php',
+						'urlvars' => array (
+							'server' => field('server'),
+						)
+					)
+				),
 				'content' => $lang['strshowallroles']
 			), array (
-				'attr'=> array ('href' => "roles.php?action=alter&amp;{$misc->href}&amp;rolename=".urlencode($_REQUEST['rolename'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'roles.php',
+						'urlvars' => array (
+							'action' => 'alter',
+							'server' => field('server'),
+							'rolename' => field('rolename')
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			), array (
-				'attr'=> array ('href' => "roles.php?action=confirm_drop&amp;{$misc->href}&amp;rolename=".urlencode($_REQUEST['rolename'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'roles.php',
+						'urlvars' => array (
+							'action' => 'confirm_drop',
+							'server' => field('server'),
+							'rolename' => field('rolename')
+						)
+					)
+				),
 				'content' => $lang['strdrop']
 			)
 		);
@@ -489,7 +519,15 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "roles.php?action=confchangepassword&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'roles.php',
+						'urlvars' => array (
+							'action' => 'confchangepassword',
+							'server' => field('server'),
+						)
+					)
+				),
 				'content' => $lang['strchangepassword']
 			)
 		);
@@ -635,7 +673,15 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "roles.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'roles.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+						)
+					)
+				),
 				'content' => $lang['strcreaterole']
 			)
 		);
