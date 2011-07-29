@@ -621,10 +621,30 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "views.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'views.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreateview']
 			), array (
-				'attr'=> array ('href' => "views.php?action=wiz_create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'views.php',
+						'urlvars' => array (
+							'action' => 'wiz_create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreateviewwiz']
 			)
 		);
