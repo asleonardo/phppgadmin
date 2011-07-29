@@ -1102,7 +1102,7 @@
 				foreach ($toplinks as $link) {
 					$tag = "\t<li><a ";
 					foreach ($link['attr'] as $attr => $value) {
-						if ($attr == 'href') {
+						if ($attr == 'href' and is_array($value)) {
 							$tag.= $this->printActionUrl($value, $_REQUEST, 'href');
 						} else {
 							$tag.= htmlentities($attr)."=\"".htmlentities($value)."\"";
@@ -1143,9 +1143,9 @@
 
 			$server_info = $this->getServerInfo();
 
-			$sql_url = "sqledit.php?".$this->href;
+			$sql_url = "sqledit.php?".$this->getHREF(null, false);
 			$sql_window_id = htmlentities("sqledit:".$_REQUEST['server']);
-			$history_url = "history.php?".$this->href."&action=pophistory";
+			$history_url = "history.php?".$this->getHREF(null, false)."&action=pophistory";
 			$history_window_id = htmlentities("history:".$_REQUEST['server']);
 			$logout_shared = isset($_SESSION['sharedUsername']) ? "return confirm('{$lang['strconfdropcred']})" : "";
 
