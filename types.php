@@ -583,10 +583,30 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "types.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'types.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreatetype']
 			), array (
-				'attr'=> array ('href' => "types.php?action=create_comp&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'types.php',
+						'urlvars' => array (
+							'action' => 'create_comp',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreatecomptype']
 			)
 		);
