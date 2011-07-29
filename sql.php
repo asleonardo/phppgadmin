@@ -202,32 +202,71 @@
 
 	// Edit		
 	$navlinks[] = array (
-		'attr'=> array ('href' => "database.php?database=".urlencode($_REQUEST['database'])."&amp;server=".urlencode($_REQUEST['server'])."&amp;action=sql"),
+		'attr'=> array (
+			'href' => array (
+				'url' => 'database.php',
+				'urlvars' => array (
+					'action' => 'sql',
+					'server' => field('server'),
+					'database' => field('database'),
+				)
+			)
+		),
 		'content' => $lang['streditsql']
 	);
 
 	// Create report
 	if (($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0)
 		$navlinks[] = array (
-			'attr'=> array ('href' => "reports.php?{$misc->href}&amp;action=create&amp;report_sql=".urlencode($_SESSION['sqlquery'])),
-			'content' => $lang['strcreatereport']
-		);
+		'attr'=> array (
+			'href' => array (
+				'url' => 'reports.php',
+				'urlvars' => array (
+					'action' => 'create',
+					'server' => field('server'),
+					'database' => field('database'),
+					'schema' => field('schema'),
+					'report_sql' => $_SESSION['sqlquery']
+				)
+			)
+		),
+		'content' => $lang['strcreatereport']
+	);
 
 	// Create view and download
 	if (isset($_SESSION['sqlquery']) && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
 		// Report views don't set a schema, so we need to disable create view in that case
 		if (isset($_REQUEST['schema'])) 
 			$navlinks[] = array (
-				'attr'=> array ('href' => "views.php?action=create&amp;formDefinition=".urlencode($_SESSION['sqlquery'])."&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'views.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'formDefinition' => $_SESSION['sqlquery']
+						)
+					)
+				),
 				'content' => $lang['strcreateview']
 			);
 
-		$url = "dataexport.php?query=".urlencode($_SESSION['sqlquery']);
+		$urlvars = array (
+			'server' => field('server'),
+			'database' => field('database'),
+			'schema' => field('schema'),
+			'query' => $_SESSION['sqlquery']
+		);
+		
 		if (isset($_REQUEST['search_path']))
-			$url .= "&amp;search_path=".urlencode($_REQUEST['search_path']);
-		$url .= "&amp;{$misc->href}";
+			$urlvars['search_path'] = $_REQUEST['search_path'];
+		
 		$navlinks[] = array (
-			'attr'=> array ('href' => $url),
+			'attr'=> array (
+				'href' => array ('url' => 'dataexport.php', 'urlvars' => $urlvars)
+			),
 			'content' => $lang['strdownload']
 		);
 	}

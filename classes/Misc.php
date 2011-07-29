@@ -1223,7 +1223,7 @@
 				foreach ($navlinks as $navlink) {
 					$tag = "\t<li><a ";
 					foreach ($navlink['attr'] as $attr => $value) {
-						if ($attr == 'href') {
+						if ($attr == 'href' and is_array($value)) {
 							$tag.= $this->printActionUrl($value, $_REQUEST, 'href');
 						} else {
 							$tag.= htmlentities($attr)."=\"".htmlentities($value)."\"";
