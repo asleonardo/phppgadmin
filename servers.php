@@ -84,15 +84,20 @@
 		if (isset($conf['srv_groups'])) {
 			$navlinks = array (
 				array (
-					'attr'=> array ('href' => "servers.php"),
+					'attr'=> array ('href' => array ('url' => 'servers.php')),
 					'content' => $lang['strallservers']
 				)
 			);
 
 			foreach ($conf['srv_groups'] as $id => $grp) {
 				$navlinks[] = array (
-					'attr'=> array ('href' => "servers.php?group={$id}"),
-					'content' => htmlentities($grp['desc'])
+					'attr'=> array (
+						'href' => array (
+							'url' => 'servers.php',
+							'urlvars' => array ('group' => $id)
+						)
+					),
+					'content' => $grp['desc']
 				);
 			}
 			$misc->printNavLinks($navlinks, 'servers-servers');
