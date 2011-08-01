@@ -159,7 +159,19 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "rules.php?action=create_rule&amp;{$misc->href}&amp;{$subject}={$object}&amp;subject={$subject}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'rules.php',
+						'urlvars' => array (
+							'action' => 'create_rule',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							$subject => $object,
+							'subject' => $subject
+						)
+					)
+				),
 				'content' => $lang['strcreaterule']
 			)
 		);
