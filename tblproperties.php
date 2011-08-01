@@ -569,25 +569,105 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "display.php?{$misc->href}&amp;table=".urlencode($_REQUEST['table'])."&amp;subject=table&amp;return_url={$return_url}&amp;return_desc=".urlencode($lang['strback'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'display.php',
+						'urlvars' => array (
+							'action' => '',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+							'subject' => 'table'
+							'return_url' => $return_url,
+							'return_desc' => $lang['strback']
+						)
+					)
+				),
 				'content' => $lang['strbrowse']
 			), array (
-				'attr'=> array ('href' => "tables.php?action=confselectrows&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'confselectrows',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['strselect']
 			), array (
-				'attr'=> array ('href' => "tables.php?action=confinsertrow&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'confinsertrow',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['strinsert']
 			), array (
-				'attr'=> array ('href' => "tables.php?action=confirm_empty&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'confirm_empty',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['strempty']
 			), array (
-				'attr'=> array ('href' => "tables.php?action=confirm_drop&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'confirm_drop',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['strdrop']
 			), array (
-				'attr'=> array ('href' => "tblproperties.php?action=add_column&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tblproperties.php',
+						'urlvars' => array (
+							'action' => 'add_column',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['straddcolumn']
 			), array (
-				'attr'=> array ('href' => "tblproperties.php?action=confirm_alter&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tblproperties.php',
+						'urlvars' => array (
+							'action' => 'confirm_alter',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table'),
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			)
 		);
