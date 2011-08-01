@@ -66,7 +66,16 @@
 
 			$navlinks = array (
 				array (
-					'attr'=> array ('href' => "operators.php?{$misc->href}"),
+					'attr'=> array (
+						'href' => array (
+							'url' => 'operators.php',
+							'urlvars' => array (
+								'server' => field('server'),
+								'database' => field('database'),
+								'schema' => field('schema'),
+							)
+						)
+					),
 					'content' => $lang['strshowalloperators']
 				)
 			);
