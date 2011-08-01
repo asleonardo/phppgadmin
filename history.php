@@ -71,18 +71,50 @@
 		$navlinks = array();
 		if (isset($_SESSION['history'][$_REQUEST['server']][$_REQUEST['database']]) 
 				&& count($_SESSION['history'][$_REQUEST['server']][$_REQUEST['database']]))
-			$navlinks[] = array (
-				'attr'=> array ('href' => "history.php?action=confclearhistory&amp;{$misc->href}"),
-				'content' => $lang['strclearhistory']
-			);
+		$navlinks[] = array (
+			'attr'=> array (
+				'href' => array (
+					'url' => 'history.php',
+					'urlvars' => array (
+						'action' => 'confclearhistory',
+						'server' => field('server'),
+						'database' => field('database'),
+						'schema' => field('schema'),
+					)
+				)
+			),
+			'content' => $lang['strclearhistory']
+		);
 
 		$navlinks[] = array (
-			'attr'=> array ('href' => "history.php?action=history&amp;{$misc->href}"),
+			'attr'=> array (
+				'href' => array (
+					'url' => 'history.php',
+					'urlvars' => array (
+						'action' => 'history',
+						'server' => field('server'),
+						'database' => field('database'),
+						'schema' => field('schema'),
+					)
+				)
+			),
 			'content' => $lang['strrefresh']
 		);
-		$navlinks[] = array (
-			'attr'=> array ('href' => "history.php?action=download&amp;{$misc->href}"),
-			'content' => $lang['strdownload']
+		$navlinks = array (
+			array (
+				'attr'=> array (
+					'href' => array (
+						'url' => 'history.php',
+						'urlvars' => array (
+							'action' => 'download',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
+				'content' => $lang['strdownload']
+			)
 		);
 		$misc->printNavLinks($navlinks, 'history-history');
 	}
