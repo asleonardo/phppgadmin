@@ -328,13 +328,46 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "functions.php?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'functions.php',
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strshowallfunctions']
 			), array (
-				'attr'=> array ('href' => "functions.php?action=edit&amp;{$misc->href}&amp;function=".urlencode($_REQUEST['function'])."&amp;function_oid=".urlencode($_REQUEST['function_oid'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'functions.php',
+						'urlvars' => array (
+							'action' => 'edit',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'function' => field('function'),
+							'function_oid' => field('function_oid'])
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			), array (
-				'attr'=> array ('href' => "functions.php?action=confirm_drop&amp;{$misc->href}&amp;function=".urlencode($func_full)."&amp;function_oid=".$_REQUEST['function_oid']),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'functions.php',
+						'urlvars' => array (
+							'action' => 'confirm_drop',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'function' => $func_full,
+							'function_oid' => field('function_oid'])
+						)
+					)
+				),
 				'content' => $lang['strdrop']
 			)
 		);
@@ -835,13 +868,45 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "functions.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'functions.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreateplfunction']
 			), array (
-				'attr'=> array ('href' => "functions.php?action=create&amp;language=internal&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'functions.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'language' => 'internal',
+						)
+					)
+				),
 				'content' => $lang['strcreateinternalfunction']
 			), array (
-				'attr'=> array ('href' => "functions.php?action=create&amp;language=C&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'functions.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'language' => 'C',
+						)
+					)
+				),
 				'content' => $lang['strcreatecfunction']
 			)
 		);
