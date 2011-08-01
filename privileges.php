@@ -245,34 +245,75 @@
 				break;
 		}
 		
-		$subject = htmlspecialchars(urlencode($_REQUEST['subject']));
-		$object = htmlspecialchars(urlencode($_REQUEST[$_REQUEST['subject']]));
+		$subject = $_REQUEST['subject'];
+		$object = $_REQUEST[$_REQUEST['subject']];
 		
 		if ($_REQUEST['subject'] == 'function') {
 			$objectoid = $_REQUEST[$_REQUEST['subject'].'_oid'];
-			$alterurl = "privileges.php?action=alter&amp;{$misc->href}&amp;{$subject}={$object}&amp;{$subject}_oid={$objectoid}&amp;subject={$subject}&amp;mode=";
-		}
-		else if ($_REQUEST['subject'] == 'column') {
-			$alterurl = "privileges.php?action=alter&amp;{$misc->href}&amp;{$subject}={$object}"
-				."&amp;subject={$subject}&amp;table=". urlencode($_REQUEST['table']) ."&amp;mode=";
-		}
-		else {
-			$alterurl = "privileges.php?action=alter&amp;{$misc->href}&amp;{$subject}={$object}&amp;subject={$subject}&amp;mode=";
+			$urlvars = array (
+				'action' => 'alter',
+				'server' => field('server'),
+				'database' => field('database'),
+				'schema' => field('schema'),
+				$subject => $object,
+				$subject => $objectoid,
+				'subject'=> $subject
+			);
+
+		} else if ($_REQUEST['subject'] == 'column') {
+			$urlvars = array (
+				'action' => 'alter',
+				'server' => field('server'),
+				'database' => field('database'),
+				'schema' => field('schema'),
+				'table' => field('table'),
+				$subject => $object,
+				'subject'=> $subject
+			);
+
+		} else {
+			$urlvars = array (
+				'action' => 'alter',
+				'server' => field('server'),
+				'database' => field('database'),
+				'schema' => field('schema'),
+				$subject => $object,
+				'subject'=> $subject
+			);
 		}
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "{$alterurl}grant"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'privileges.php',
+						'urlvars' => array_merge($urlvars, array('mode' => 'grant'));
+					)
+				),
 				'content' => $lang['strgrant']
 			), array (
-				'attr'=> array ('href' => "{$alterurl}revoke"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'privileges.php',
+						'urlvars' => array_merge($urlvars, array('mode' => 'revoke'));
+					)
+				),
 				'content' => $lang['strrevoke']
 			)
 		);
 
 		if (isset($allurl)) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "{$allurl}?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => $allurl,
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema')
+						)
+					)
+				),
 				'content' => $alltxt
 			);
 		}
