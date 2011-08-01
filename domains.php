@@ -232,19 +232,52 @@
 		
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "domains.php?action=confirm_drop&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'domains.php',
+						'urlvars' => array (
+							'action' => 'confirm_drop',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'domain' => field('domain')
+						)
+					)
+				),
 				'content' => $lang['strdrop']
 			)
 		);
 
 		if ($data->hasAlterDomains()) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "domains.php?action=add_check&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'domains.php',
+						'urlvars' => array (
+							'action' => 'add_check',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'domain' => field('domain')
+						)
+					)
+				),
 				'content' => $lang['straddcheck']
 			);
 
 			$navlinks[] = array (
-				'attr'=> array ('href' => "domains.php?action=alter&amp;{$misc->href}&amp;domain=".urlencode($_REQUEST['domain'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'domains.php',
+						'urlvars' => array (
+							'action' => 'alter',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'domain' => field('domain')
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			);
 		}
@@ -433,7 +466,17 @@
 		
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "domains.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'domains.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreatedomain']
 			)
 		);
