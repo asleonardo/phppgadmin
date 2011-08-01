@@ -247,19 +247,52 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "aggregates.php?{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'aggregates.php',
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['straggrshowall']
 			)
 		);
 		
 		if ($data->hasAlterAggregate()) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "aggregates.php?action=alter&amp;{$misc->href}&amp;aggrname=".urlencode($_REQUEST['aggrname'])."&amp;aggrtype=".urlencode($_REQUEST['aggrtype'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'aggregates.php',
+						'urlvars' => array (
+							'action' => 'alter',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'aggrname' => field('aggrname'),
+							'aggrtype' => field('aggrtype')
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			);
 		}
 		$navlinks[] = array (
-			'attr'=> array ('href' => "aggregates.php?action=confirm_drop&amp;{$misc->href}&amp;aggrname=".urlencode($_REQUEST['aggrname'])."&amp;aggrtype=".urlencode($_REQUEST['aggrtype'])),
+			'attr'=> array (
+				'href' => array (
+					'url' => 'aggregates.php',
+					'urlvars' => array (
+						'action' => 'confirm_drop',
+						'server' => field('server'),
+						'database' => field('database'),
+						'schema' => field('schema'),
+						'aggrname' => field('aggrname'),
+						'aggrtype' => field('aggrtype')
+					)
+				)
+			),
 			'content' => $lang['strdrop']
 		);
 
