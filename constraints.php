@@ -474,16 +474,60 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "constraints.php?action=add_check&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'constraints.php',
+						'urlvars' => array (
+							'action' => 'add_check',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table')
+						)
+					)
+				),
 				'content' => $lang['straddcheck']
 			), array (
-				'attr'=> array ('href' => "constraints.php?action=add_unique_key&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'constraints.php',
+						'urlvars' => array (
+							'action' => 'add_unique_key',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table')
+						)
+					)
+				),
 				'content' => $lang['stradduniq']
 			), array (
-				'attr'=> array ('href' => "constraints.php?action=add_primary_key&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'constraints.php',
+						'urlvars' => array (
+							'action' => 'add_primary_key',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table')
+						)
+					)
+				),
 				'content' => $lang['straddpk']
 			), array (
-				'attr'=> array ('href' => "constraints.php?action=add_foreign_key&amp;{$misc->href}&amp;table=".urlencode($_REQUEST['table'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'constraints.php',
+						'urlvars' => array (
+							'action' => 'add_foreign_key',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => field('table')
+						)
+					)
+				),
 				'content' => $lang['straddfk']
 			)
 		);
