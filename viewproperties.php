@@ -152,7 +152,18 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "viewproperties.php?action=edit&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'viewproperties.php',
+						'urlvars' => array (
+							'action' => 'edit',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'view' => field('view')
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			)
 		);
@@ -434,22 +445,70 @@
 	
 		echo "<br />\n";
 
-		$return_url = urlencode("viewproperties.php?{$misc->href}&amp;view=".urlencode($_REQUEST['view']));
+		$return_url = "viewproperties.php?{$misc->href}&view=".urlencode($_REQUEST['view']);
+
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "display.php?{$misc->href}&amp;view=".urlencode($_REQUEST['view'])."&amp;subject=view&amp;return_url={$return_url}&amp;return_desc=".urlencode($lang['strback'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'display.php',
+						'urlvars' => array (
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'view' => field('view'),
+							'subject' => 'view',
+							'return_url' => $return_url,
+							'return_desc' => $lang['strback']
+						)
+					)
+				),
 				'content' => $lang['strbrowse']
 			), array (
-				'attr'=> array ('href' => "views.php?action=confselectrows&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'views.php',
+						'urlvars' => array (
+							'action' => 'confselectrows',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'view' => field('view'),
+						)
+					)
+				),
 				'content' => $lang['strselect']
 			), array (
-				'attr'=> array ('href' => "views.php?action=confirm_drop&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'views.php',
+						'urlvars' => array (
+							'action' => 'confirm_drop',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'view' => field('view')
+						)
+					)
+				),
 				'content' => $lang['strdrop']
 			), array (
-				'attr'=> array ('href' => "viewproperties.php?action=confirm_alter&amp;{$misc->href}&amp;view=".urlencode($_REQUEST['view'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'viewproperties.php',
+						'urlvars' => array (
+							'action' => 'confirm_alter',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'view' => field('view')
+						)
+					)
+				),
 				'content' => $lang['stralter']
 			)
 		);
+		
 		$misc->printNavLinks($navlinks, 'viewproperties-viewproperties');
 	}
 
