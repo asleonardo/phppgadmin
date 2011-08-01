@@ -425,11 +425,6 @@
 		}
 		else echo "<p>{$lang['strnodata']}</p>\n";
 
-			), array (
-				'attr'=> array ('href' => "?action=&amp;{$misc->href}&amp;rolename=".urlencode($_REQUEST['rolename'])),
-				'content' => $lang['']
-			)
-		);
 		$navlinks = array (
 			array (
 				'attr'=> array (
