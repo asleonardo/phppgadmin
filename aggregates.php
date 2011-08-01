@@ -359,7 +359,17 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "aggregates.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'aggregates.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreateaggregate']
 			)
 		);
