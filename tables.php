@@ -829,13 +829,34 @@
 
 		$navlinks = array (
 			array (
-				'attr'=> array ('href' => "tables.php?action=create&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreatetable']
 			)
 		);
+		
 		if (($tables->recordCount() > 0) && $data->hasCreateTableLike()) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "tables.php?action=createlike&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'createlike',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+						)
+					)
+				),
 				'content' => $lang['strcreatetablelike']
 			);
 		}
