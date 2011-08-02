@@ -594,7 +594,19 @@
 		// Edit SQL link
 		if (isset($_REQUEST['query'])) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "database.php?{$misc->href}&amp;action=sql&amp;paginate=on&amp;query=".urlencode($_REQUEST['query'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'database.php',
+						'urlvars' => array (
+							'action' => 'sql',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'paginate' => 'on',
+							'query' => field('query')
+						)
+					)
+				),
 				'content' => $lang['streditsql']
 			);
 		}
@@ -602,12 +614,22 @@
 		// Expand/Collapse
 		if ($_REQUEST['strings'] == 'expanded') {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "display.php?{$gets}&amp;{$getsort}&amp;strings=collapsed&amp;page=".urlencode($_REQUEST['page'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => "display.php?" . $gets . "&" . $getsort,
+						'urlvars' => array ('strings' => 'collapsed', 'page' => field('page'))
+					)
+				),
 				'content' => $lang['strcollapse']
 			);
 		} else {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "display.php?{$gets}&amp;{$getsort}&amp;strings=expanded&amp;page=".urlencode($_REQUEST['page'])),
+				'attr'=> array (
+					'href' => array (
+						'url' => "display.php?" . $gets . "&" . $getsort,
+						'urlvars' => array ('strings' => 'expanded', 'page' => field('page'))
+					)
+				),
 				'content' => $lang['strexpand']
 			);
 		}
@@ -615,7 +637,19 @@
 		// Create report
 		if (isset($_REQUEST['query']) && ($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "reports.php?{$misc->href}&amp;action=create&amp;report_sql=".urlencode($_REQUEST['query'])."&amp;paginate=", (isset($_REQUEST['paginate'])? urlencode($_REQUEST['paginate']):'f')),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'reports.php',
+						'urlvars' => array (
+							'action' => 'create',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'report_sql' => field('query'),
+							'paginate' => (isset($_REQUEST['paginate']) ? $_REQUEST['paginate'] : 'f')
+						)
+					)
+				),
 				'content' => $lang['strcreatereport']
 			);
 		}
@@ -625,34 +659,64 @@
 			// Report views don't set a schema, so we need to disable create view in that case
 			if (isset($_REQUEST['schema'])) {
 				$navlinks[] = array (
-					'attr'=> array ('href' => "views.php?action=create&amp;formDefinition=".urlencode($_REQUEST['query'])."&amp;{$misc->href}"),
+					'attr'=> array (
+						'href' => array (
+							'url' => 'views.php',
+							'urlvars' => array (
+								'action' => 'create',
+								'server' => field('server'),
+								'database' => field('database'),
+								'schema' => field('schema'),
+								'formDefinition' => field('query')
+							)
+						)
+					),
 					'content' => $lang['strcreateview']
 				);
 			}
 			
-			$url = "dataexport.php?query=".urlencode($_REQUEST['query']);
+			$urlvars = array (
+				'query' => field('query'),
+				'server' => field('server'),
+				'database' => field('database'),
+				'schema' => field('schema')
+			);
 			if (isset($_REQUEST['search_path']))
-				$url .= "&amp;search_path=".urlencode($_REQUEST['search_path']);
-			
-			$url .= "&amp;{$misc->href}";
+				$urlvars['search_path'] = field('search_path');
 
 			$navlinks[] = array (
-				'attr'=> array ('href' => $url),
-				'content' =>  $lang['strdownload']
+				'attr'=> array ('href' => array ('url' => 'dataexport.php', 'urlvars' => $urlvars)),
+				'content' => $lang['strdownload']
 			);
 		}
 
 		// Insert
 		if (isset($object) && (isset($subject) && $subject == 'table')) {
 			$navlinks[] = array (
-				'attr'=> array ('href' => "tables.php?action=confinsertrow&amp;table=".urlencode($object)."&amp;{$misc->href}"),
+				'attr'=> array (
+					'href' => array (
+						'url' => 'tables.php',
+						'urlvars' => array (
+							'action' => 'confinsertrow',
+							'server' => field('server'),
+							'database' => field('database'),
+							'schema' => field('schema'),
+							'table' => $object
+						)
+					)
+				),
 				'content' => $lang['strinsert']
 			);
 		}
 
 		// Refresh
 		$navlinks[] = array (
-			'attr'=> array ('href' => "display.php?{$gets}&amp;{$getsort}&amp;strings=".urlencode($_REQUEST['strings'])."&amp;page=" . urlencode($_REQUEST['page'])),
+			'attr'=> array (
+				'href' => array (
+					'url' => "display.php?" . $gets . "&" . $getsort,
+					'urlvars' => array ('strings' => field('strings'), 'page' => field('page'))
+				)
+			),
 			'content' => $lang['strrefresh']
 		);
 
