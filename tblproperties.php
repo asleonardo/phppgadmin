@@ -578,7 +578,7 @@
 							'database' => field('database'),
 							'schema' => field('schema'),
 							'table' => field('table'),
-							'subject' => 'table'
+							'subject' => 'table',
 							'return_url' => $return_url,
 							'return_desc' => $lang['strback']
 						)

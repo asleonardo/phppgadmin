@@ -349,7 +349,7 @@
 							'database' => field('database'),
 							'schema' => field('schema'),
 							'function' => field('function'),
-							'function_oid' => field('function_oid'])
+							'function_oid' => field('function_oid')
 						)
 					)
 				),
@@ -364,7 +364,7 @@
 							'database' => field('database'),
 							'schema' => field('schema'),
 							'function' => $func_full,
-							'function_oid' => field('function_oid'])
+							'function_oid' => field('function_oid')
 						)
 					)
 				),

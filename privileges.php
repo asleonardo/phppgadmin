@@ -287,7 +287,7 @@
 				'attr'=> array (
 					'href' => array (
 						'url' => 'privileges.php',
-						'urlvars' => array_merge($urlvars, array('mode' => 'grant'));
+						'urlvars' => array_merge($urlvars, array('mode' => 'grant'))
 					)
 				),
 				'content' => $lang['strgrant']
@@ -295,7 +295,7 @@
 				'attr'=> array (
 					'href' => array (
 						'url' => 'privileges.php',
-						'urlvars' => array_merge($urlvars, array('mode' => 'revoke'));
+						'urlvars' => array_merge($urlvars, array('mode' => 'revoke'))
 					)
 				),
 				'content' => $lang['strrevoke']
