@@ -261,7 +261,7 @@
 									'return_url' => $return_url,
 									'return_desc' => $lang['strback'],
 									'query' => $query_url
-								);
+								)
 							)
 						),
 						'content' => $lang['strbrowse']
@@ -276,7 +276,7 @@
 									'schema' => field('schema'),
 									'table' => field('table'),
 									'column' => field('column'),
-								);
+								)
 							)
 						),
 						'content' => $lang['stralter']
@@ -294,7 +294,7 @@
 									'return_url' => $return_url,
 									'return_desc' => $lang['strback'],
 									'query' => $query_url
-								);
+								)
 							)
 						),
 						'content' => $lang['strdrop']
@@ -309,7 +309,7 @@
 							'href' => array (
 								'url' => 'display.php',
 								'urlvars' => array (
-									'subject' => 'column'
+									'subject' => 'column',
 									'server' => field('server'),
 									'database' => field('database'),
 									'schema' => field('schema'),
