@@ -244,8 +244,6 @@
 				/* Browse link */
 				/* FIXME browsing a col should somehow be a action so we don't
 				 * send an ugly SQL in the URL */
-				$urlvars = 
-				
 				$navlinks = array (
 					array (
 						'attr'=> array (
@@ -283,7 +281,7 @@
 					), array (
 						'attr'=> array (
 							'href' => array (
-								'url' => 'colproperties.php',
+								'url' => 'tblproperties.php',
 								'urlvars' => array (
 									'action' => 'confirm_drop',
 									'server' => field('server'),
@@ -291,9 +289,6 @@
 									'schema' => field('schema'),
 									'table' => $tableName,
 									'column' => field('column'),
-									'return_url' => $return_url,
-									'return_desc' => $lang['strback'],
-									'query' => $query_url
 								)
 							)
 						),
