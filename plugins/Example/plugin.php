@@ -39,8 +39,7 @@ class Example extends Plugin {
 			'tabs' => array('add_plugin_tabs'),
 			'trail' => array('add_plugin_trail'),
 			'navlinks' => array('add_plugin_navlinks'),
-			'actionbuttons' => array('add_plugin_actionbuttons'),
-			'displaybuttons' => array('add_plugin_displaybuttons')
+			'actionbuttons' => array('add_plugin_actionbuttons')
 		);
 		return $hooks;
 	}
@@ -375,41 +374,28 @@ class Example extends Plugin {
 					'vars' => array('database' => 'datname')
 				);
 				break;
+
+			case 'display-browse':
+				$link = array (
+					'url' => 'plugin.php',
+					'urlvars' => array (
+						'plugin' => $this->name,
+						'table' => field('table'),
+						'subject' => 'show_page',
+						'action' => 'show_display_example'
+					),
+				);
+				
+				$actionbuttons['extraaction'] = array (
+					'title' => $this->lang['strextraaction'],
+					'url' => $misc->printActionUrl($link, $_REQUEST),
+				);
+				break;
 		}
 
 		if (count($actionbuttons) > 0) {
 			//Merge the original actionbuttons array with Examples' actionbuttons 
 			$plugin_functions_parameters['actionbuttons'] = array_merge($plugin_functions_parameters['actionbuttons'], $actionbuttons);
-		}
-	}
-
-	/**
-	 * Add plugin in the action buttons of display.php
-	 * @param $plugin_functions_parameters
-	 */
-	function add_plugin_displaybuttons(&$plugin_functions_parameters) {
-		global $misc;
-
-		$buttons = array();
-
-		$link = array (
-			'url' => 'plugin.php',
-			'urlvars' => array (
-				'plugin' => $this->name,
-				'table' => field('table'),
-				'subject' => 'show_page',
-				'action' => 'show_display_example'
-			),
-		);
-		
-		$buttons['extraaction'] = array (
-			'title' => $this->lang['strextraaction'],
-			'url' => $misc->printActionUrl($link, $_REQUEST),
-		);
-
-		if (count($buttons) > 0) {
-			//Merge the original actionbuttons array with Examples' actionbuttons
-			$plugin_functions_parameters['displaybuttons'] = array_merge($plugin_functions_parameters['displaybuttons'], $buttons);
 		}
 	}
 

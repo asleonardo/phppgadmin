@@ -518,9 +518,10 @@
 			
 			$buttons = array();
 			$plugin_functions_parameters = array(
-				'displaybuttons' => &$buttons
+				'actionbuttons' => &$buttons,
+				'place' => 'display-browse'
 			);
-			$plugin_manager->do_hook('displaybuttons', $plugin_functions_parameters);
+			$plugin_manager->do_hook('actionbuttons', $plugin_functions_parameters);
 
 			// Display edit and delete actions if we have a key
 			$colspan = count($buttons) + 2;
