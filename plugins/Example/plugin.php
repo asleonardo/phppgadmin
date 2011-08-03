@@ -93,7 +93,7 @@ class Example extends Plugin {
 
 		$toplink = array (
 			'attr' => array (
-				'href' => $misc->printActionUrl($link, $_REQUEST),
+				'href' => $link,
 				'class' => 'toplink'
 			),
 			'content' => $this->lang['strdescription']
