@@ -117,7 +117,7 @@ class Report extends Plugin {
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
-		$misc->printTabs('server','reports');
+		$misc->printTabs('server', 'report_plugin');
 		$misc->printMsg($msg);
 
 		// If it's a first, load then get the data from the database
@@ -210,7 +210,7 @@ class Report extends Plugin {
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
-		$misc->printTabs('server','reports');
+		$misc->printTabs('server', 'report_plugin');
 		$misc->printMsg($msg);
 
 		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
@@ -267,7 +267,7 @@ class Report extends Plugin {
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
-		$misc->printTabs('server','reports');
+		$misc->printTabs('server', 'report_plugin');
 		$misc->printMsg($msg);
 		
 		if (!isset($_REQUEST['report_name'])) $_REQUEST['report_name'] = '';
@@ -399,7 +399,7 @@ class Report extends Plugin {
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
-		$misc->printTabs('server','reports');
+		$misc->printTabs('server', 'report_plugin');
 		$misc->printMsg($msg);
 		
 		$reports = $this->reportsdb->getReports();
