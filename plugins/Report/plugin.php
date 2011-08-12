@@ -258,6 +258,12 @@ class Report extends Plugin {
 		global $data, $reportsdb, $misc;
 		global $lang;
 
+		$misc->printHeader($lang['strreports']);
+		$misc->printBody();
+		$misc->printTrail('server');
+		$misc->printTabs('server','reports');
+		$misc->printMsg($msg);
+		
 		if (!isset($_REQUEST['report_name'])) $_REQUEST['report_name'] = '';
 		if (!isset($_REQUEST['db_name'])) $_REQUEST['db_name'] = '';
 		if (!isset($_REQUEST['descr'])) $_REQUEST['descr'] = '';
@@ -270,10 +276,6 @@ class Report extends Plugin {
 		}
 		
 		$databases = $data->getDatabases();
-
-		$misc->printTrail('server');
-		$misc->printTitle($lang['strcreatereport']);
-		$misc->printMsg($msg);
 
 		echo "<form action=\"plugin.php?plugin={$this->name}\" method=\"post\">\n";
 		echo $misc->form;
@@ -303,6 +305,7 @@ class Report extends Plugin {
 		echo "<input type=\"submit\" value=\"{$lang['strsave']}\" />\n";
 		echo "<input type=\"submit\" name=\"cancel\" value=\"{$lang['strcancel']}\" /></p>\n";
 		echo "</form>\n";
+		$misc->printFooter();
 	}
 
 	/**
@@ -332,9 +335,11 @@ class Report extends Plugin {
 	/**
 	 * Show confirmation of drop and perform actual drop
 	 */
-	function drop($confirm) {
+	function drop() {
 		global $reportsdb, $misc;
 		global $lang;
+
+		$confirm = $_REQUEST['confirm'];
 
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
@@ -437,7 +442,10 @@ class Report extends Plugin {
 				'attr'=> array (
 					'href' => array (
 						'url' => 'plugin.php',
-						'urlvars' => array ('plugin' => $this->name, 'server' => field('server'))
+						'urlvars' => array (
+							'plugin' => $this->name, 
+							'server' => field('server'),
+							'action' => 'create')
 					)
 				),
 				'content' => $lang['strcreatereport']
