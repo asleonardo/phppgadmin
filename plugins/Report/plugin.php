@@ -114,6 +114,12 @@ class Report extends Plugin {
 		global $data, $reportsdb, $misc;
 		global $lang;
 
+		$misc->printHeader($lang['strreports']);
+		$misc->printBody();
+		$misc->printTrail('server');
+		$misc->printTabs('server','reports');
+		$misc->printMsg($msg);
+
 		// If it's a first, load then get the data from the database
 		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
 		if ($_REQUEST['action'] == 'edit') {			
@@ -130,9 +136,6 @@ class Report extends Plugin {
 		$databases = $data->getDatabases();
 
 		$_REQUEST['report'] = $report->fields['report_name'];
-		$misc->printTrail('report');
-		$misc->printTitle($lang['stredit']);
-		$misc->printMsg($msg);
 
 		echo "<form action=\"plugin.php?plugin={$this->name}\" method=\"post\">\n";
 		echo $misc->form;
@@ -178,16 +181,16 @@ class Report extends Plugin {
 
 		// Check that they've given a name and a definition
 		if ($_POST['report_name'] == '') {
-			doEdit($lang['strreportneedsname']);
+			$this->edit($lang['strreportneedsname']);
 		} elseif ($_POST['report_sql'] == '') {
-			doEdit($lang['strreportneedsdef']);
+			$this->edit($lang['strreportneedsdef']);
 		} else {
 			$status = $this->reportsdb->alterReport($_POST['report_id'], $_POST['report_name'], $_POST['db_name'],
 				$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
-				doDefault($lang['strreportcreated']);
+				$this->default_action($lang['strreportcreated']);
 			else
-				doEdit($lang['strreportcreatedbad']);
+				$this->edit($lang['strreportcreatedbad']);
 		}
 	}
 
@@ -314,15 +317,15 @@ class Report extends Plugin {
 		if (!isset($_POST['report_sql'])) $_POST['report_sql'] = '';
 
 		// Check that they've given a name and a definition
-		if ($_POST['report_name'] == '') doCreate($lang['strreportneedsname']);
-		elseif ($_POST['report_sql'] == '') doCreate($lang['strreportneedsdef']);
+		if ($_POST['report_name'] == '') $this->create($lang['strreportneedsname']);
+		elseif ($_POST['report_sql'] == '') $this->create($lang['strreportneedsdef']);
 		else {
 			$status = $this->reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
 					$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
-				doDefault($lang['strreportcreated']);
+				$this->default_action($lang['strreportcreated']);
 			else
-				doCreate($lang['strreportcreatedbad']);
+				$this->create($lang['strreportcreatedbad']);
 		}
 	}
 
@@ -360,9 +363,9 @@ class Report extends Plugin {
 		else {
 			$status = $this->reportsdb->dropReport($_POST['report_id']);
 			if ($status == 0)
-				doDefault($lang['strreportdropped']);
+				$this->default_action($lang['strreportdropped']);
 			else
-				doDefault($lang['strreportdroppedbad']);
+				$this->default_action($lang['strreportdroppedbad']);
 		}
 
 		$misc->printFooter();
