@@ -175,6 +175,11 @@ class Report extends Plugin {
 	function save_edit() {
 		global $reportsdb, $lang;
 
+		if (isset($_REQUEST['cancel'])) {
+			$this->default_action();
+			exit;
+		}
+
 		if (!isset($_POST['report_name'])) $_POST['report_name'] = '';
 		if (!isset($_POST['db_name'])) $_POST['db_name'] = '';
 		if (!isset($_POST['descr'])) $_POST['descr'] = '';
@@ -315,6 +320,11 @@ class Report extends Plugin {
 	function save_create() {
 		global $reportsdb, $lang;
 
+		if (isset($_REQUEST['cancel'])) {
+			$this->default_action();
+			exit;
+		}
+
 		if (!isset($_POST['report_name'])) $_POST['report_name'] = '';
 		if (!isset($_POST['db_name'])) $_POST['db_name'] = '';
 		if (!isset($_POST['descr'])) $_POST['descr'] = '';
@@ -340,13 +350,16 @@ class Report extends Plugin {
 		global $reportsdb, $misc;
 		global $lang;
 
-		$confirm = $_REQUEST['confirm'];
+		$confirm = false;
+		if (isset($_REQUEST['confirm'])) $confirm = true;
 
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
-		$misc->printTrail('server');
-		$misc->printTabs('server','reports');
-		$misc->printMsg($msg);
+		
+		if (isset($_REQUEST['cancel'])) {
+			$this->default_action();
+			exit;
+		}
 
 		if ($confirm) {
 			// Fetch report from the database
@@ -365,8 +378,7 @@ class Report extends Plugin {
 			echo "<input type=\"submit\" name=\"drop\" value=\"{$lang['strdrop']}\" />\n";
 			echo "<input type=\"submit\" name=\"cancel\" value=\"{$lang['strcancel']}\" />\n";
 			echo "</form>\n";
-		}
-		else {
+		} else {
 			$status = $this->reportsdb->dropReport($_POST['report_id']);
 			if ($status == 0)
 				$this->default_action($lang['strreportdropped']);
@@ -431,7 +443,7 @@ class Report extends Plugin {
 			),
 			'drop' => array(
 				'title' => $lang['strdrop'],
-				'url'   => "plugin.php?plugin={$this->name}&amp;action=confirm_drop&amp;{$misc->href}&amp;",
+				'url'   => "plugin.php?plugin={$this->name}&amp;action=drop&amp;confirm=true&amp;{$misc->href}&amp;",
 				'vars'  => array('report_id' => 'report_id'),
 			),
 		);
