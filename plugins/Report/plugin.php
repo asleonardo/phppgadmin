@@ -43,6 +43,7 @@ class Report extends Plugin {
 	function get_hooks() {
 		$hooks = array(
 			'tabs' => array('add_plugin_tabs'),
+			'trail' => array('add_plugin_trail'),
 			'navlinks' => array('add_plugin_navlinks')
 		);
 		return $hooks;
@@ -89,9 +90,52 @@ class Report extends Plugin {
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'default_action', 'plugin' => $this->name),
 					'hide' => false,
-					'icon' => 'Plugins'
+					'icon' => 'Report'
 				);
 				break;
+		}
+	}
+
+	/**
+	 * Add plugin in the trail
+	 * @param $plugin_functions_parameters
+	 */
+	function add_plugin_trail(&$plugin_functions_parameters) {
+		global $misc, $lang;
+		$trail = &$plugin_functions_parameters['trail'];
+		$done = false;
+		$subject = '';
+		if (isset($_REQUEST['subject'])) {
+			$subject = $_REQUEST['subject'];
+		}
+
+		$action = '';
+		if (isset($_REQUEST['action'])) {
+			$action = $_REQUEST['action'];
+		}
+
+		if ($subject == 'server' and 
+				in_array($action, array('edit', 'properties', 'create', 'drop','default_action'))) {
+
+			$url = array (
+				'url' => 'plugin.php',
+				'urlvars' => array (
+					'plugin' => $this->name,
+					'subject' => 'server',
+					'action' => 'default_action'
+				)
+			);
+			if (isset($_REQUEST['report'])) $url['urlvars']['report'] = field('report');
+			
+			$trail['report_plugin'] = array (
+				'title' => $lang['strreport'],
+				'text' => $lang['strreport'],
+				'url'   => $misc->printActionUrl($url, $_REQUEST),
+				'icon' => 'Report'
+			);
+			if (isset($_REQUEST['report'])) {
+				$trail['report_plugin']['text'] = $_REQUEST['report'];
+			}
 		}
 	}
 
