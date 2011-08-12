@@ -1,12 +1,16 @@
 <?php
 require_once('classes/Plugin.php');
+include_once('plugins/Report/classes/Reports.php');
+include_once('libraries/lib.inc.php');
 
-class Example extends Plugin {
+class Report extends Plugin {
 
 	/**
 	 * Attributes
 	 */
 	protected $name = 'Report';
+	protected $lang;
+	public $reportsdb;
 
 	/**
 	 * Constructor
@@ -16,6 +20,9 @@ class Example extends Plugin {
 	function __construct($language) {
 		$plugin_directory = dirname(__FILE__);
 		parent::__construct($language, $plugin_directory);
+		//
+		global $status;
+		$this->reportsdb = new Reports($status);
 	}
 
 	/**
@@ -59,7 +66,8 @@ class Example extends Plugin {
 			'save_create',
 			'create',
 			'drop',
-			'confirm_drop'
+			'confirm_drop',
+			'default_action'
 		);
 		return $actions;
 	}
@@ -73,77 +81,6 @@ class Example extends Plugin {
 
 		$tabs = &$plugin_functions_parameters['tabs'];
 
-		switch ($plugin_functions_parameters['section']) {
-			case 'server':
-				$tabs['show_page'] = array (
-					'title' => $this->lang['strdescription'],
-					'url' => 'plugin.php',
-					'urlvars' => array('subject' => 'server', 'action' => 'show_page', 'plugin' => $this->name),
-					'hide' => false,
-					'icon' => 'Plugins'
-				);
-				break;
-			case 'schema':
-				$tabs['show_schema_extension'] = array (
-					'title' => $this->lang['strdescription'],
-					'url' => 'plugin.php',
-					'urlvars' => array(
-						'subject' => 'server', 
-						'database' => $_REQUEST['database'],
-						'schema' => $_REQUEST['schema'],
-						'action' => 'show_schema_extension', 
-						'plugin' => $this->name),
-					'hide' => false,
-					'icon' => 'Plugins'
-				);
-				break;
-			case 'show_schema_extension':
-				$tabs['show_schema_extension_level_1'] = array (
-					'title' => $this->lang['strlinklevel1'],
-					'url' => 'plugin.php',
-					'urlvars' => array(
-						'subject' => 'show_schema_extension', 
-						'action' => 'show_schema_extension_level_1', 
-						'plugin' => $this->name
-					),
-					'level' => 'show_schema_extension_level_1',
-					'icon' => 'Plugins',
-				);
-				$tabs['show_schema_extension_level_2'] = array (
-					'title' => $this->lang['strlinklevel2'],
-					'url' => 'plugin.php',
-					'urlvars' => array(
-						'subject' => 'show_schema_extension', 
-						'action' => 'show_schema_extension_level_2', 
-						'plugin' => $this->name
-					),
-					'level' => 'show_schema_extension_level_2',
-					'icon' => 'Plugins',
-				);
-				break;
-			case 'show_schema_extension_level_2':
-				$tabs['show_schema_extension_level_2_1'] = array (
-					'title' => $this->lang['strlinklevel2s1'],
-					'url' => 'plugin.php',
-					'urlvars' => array(
-						'subject' => 'show_schema_extension_level_2', 
-						'action' => 'show_schema_extension_level_2_1', 
-						'plugin' => $this->name
-					),
-					'icon' => 'Plugins',
-				);
-				$tabs['show_schema_extension_level_2_2'] = array (
-					'title' => $this->lang['strlinklevel2s2'],
-					'url' => 'plugin.php',
-					'urlvars' => array(
-						'subject' => 'show_schema_extension_level_2', 
-						'action' => 'show_schema_extension_level_2_2', 
-						'plugin' => $this->name
-					),
-					'icon' => 'Plugins',
-				);
-				break;
-		}
 	}
 
 	/**
@@ -154,41 +91,6 @@ class Example extends Plugin {
 		global $misc;
 
 		$navlinks = array();
-		switch ($plugin_functions_parameters['place']) {
-
-			case 'display-browse':
-				$link = array (
-					'url' => 'plugin.php',
-					'urlvars' => array (
-						'plugin' => $this->name,
-						'subject' => 'show_page',
-						'action' => 'show_display_extension',
-						'database' => field('database'),
-						'table' => field('table'),
-					),
-				);
-				$navlinks[] = array (
-					'attr'=> array('href' => $misc->printActionUrl($link, $_REQUEST)),
-					'content' => $this->lang['strdisplayext']
-				);
-				break;
-
-			case 'all_db-databases':
-				$navlinks[] = array (
-					'attr'=> array (
-						'href' => array (
-							'url' => 'plugin.php',
-							'urlvars' => array (
-								'plugin' => $this->name,
-								'subject' => 'show_page',
-								'action' => 'show_databases_extension'
-							)
-						)
-					),
-					'content' => $this->lang['strdbext']
-				);
-				break;
-		}
 
 		if (count($navlinks) > 0) {
 			//Merge the original navlinks array with Examples' navlinks 
@@ -201,7 +103,7 @@ class Example extends Plugin {
 		global $lang;
 
 		// If it's a first, load then get the data from the database
-		$report = $reportsdb->getReport($_REQUEST['report_id']);
+		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
 		if ($_REQUEST['action'] == 'edit') {			
 			$_POST['report_name'] = $report->fields['report_name'];
 			$_POST['db_name'] = $report->fields['db_name'];
@@ -263,11 +165,13 @@ class Example extends Plugin {
 		if (!isset($_POST['report_sql'])) $_POST['report_sql'] = '';
 
 		// Check that they've given a name and a definition
-		if ($_POST['report_name'] == '') doEdit($lang['strreportneedsname']);
-		elseif ($_POST['report_sql'] == '') doEdit($lang['strreportneedsdef']);
-		else {
-			$status = $reportsdb->alterReport($_POST['report_id'], $_POST['report_name'], $_POST['db_name'],
-								$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
+		if ($_POST['report_name'] == '') {
+			doEdit($lang['strreportneedsname']);
+		} elseif ($_POST['report_sql'] == '') {
+			doEdit($lang['strreportneedsdef']);
+		} else {
+			$status = $this->reportsdb->alterReport($_POST['report_id'], $_POST['report_name'], $_POST['db_name'],
+				$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
 				doDefault($lang['strreportcreated']);
 			else
@@ -282,7 +186,7 @@ class Example extends Plugin {
 		global $data, $reportsdb, $misc;
 		global $lang;
 
-		$report = $reportsdb->getReport($_REQUEST['report_id']);
+		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
 
 		$_REQUEST['report'] = $report->fields['report_name'];
 		$misc->printTrail('report');
@@ -406,7 +310,7 @@ class Example extends Plugin {
 		if ($_POST['report_name'] == '') doCreate($lang['strreportneedsname']);
 		elseif ($_POST['report_sql'] == '') doCreate($lang['strreportneedsdef']);
 		else {
-			$status = $reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
+			$status = $this->reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
 								$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
 				doDefault($lang['strreportcreated']);
@@ -424,7 +328,7 @@ class Example extends Plugin {
 
 		if ($confirm) {
 			// Fetch report from the database
-			$report = $reportsdb->getReport($_REQUEST['report_id']);
+			$report = $this->reportsdb->getReport($_REQUEST['report_id']);
 
 			$_REQUEST['report'] = $report->fields['report_name'];
 			$misc->printTrail('report');
@@ -441,7 +345,7 @@ class Example extends Plugin {
 			echo "</form>\n";
 		}
 		else {
-			$status = $reportsdb->dropReport($_POST['report_id']);
+			$status = $this->reportsdb->dropReport($_POST['report_id']);
 			if ($status == 0)
 				doDefault($lang['strreportdropped']);
 			else
@@ -453,15 +357,17 @@ class Example extends Plugin {
 	/**
 	 * Show default list of reports in the database
 	 */
-	function default($msg = '') {
+	function default_action($msg = '') {
 		global $data, $misc, $reportsdb;
 		global $lang;
 
+		$misc->printHeader($lang['strreports']);
+		$misc->printBody();
 		$misc->printTrail('server');
 		$misc->printTabs('server','reports');
 		$misc->printMsg($msg);
 		
-		$reports = $reportsdb->getReports();
+		$reports = $this->reportsdb->getReports();
 
 		$columns = array(
 			'report' => array(
