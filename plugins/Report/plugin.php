@@ -1,7 +1,6 @@
 <?php
 require_once('classes/Plugin.php');
 include_once('plugins/Report/classes/Reports.php');
-include_once('libraries/lib.inc.php');
 
 class Report extends Plugin {
 
@@ -21,8 +20,10 @@ class Report extends Plugin {
 		$plugin_directory = dirname(__FILE__);
 		parent::__construct($language, $plugin_directory);
 		//
-		global $status;
-		$this->reportsdb = new Reports($status);
+		global $status, $data;
+		if ($data != null) {
+			$this->reportsdb = new Reports($status);
+		}
 	}
 
 	/**
@@ -81,6 +82,17 @@ class Report extends Plugin {
 
 		$tabs = &$plugin_functions_parameters['tabs'];
 
+		switch ($plugin_functions_parameters['section']) {
+			case 'server':
+				$tabs['report_plugin'] = array (
+					'title' => $this->lang['strplugindescription'],
+					'url' => 'plugin.php',
+					'urlvars' => array('subject' => 'server', 'action' => 'default_action', 'plugin' => $this->name),
+					'hide' => false,
+					'icon' => 'Plugins'
+				);
+				break;
+		}
 	}
 
 	/**
@@ -185,13 +197,16 @@ class Report extends Plugin {
 	function properties($msg = '') {
 		global $data, $reportsdb, $misc;
 		global $lang;
+		
+		$misc->printHeader($lang['strreports']);
+		$misc->printBody();
+		$misc->printTrail('server');
+		$misc->printTabs('server','reports');
+		$misc->printMsg($msg);
 
 		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
 
 		$_REQUEST['report'] = $report->fields['report_name'];
-		$misc->printTrail('report');
-		$misc->printTitle($lang['strproperties']);
-		$misc->printMsg($msg);
 
 		if ($report->recordCount() == 1) {
 			echo "<table>\n";
@@ -207,32 +222,24 @@ class Report extends Plugin {
 		}
 		else echo "<p>{$lang['strinvalidparam']}</p>\n";
 
+		$urlvars = array ('plugin' => $this->name, 'server' => field('server'));
+		if (isset($_REQUEST['schema'])) $urlvars['schema'] = field('schema');
+		if (isset($_REQUEST['schema'])) $urlvars['database'] = field('database');
+		
 		$navlinks = array (
 			array (
 				'attr'=> array (
 					'href' => array (
 						'url' => 'plugin.php',
-						'urlvars' => array (
-							'plugin' => $this->name,
-							'server' => field('server'),
-							'database' => field('database'),
-							'schema' => field('schema'),
-						)
+						'urlvars' => array_merge($urlvars, array('action' => 'default_action'))
 					)
 				),
 				'content' => $lang['strshowallreports']
 			), array (
 				'attr'=> array (
 					'href' => array (
-						'url' => 'reports.php',
-						'urlvars' => array (
-							'plugin' => $this->name,
-							'action' => 'edit',
-							'server' => field('server'),
-							'database' => field('database'),
-							'schema' => field('schema'),
-							'report_id' => $report->fields['report_id']
-						)
+						'url' => 'plugin.php',
+						'urlvars' => array_merge($urlvars, array('action' => 'edit', 'report_id' => $report->fields['report_id']))
 					)
 				),
 				'content' => $lang['stredit']
@@ -311,7 +318,7 @@ class Report extends Plugin {
 		elseif ($_POST['report_sql'] == '') doCreate($lang['strreportneedsdef']);
 		else {
 			$status = $this->reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
-								$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
+					$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
 				doDefault($lang['strreportcreated']);
 			else
@@ -325,6 +332,12 @@ class Report extends Plugin {
 	function drop($confirm) {
 		global $reportsdb, $misc;
 		global $lang;
+
+		$misc->printHeader($lang['strreports']);
+		$misc->printBody();
+		$misc->printTrail('server');
+		$misc->printTabs('server','reports');
+		$misc->printMsg($msg);
 
 		if ($confirm) {
 			// Fetch report from the database
@@ -352,6 +365,7 @@ class Report extends Plugin {
 				doDefault($lang['strreportdroppedbad']);
 		}
 
+		$misc->printFooter();
 	}
 
 	/**
@@ -427,6 +441,7 @@ class Report extends Plugin {
 			)
 		);
 		$misc->printNavLinks($navlinks, 'reports-reports');
+		$misc->printFooter();
 	}
 	
 }
