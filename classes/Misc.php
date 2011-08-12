@@ -592,14 +592,7 @@
 							'urlvars' => array('subject' => 'server', 'action' => 'export'),
 							'hide'  => (!$this->isDumpEnabled()),
 							'icon'  => 'Export',
-						),
-						'reports' => array (
-							'title' => $lang['strreports'],
-							'url'   => 'reports.php',
-							'urlvars' => array('subject' => 'server'),
-							'hide' => !$conf['show_reports'],
-							'icon' => 'Reports',
-						),
+						)
 					));
 					break;
 				case 'database':
@@ -1186,7 +1179,7 @@
 			$plugin_functions_parameters = array(
 				'toplinks' => &$toplinks
 			);
-			$plugin_manager->do_hook('toplinks', $plugin_functions_parameters);
+			if (isset($plugin_manager)) $plugin_manager->do_hook('toplinks', $plugin_functions_parameters);
 
 			return $toplinks;
 		}
@@ -1445,7 +1438,7 @@
 			$plugin_functions_parameters = array(
 				'trail' => &$trail
 			);
-			$plugin_manager->do_hook('trail', $plugin_functions_parameters);
+			if (isset($plugin_manager)) $plugin_manager->do_hook('trail', $plugin_functions_parameters);
 
 			return $trail;
 		}
