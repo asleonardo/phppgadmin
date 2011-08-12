@@ -166,6 +166,7 @@ class Report extends Plugin {
 		echo "<input type=\"submit\" name=\"cancel\" value=\"{$lang['strcancel']}\" /></p>\n";
 		echo "<input type=\"hidden\" name=\"report_id\" value=\"{$report->fields['report_id']}\" />\n";
 		echo "</form>\n";
+		$misc->printFooter();
 	}
 
 	/**
