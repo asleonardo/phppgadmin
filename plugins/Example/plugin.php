@@ -211,7 +211,7 @@ class Example extends Plugin {
 			$trail['show_page'] = array(
 				'title' => $this->lang['strlinktoplevel'],
 				'text'  => $this->lang['strlinktoplevel'],
-				'url'   => $misc->printActionUrl($url, $_REQUEST),
+				'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 				'icon' => 'Plugins'
 			);
 
@@ -229,7 +229,7 @@ class Example extends Plugin {
 				$trail['show_level_2'] = array(
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
-					'url'   => $misc->printActionUrl($url, $_REQUEST),
+					'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 					'icon' => array('plugin' => 'Example', 'image' => 'Level2')
 				);
 			}
@@ -248,7 +248,7 @@ class Example extends Plugin {
 				$trail['show_level_3'] = array(
 					'title' => $this->lang['strlinklevel3'],
 					'text'  => $this->lang['strlinklevel3'],
-					'url'   => $misc->printActionUrl($url, $_REQUEST),
+					'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 					'icon' => array('plugin' => 'Example', 'image' => 'Level3')
 				);
 			}
@@ -270,7 +270,7 @@ class Example extends Plugin {
 				$trail['show_schema_extension'] = array(
 				'title' => $this->lang['strschemaext'],
 				'text'  => $this->lang['strschemaext'],
-				'url'   => $misc->printActionUrl($url, $_REQUEST),
+				'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 				'icon' => 'Plugins'
 			);
 
@@ -291,7 +291,7 @@ class Example extends Plugin {
 				$trail['show_schema_extension_level_2'] = array(
 					'title' => $this->lang['strlinklevel2'],
 					'text'  => $this->lang['strlinklevel2'],
-					'url'   => $misc->printActionUrl($url, $_REQUEST), 
+					'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 					'icon' => 'Plugins'
 				);
 			}
