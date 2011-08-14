@@ -1096,9 +1096,9 @@
 					$tag = "\t<li><a ";
 					foreach ($link['attr'] as $attr => $value) {
 						if ($attr == 'href' and is_array($value)) {
-							$tag.= $this->printActionUrl($value, $_REQUEST, 'href');
+							$tag.= $this->printActionUrl($value, $_REQUEST, 'href')." ";
 						} else {
-							$tag.= htmlentities($attr)."=\"".htmlentities($value)."\"";
+							$tag.= htmlentities($attr)."=\"".htmlentities($value)."\" ";
 						}
 					}
 					$tag.= ">".htmlentities($link['content'])."</a></li>\n";
@@ -1308,16 +1308,6 @@
 				);
 			}
 			if ($subject == 'server') $done = true;
-
-			if (isset($_REQUEST['report']) && !$done) {
-				$vars .= 'report='.urlencode($_REQUEST['report']).'&';
-				$trail['report'] = array(
-					'title' => $lang['strreport'],
-					'text'  => $_REQUEST['report'],
-					'url'   => "reports.php?subject=report&{$vars}",
-					'icon'  => 'Report'
-				);
-			}
 
 			if (isset($_REQUEST['database']) && !$done) {
 				$vars .= 'database='.urlencode($_REQUEST['database']).'&';
@@ -1584,7 +1574,7 @@
 		 * @param $attr If supplied then the URL will be quoted and prefixed with
 		 *				'$attr='.
 		 */
-		function printActionUrl(&$action, &$fields, $attr = null) {
+		function printActionUrl(&$action, &$fields, $attr = null, $escape_sep = true) {
 			$url = value($action['url'], $fields);
 
 			if ($url === false) return '';
@@ -1610,11 +1600,12 @@
 
 			$sep = '?';
 			foreach ($urlvars as $var => $varfield) {
-				$url .= $sep . value_url($var, $fields) . '=' . value_url($varfield, $fields);
-				$sep = '&';
+				$url .= $sep . htmlentities(value_url($var, $fields) . '=' . value_url($varfield, $fields));
+				if ($escape_sep)
+					$sep = '&amp;';
+				else 
+					$sep = '&';
 			}
-
-			$url = htmlentities($url);
 
 			if ($attr !== null && $url != '')
 				return ' '.$attr.'="'.$url.'"';
