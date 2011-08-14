@@ -73,17 +73,10 @@
 	// We need to store the query in a session for editing purposes
 	// We avoid GPC vars to avoid truncating long queries
 	// If we came from a report, we need to look up the query
-	if (isset($_REQUEST['subject']) && $_REQUEST['subject'] == 'report' ) {
-		global $data, $misc;
-		include_once('./classes/Reports.php');
-		$reportsdb = new Reports($status);
-		$report = $reportsdb->getReport($_REQUEST['reportid']);
-		$_SESSION['sqlquery'] = $report->fields['report_sql'];	
-	} 
-	elseif (isset($_POST['query'])) {
+	if (isset($_POST['query'])) {
 		// Or maybe we came from an sql form
 		$_SESSION['sqlquery'] = $_POST['query'];
-	} else {
+	} else if (!isset($_SESSION['sqlquery']))  {
 		echo "could not find the query!!";
 	}
 	

@@ -69,6 +69,7 @@ class Report extends Plugin {
 			'create',
 			'drop',
 			'confirm_drop',
+			'execute',
 			'default_action'
 		);
 		return $actions;
@@ -433,6 +434,13 @@ class Report extends Plugin {
 		$misc->printFooter();
 	}
 
+	function execute() {
+		global $misc, $lang, $data, $conf;
+		$report = $this->reportsdb->getReport($_REQUEST['reportid']);
+		$_SESSION['sqlquery'] = $report->fields['report_sql'];
+		include('./sql.php');
+	}
+
 	/**
 	 * Show default list of reports in the database
 	 */
@@ -477,7 +485,7 @@ class Report extends Plugin {
 		$actions = array(
 			'run' => array(
 				'title' => $lang['strexecute'],
-				'url'   => "sql.php?subject=report&amp;{$misc->href}&amp;return_url={$return_url}&amp;return_desc=".urlencode($lang['strback'])."&amp;",
+				'url'   => "plugin.php?plugin={$this->name}&amp;action=execute&amp;{$misc->href}&amp;return_url={$return_url}&amp;return_desc=".urlencode($lang['strback'])."&amp;",
 				'vars'  => array('report' => 'report_name', 'database' => 'db_name', 'reportid' => 'report_id', 'paginate' => 'paginate'),
 			),
 			'edit' => array(
@@ -493,7 +501,7 @@ class Report extends Plugin {
 		);
 		
 		$misc->printTable($reports, $columns, $actions, 'reports-reports', $lang['strnoreports']);
-		
+
 		$navlinks = array (
 			array (
 				'attr'=> array (
@@ -511,6 +519,5 @@ class Report extends Plugin {
 		$misc->printNavLinks($navlinks, 'reports-reports');
 		$misc->printFooter();
 	}
-	
 }
 ?>
