@@ -126,11 +126,11 @@ class Report extends Plugin {
 				)
 			);
 			if (isset($_REQUEST['report'])) $url['urlvars']['report'] = field('report');
-			
+
 			$trail['report_plugin'] = array (
 				'title' => $lang['strreport'],
 				'text' => $lang['strreport'],
-				'url'   => $misc->printActionUrl($url, $_REQUEST),
+				'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 				'icon' => 'Report'
 			);
 			if (isset($_REQUEST['report'])) {
