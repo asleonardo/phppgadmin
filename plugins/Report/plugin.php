@@ -145,9 +145,29 @@ class Report extends Plugin {
 	 * @param $plugin_functions_parameters
 	 */
 	function add_plugin_navlinks(&$plugin_functions_parameters) {
-		global $misc;
+		global $misc, $lang;
 
 		$navlinks = array();
+		switch ($plugin_functions_parameters['place']) {
+			case 'sql-form':
+				$navlinks[] = array (
+					'attr'=> array (
+						'href' => array (
+							'url' => 'plugin.php',
+							'urlvars' => array (
+								'plugin' => $this->name,
+								'action' => 'create',
+								'server' => field('server'),
+								'database' => field('database'),
+								'schema' => field('schema'),
+								'report_sql' => $_SESSION['sqlquery']
+							)
+						)
+					),
+					'content' => $lang['strcreatereport']
+				);
+				break;
+		}
 
 		if (count($navlinks) > 0) {
 			//Merge the original navlinks array with Examples' navlinks 

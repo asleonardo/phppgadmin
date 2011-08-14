@@ -208,24 +208,6 @@
 		'content' => $lang['streditsql']
 	);
 
-	// Create report
-	if (($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0)
-		$navlinks[] = array (
-		'attr'=> array (
-			'href' => array (
-				'url' => 'reports.php',
-				'urlvars' => array (
-					'action' => 'create',
-					'server' => field('server'),
-					'database' => field('database'),
-					'schema' => field('schema'),
-					'report_sql' => $_SESSION['sqlquery']
-				)
-			)
-		),
-		'content' => $lang['strcreatereport']
-	);
-
 	// Create view and download
 	if (isset($_SESSION['sqlquery']) && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
 		// Report views don't set a schema, so we need to disable create view in that case
