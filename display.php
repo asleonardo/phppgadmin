@@ -635,26 +635,6 @@
 			);
 		}
 
-		// Create report
-		if (isset($_REQUEST['query']) && ($subject !== 'report') && $conf['show_reports'] && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
-			$navlinks[] = array (
-				'attr'=> array (
-					'href' => array (
-						'url' => 'reports.php',
-						'urlvars' => array (
-							'action' => 'create',
-							'server' => field('server'),
-							'database' => field('database'),
-							'schema' => field('schema'),
-							'report_sql' => field('query'),
-							'paginate' => (isset($_REQUEST['paginate']) ? $_REQUEST['paginate'] : 'f')
-						)
-					)
-				),
-				'content' => $lang['strcreatereport']
-			);
-		}
-
 		// Create view and download
 		if (isset($_REQUEST['query']) && isset($rs) && is_object($rs) && $rs->recordCount() > 0) {
 			// Report views don't set a schema, so we need to disable create view in that case

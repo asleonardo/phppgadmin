@@ -167,6 +167,25 @@ class Report extends Plugin {
 					'content' => $lang['strcreatereport']
 				);
 				break;
+			case 'display-browse':
+				$navlinks[] = array (
+					'attr'=> array (
+						'href' => array (
+							'url' => 'plugin.php',
+							'urlvars' => array (
+								'plugin' => $this->name,
+								'action' => 'create',
+								'server' => field('server'),
+								'database' => field('database'),
+								'schema' => field('schema'),
+								'report_sql' => field('query'),
+								'paginate' => (isset($_REQUEST['paginate']) ? $_REQUEST['paginate'] : 'f')
+							)
+						)
+					),
+					'content' => $lang['strcreatereport']
+				);
+				break;
 		}
 
 		if (count($navlinks) > 0) {
