@@ -17,8 +17,7 @@ class Report extends Plugin {
 	 * @param $language Current phpPgAdmin language. If it was not found in the plugin, English will be used.
 	 */
 	function __construct($language) {
-		$plugin_directory = dirname(__FILE__);
-		parent::__construct($language, $plugin_directory);
+		parent::__construct($language);
 		//
 		global $status, $data;
 		if ($data != null) {
