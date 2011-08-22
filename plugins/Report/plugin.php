@@ -90,7 +90,7 @@ class Report extends Plugin {
 					'url' => 'plugin.php',
 					'urlvars' => array('subject' => 'server', 'action' => 'default_action', 'plugin' => $this->name),
 					'hide' => false,
-					'icon' => 'Report'
+					'icon' => array('plugin' => $this->name, 'image' => 'Report')
 				);
 				break;
 		}
@@ -131,7 +131,7 @@ class Report extends Plugin {
 				'title' => $lang['strreport'],
 				'text' => $lang['strreport'],
 				'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
-				'icon' => 'Report'
+				'icon' => array('plugin' => $this->name, 'image' => 'Report')
 			);
 			if (isset($_REQUEST['report'])) {
 				$trail['report_plugin']['text'] = $_REQUEST['report'];
