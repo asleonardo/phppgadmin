@@ -8,5 +8,5 @@
 	// Language and character set
 	$lang['appcharset'] = 'ISO-8859-1';
 
-	$plugin_lang['strplugindescription'] = 'Report plugin';
+	$lang['strplugindescription'] = 'Report plugin';
 ?>
