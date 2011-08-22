@@ -128,8 +128,8 @@ class Report extends Plugin {
 			if (isset($_REQUEST['report'])) $url['urlvars']['report'] = field('report');
 
 			$trail['report_plugin'] = array (
-				'title' => $lang['strreport'],
-				'text' => $lang['strreport'],
+				'title' => $this->lang['strreport'],
+				'text' => $this->lang['strreport'],
 				'url'   => $misc->printActionUrl($url, $_REQUEST, null, false),
 				'icon' => array('plugin' => $this->name, 'image' => 'Report')
 			);
@@ -163,7 +163,7 @@ class Report extends Plugin {
 							)
 						)
 					),
-					'content' => $lang['strcreatereport']
+					'content' => $this->lang['strcreatereport']
 				);
 				break;
 			case 'display-browse':
@@ -182,7 +182,7 @@ class Report extends Plugin {
 							)
 						)
 					),
-					'content' => $lang['strcreatereport']
+					'content' => $this->lang['strcreatereport']
 				);
 				break;
 		}
@@ -197,7 +197,7 @@ class Report extends Plugin {
 		global $data, $reportsdb, $misc;
 		global $lang;
 
-		$misc->printHeader($lang['strreports']);
+		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
 		$misc->printTabs('server', 'report_plugin');
@@ -270,16 +270,16 @@ class Report extends Plugin {
 
 		// Check that they've given a name and a definition
 		if ($_POST['report_name'] == '') {
-			$this->edit($lang['strreportneedsname']);
+			$this->edit($this->lang['strreportneedsname']);
 		} elseif ($_POST['report_sql'] == '') {
-			$this->edit($lang['strreportneedsdef']);
+			$this->edit($this->lang['strreportneedsdef']);
 		} else {
 			$status = $this->reportsdb->alterReport($_POST['report_id'], $_POST['report_name'], $_POST['db_name'],
 				$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
-				$this->default_action($lang['strreportcreated']);
+				$this->default_action($this->lang['strreportcreated']);
 			else
-				$this->edit($lang['strreportcreatedbad']);
+				$this->edit($this->lang['strreportcreatedbad']);
 		}
 	}
 
@@ -326,7 +326,7 @@ class Report extends Plugin {
 						'urlvars' => array_merge($urlvars, array('action' => 'default_action'))
 					)
 				),
-				'content' => $lang['strshowallreports']
+				'content' => $this->lang['strshowallreports']
 			), array (
 				'attr'=> array (
 					'href' => array (
@@ -347,7 +347,7 @@ class Report extends Plugin {
 		global $data, $reportsdb, $misc;
 		global $lang;
 
-		$misc->printHeader($lang['strreports']);
+		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
 		$misc->printTabs('server', 'report_plugin');
@@ -414,15 +414,15 @@ class Report extends Plugin {
 		if (!isset($_POST['report_sql'])) $_POST['report_sql'] = '';
 
 		// Check that they've given a name and a definition
-		if ($_POST['report_name'] == '') $this->create($lang['strreportneedsname']);
-		elseif ($_POST['report_sql'] == '') $this->create($lang['strreportneedsdef']);
+		if ($_POST['report_name'] == '') $this->create($this->lang['strreportneedsname']);
+		elseif ($_POST['report_sql'] == '') $this->create($this->lang['strreportneedsdef']);
 		else {
 			$status = $this->reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
 					$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
-				$this->default_action($lang['strreportcreated']);
+				$this->default_action($this->lang['strreportcreated']);
 			else
-				$this->create($lang['strreportcreatedbad']);
+				$this->create($this->lang['strreportcreatedbad']);
 		}
 	}
 
@@ -436,7 +436,7 @@ class Report extends Plugin {
 		$confirm = false;
 		if (isset($_REQUEST['confirm'])) $confirm = true;
 
-		$misc->printHeader($lang['strreports']);
+		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
 		
 		if (isset($_REQUEST['cancel'])) {
@@ -452,7 +452,7 @@ class Report extends Plugin {
 			$misc->printTrail('report');
 			$misc->printTitle($lang['strdrop']);
 
-			echo "<p>", sprintf($lang['strconfdropreport'], $misc->printVal($report->fields['report_name'])), "</p>\n";
+			echo "<p>", sprintf($this->lang['strconfdropreport'], $misc->printVal($report->fields['report_name'])), "</p>\n";
 
 			echo "<form action=\"plugin.php?plugin={$this->name}\" method=\"post\">\n";
 			echo $misc->form;
@@ -464,9 +464,9 @@ class Report extends Plugin {
 		} else {
 			$status = $this->reportsdb->dropReport($_POST['report_id']);
 			if ($status == 0)
-				$this->default_action($lang['strreportdropped']);
+				$this->default_action($this->lang['strreportdropped']);
 			else
-				$this->default_action($lang['strreportdroppedbad']);
+				$this->default_action($this->lang['strreportdroppedbad']);
 		}
 
 		$misc->printFooter();
@@ -486,7 +486,7 @@ class Report extends Plugin {
 		global $data, $misc, $reportsdb;
 		global $lang;
 
-		$misc->printHeader($lang['strreports']);
+		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
 		$misc->printTrail('server');
 		$misc->printTabs('server', 'report_plugin');
@@ -496,7 +496,7 @@ class Report extends Plugin {
 
 		$columns = array(
 			'report' => array(
-				'title' => $lang['strreport'],
+				'title' => $this->lang['strreport'],
 				'field' => field('report_name'),
 				'url'   => "plugin.php?plugin={$this->name}&amp;action=properties&amp;{$misc->href}&amp;",
 				'vars'  => array('report_id' => 'report_id'),
@@ -538,7 +538,7 @@ class Report extends Plugin {
 			),
 		);
 		
-		$misc->printTable($reports, $columns, $actions, 'reports-reports', $lang['strnoreports']);
+		$misc->printTable($reports, $columns, $actions, 'reports-reports', $this->lang['strnoreports']);
 
 		$navlinks = array (
 			array (
@@ -551,7 +551,7 @@ class Report extends Plugin {
 							'action' => 'create')
 					)
 				),
-				'content' => $lang['strcreatereport']
+				'content' => $this->lang['strcreatereport']
 			)
 		);
 		$misc->printNavLinks($navlinks, 'reports-reports');
