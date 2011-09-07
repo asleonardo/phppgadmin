@@ -20,7 +20,7 @@ class Report extends Plugin {
 		parent::__construct($language);
 		//
 		global $status, $data;
-		if ($data != null) {
+		if ($data != null) { # TODO this need some more thoughts and probably be droped
 			$this->reportsdb = new Reports($status);
 		}
 	}
