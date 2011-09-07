@@ -308,6 +308,8 @@ class Report extends Plugin {
 			echo "<td class=\"data1\">", $misc->printVal($report->fields['db_name']), "</td></tr>\n";
 			echo "<tr><th class=\"data left\">{$lang['strcomment']}</th>\n";
 			echo "<td class=\"data1\">", $misc->printVal($report->fields['descr']), "</td></tr>\n";
+			echo "<tr><th class=\"data left\">{$lang['strpaginate']}</th>\n";
+			echo "<td class=\"data1\">", $misc->printVal($report->fields['paginate'], 'yesno', array('align' => 'left')), "</td></tr>\n";
 			echo "<tr><th class=\"data left\">{$lang['strsql']}</th>\n";
 			echo "<td class=\"data1\">", $misc->printVal($report->fields['report_sql']), "</td></tr>\n";
 			echo "</table>\n";
@@ -508,6 +510,11 @@ class Report extends Plugin {
 			'created' => array(
 				'title' => $lang['strcreated'],
 				'field' => field('date_created'),
+			),
+			'paginate' => array(
+				'title' => $lang['strpaginate'],
+				'field' => field('paginate'),
+				'type' => 'yesno',
 			),
 			'actions' => array(
 				'title' => $lang['stractions'],
