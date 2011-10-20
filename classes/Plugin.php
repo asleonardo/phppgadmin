@@ -13,7 +13,12 @@ abstract class Plugin {
 		if (file_exists("{$plugin_directory}/lang/recoded/{$language}.php")) {
 			include_once("{$plugin_directory}/lang/recoded/{$language}.php");
 		}
-		$this->lang = $lang;
+		$this->lang = $plugin_lang;
+
+		if (file_exists("{$plugin_directory}/conf/config.inc.php")) {
+			include_once("{$plugin_directory}/conf/config.inc.php");
+			$this->conf = $plugin_conf;
+		}
 	}
 
 	abstract function get_hooks();

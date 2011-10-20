@@ -5,22 +5,23 @@
 	 */
 
 	// Language and character set
-	$lang['appcharset'] = 'UTF-8';
+	$plugin_lang['appcharset'] = 'UTF-8';
 
 	// Basic strings
-	$lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strnoreportsdb'] = 'La base de dades dels reports no est&#224; creada. Llegeixi el fitxer INSTALL per fer-ho.';
 
 	// Reports
-	$lang['strreport'] = 'Report';
-	$lang['strreports'] = 'Reports';
-	$lang['strshowallreports'] = 'Mostra tots els reports';
-	$lang['strnoreports'] = 'No s\'han trobat reports';
-	$lang['strcreatereport'] = 'Crea un report';
-	$lang['strreportdropped'] = 'Report eliminat.';
-	$lang['strreportdroppedbad'] = 'No s\'ha pogut eliminar el report.';
-	$lang['strconfdropreport'] = 'Est&#224; segur de voler eliminar el report &quot;%s&quot;?';
-	$lang['strreportneedsname'] = 'Ha de donar un nom al report.';
-	$lang['strreportneedsdef'] = 'Ha de donar un SQL al report.';
-	$lang['strreportcreated'] = 'Report desat.';
-	$lang['strreportcreatedbad'] = 'No s\'ha pogut desar el report.';
+	$plugin_lang['strreport'] = 'Report';
+	$plugin_lang['strreports'] = 'Reports';
+	$plugin_lang['strshowallreports'] = 'Mostra tots els reports';
+	$plugin_lang['strnoreports'] = 'No s\'han trobat reports';
+	$plugin_lang['strcreatereport'] = 'Crea un report';
+	$plugin_lang['strreportdropped'] = 'Report eliminat.';
+	$plugin_lang['strreportdroppedbad'] = 'No s\'ha pogut eliminar el report.';
+	$plugin_lang['strconfdropreport'] = 'Est&#224; segur de voler eliminar el report &quot;%s&quot;?';
+	$plugin_lang['strreportneedsname'] = 'Ha de donar un nom al report.';
+	$plugin_lang['strreportneedsdef'] = 'Ha de donar un SQL al report.';
+	$plugin_lang['strreportcreated'] = 'Report desat.';
+	$plugin_lang['strreportcreatedbad'] = 'No s\'ha pogut desar el report.';
 ?>

@@ -5,23 +5,24 @@
 	 */
 
 	// Language and character set
-	$lang['appcharset'] = 'iso-8859-7';
+	$plugin_lang['appcharset'] = 'iso-8859-7';
 
 	//Basic
-	$lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strnoreportsdb'] = 'Η βάση αναφορών δεν έχει δημιουργηθεί. Διαβάστε το αρχείο INSTALL για οδηγίες.';
 
 	// Reports
-	$lang['strreport'] = 'Αναφορά';
-	$lang['strreports'] = 'Αναφορές';
-	$lang['strshowallreports'] = 'Εμφάνιση όλων των αναφορών';
-	$lang['strnoreports'] = 'Δε βρέθηκαν αναφορές.';
-	$lang['strcreatereport'] = 'Δημιουργία αναφοράς';
-	$lang['strreportdropped'] = 'Η αναφορά διαγράφηκε.';
-	$lang['strreportdroppedbad'] = 'Η διαγραφή της αναφοράς απέτυχε.';
-	$lang['strconfdropreport'] = 'Να διαγραφεί η αναφορά "%s"?';
-	$lang['strreportneedsname'] = 'Πρέπει να δώσετε όνομα στην αναφορά.';
-	$lang['strreportneedsdef'] = 'Πρέπει να δώσετε SQL για την αναφορά.';
-	$lang['strreportcreated'] = 'Η αναφορά αποθηκεύτηκε.';
-	$lang['strreportcreatedbad'] = 'Η αποθήκευση της αναφοράς απέτυχε.';
+	$plugin_lang['strreport'] = 'Αναφορά';
+	$plugin_lang['strreports'] = 'Αναφορές';
+	$plugin_lang['strshowallreports'] = 'Εμφάνιση όλων των αναφορών';
+	$plugin_lang['strnoreports'] = 'Δε βρέθηκαν αναφορές.';
+	$plugin_lang['strcreatereport'] = 'Δημιουργία αναφοράς';
+	$plugin_lang['strreportdropped'] = 'Η αναφορά διαγράφηκε.';
+	$plugin_lang['strreportdroppedbad'] = 'Η διαγραφή της αναφοράς απέτυχε.';
+	$plugin_lang['strconfdropreport'] = 'Να διαγραφεί η αναφορά "%s"?';
+	$plugin_lang['strreportneedsname'] = 'Πρέπει να δώσετε όνομα στην αναφορά.';
+	$plugin_lang['strreportneedsdef'] = 'Πρέπει να δώσετε SQL για την αναφορά.';
+	$plugin_lang['strreportcreated'] = 'Η αναφορά αποθηκεύτηκε.';
+	$plugin_lang['strreportcreatedbad'] = 'Η αποθήκευση της αναφοράς απέτυχε.';
 
 ?>

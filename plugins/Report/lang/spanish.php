@@ -5,22 +5,23 @@
      */
 
 	// Language and character set
-	$lang['appcharset'] = 'ISO-8859-1';
+	$plugin_lang['appcharset'] = 'ISO-8859-1';
 
 	// Basic
-	$lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strnoreportsdb'] = 'Aún no se ha creado  la base de datos para los reportes. Lea las instrucciones del archivo INSTALL.';
 
 	// Reports
-	$lang['strreport'] = 'Reporte';
-	$lang['strreports'] = 'Reportes';
-	$lang['strshowallreports'] = 'Mostrar todos los reportes';
-	$lang['strnoreports'] = 'No se encontró el reporte.';
-	$lang['strcreatereport'] = 'Crear Reporte';
-	$lang['strreportdropped'] = 'Reporte eliminado.';
-	$lang['strreportdroppedbad'] = 'Falló al eliminar el Reporte.';
-	$lang['strconfdropreport'] = '¿Estás seguro que quiere eliminar el reporte "%s"?';
-	$lang['strreportneedsname'] = 'Debe especificar un nombre para el reporte.';
-	$lang['strreportneedsdef'] = 'Debe especificar un SQL para el reporte.';
-	$lang['strreportcreated'] = 'Reporte guardado.';
-	$lang['strreportcreatedbad'] = 'Falló al guardar el reporte.';
+	$plugin_lang['strreport'] = 'Reporte';
+	$plugin_lang['strreports'] = 'Reportes';
+	$plugin_lang['strshowallreports'] = 'Mostrar todos los reportes';
+	$plugin_lang['strnoreports'] = 'No se encontró el reporte.';
+	$plugin_lang['strcreatereport'] = 'Crear Reporte';
+	$plugin_lang['strreportdropped'] = 'Reporte eliminado.';
+	$plugin_lang['strreportdroppedbad'] = 'Falló al eliminar el Reporte.';
+	$plugin_lang['strconfdropreport'] = '¿Estás seguro que quiere eliminar el reporte "%s"?';
+	$plugin_lang['strreportneedsname'] = 'Debe especificar un nombre para el reporte.';
+	$plugin_lang['strreportneedsdef'] = 'Debe especificar un SQL para el reporte.';
+	$plugin_lang['strreportcreated'] = 'Reporte guardado.';
+	$plugin_lang['strreportcreatedbad'] = 'Falló al guardar el reporte.';
 ?>

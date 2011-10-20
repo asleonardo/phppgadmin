@@ -5,22 +5,23 @@
 	 */
 
 	// Language and character set
-	$lang['appcharset'] = 'UTF-8';
+	$plugin_lang['appcharset'] = 'UTF-8';
 
 	// Basic
-	$lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strnoreportsdb'] = 'Nebola vytvorené report databáza. Prečítaj si INSTALL súbor s pokynmi.';
 
 	// Reports
-	$lang['strreport'] = 'Report';
-	$lang['strreports'] = 'Reporty';
-	$lang['strshowallreports'] = 'Zobraziť Všetky Reporty';
-	$lang['strnoreports'] = 'Nenájdené žiadne reporty.';
-	$lang['strcreatereport'] = 'Vytvoriť Report';
-	$lang['strreportdropped'] = 'Report zmazaný.';
-	$lang['strreportdroppedbad'] = 'Report nebol zmazaný.';
-	$lang['strconfdropreport'] = 'Naozaj chceš zmazať report "%s"?';
-	$lang['strreportneedsname'] = 'Musíš zadať názov pre tvoj report.';
-	$lang['strreportneedsdef'] = 'Musíš zadať SQL dotaz pre tvoj report.';
-	$lang['strreportcreated'] = 'Report uložený.';
-	$lang['strreportcreatedbad'] = 'Report nebol uložený.';
+	$plugin_lang['strreport'] = 'Report';
+	$plugin_lang['strreports'] = 'Reporty';
+	$plugin_lang['strshowallreports'] = 'Zobraziť Všetky Reporty';
+	$plugin_lang['strnoreports'] = 'Nenájdené žiadne reporty.';
+	$plugin_lang['strcreatereport'] = 'Vytvoriť Report';
+	$plugin_lang['strreportdropped'] = 'Report zmazaný.';
+	$plugin_lang['strreportdroppedbad'] = 'Report nebol zmazaný.';
+	$plugin_lang['strconfdropreport'] = 'Naozaj chceš zmazať report "%s"?';
+	$plugin_lang['strreportneedsname'] = 'Musíš zadať názov pre tvoj report.';
+	$plugin_lang['strreportneedsdef'] = 'Musíš zadať SQL dotaz pre tvoj report.';
+	$plugin_lang['strreportcreated'] = 'Report uložený.';
+	$plugin_lang['strreportcreatedbad'] = 'Report nebol uložený.';
 ?>

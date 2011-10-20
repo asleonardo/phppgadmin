@@ -1,6 +1,6 @@
 <?php
-require_once('classes/Plugin.php');
-include_once('plugins/Report/classes/Reports.php');
+require_once('./classes/Plugin.php');
+require_once('./plugins/Report/classes/Reports.php');
 
 class Report extends Plugin {
 
@@ -9,7 +9,8 @@ class Report extends Plugin {
 	 */
 	protected $name = 'Report';
 	protected $lang;
-	public $reportsdb;
+	protected $conf = array();
+	protected $_reportsdb = null;
 
 	/**
 	 * Constructor
@@ -17,12 +18,43 @@ class Report extends Plugin {
 	 * @param $language Current phpPgAdmin language. If it was not found in the plugin, English will be used.
 	 */
 	function __construct($language) {
+		global $data;
+
 		parent::__construct($language);
-		//
-		global $status, $data;
-		if ($data != null) { # TODO this need some more thoughts and probably be droped
-			$this->reportsdb = new Reports($status);
+
+		/* default values */
+		if (! isset($this->conf['reports_db'])) {
+			$this->conf['reports_db'] = 'phppgadmin';
 		}
+		if (! isset($this->conf['reports_schema'])) {
+			$this->conf['reports_schema'] = 'public';
+		}
+		if (! isset($this->conf['reports_table'])) {
+			$this->conf['reports_table'] = 'ppa_reports';
+		}
+		if (! isset($this->conf['owned_reports_only'])) {
+			$this->conf['owned_reports_only'] = false;
+		}
+	}
+
+	function get_reportsdb() {
+		if ($this->_reportsdb === null) {
+			$status = 0;
+			$this->_reportsdb = new Reports($this->conf, $status);
+
+			if ($status !== 0) {
+				global $misc, $lang;
+				$misc->printHeader($lang['strreports']);
+				$misc->printBody();
+				$misc->printTrail('server');
+				$misc->printTabs('server','reports');
+				$misc->printMsg($lang['strnoreportsdb']);
+				$misc->printFooter();
+				exit;
+			}
+		}
+
+		return $this->_reportsdb;
 	}
 
 	/**
@@ -194,8 +226,9 @@ class Report extends Plugin {
 	}
 
 	function edit($msg = '') {
-		global $data, $reportsdb, $misc;
-		global $lang;
+		global $data, $misc, $lang;
+
+		$reportsdb = $this->get_reportsdb();
 
 		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
@@ -204,7 +237,8 @@ class Report extends Plugin {
 		$misc->printMsg($msg);
 
 		// If it's a first, load then get the data from the database
-		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
+		$report = $reportsdb->getReport($_REQUEST['report_id']);
+		
 		if ($_REQUEST['action'] == 'edit') {			
 			$_POST['report_name'] = $report->fields['report_name'];
 			$_POST['db_name'] = $report->fields['db_name'];
@@ -256,7 +290,9 @@ class Report extends Plugin {
 	 * Saves changes to a report
 	 */
 	function save_edit() {
-		global $reportsdb, $lang;
+		global $lang;
+
+		$reportsdb = $this->get_reportsdb();
 
 		if (isset($_REQUEST['cancel'])) {
 			$this->default_action();
@@ -274,7 +310,7 @@ class Report extends Plugin {
 		} elseif ($_POST['report_sql'] == '') {
 			$this->edit($this->lang['strreportneedsdef']);
 		} else {
-			$status = $this->reportsdb->alterReport($_POST['report_id'], $_POST['report_name'], $_POST['db_name'],
+			$status = $reportsdb->alterReport($_POST['report_id'], $_POST['report_name'], $_POST['db_name'],
 				$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
 				$this->default_action($this->lang['strreportcreated']);
@@ -289,6 +325,8 @@ class Report extends Plugin {
 	function properties($msg = '') {
 		global $data, $reportsdb, $misc;
 		global $lang;
+
+		$reportsdb = $this->get_reportsdb();
 		
 		$misc->printHeader($lang['strreports']);
 		$misc->printBody();
@@ -296,7 +334,7 @@ class Report extends Plugin {
 		$misc->printTabs('server', 'report_plugin');
 		$misc->printMsg($msg);
 
-		$report = $this->reportsdb->getReport($_REQUEST['report_id']);
+		$report = $reportsdb->getReport($_REQUEST['report_id']);
 
 		$_REQUEST['report'] = $report->fields['report_name'];
 
@@ -329,7 +367,8 @@ class Report extends Plugin {
 					)
 				),
 				'content' => $this->lang['strshowallreports']
-			), array (
+			),
+			array (
 				'attr'=> array (
 					'href' => array (
 						'url' => 'plugin.php',
@@ -337,6 +376,21 @@ class Report extends Plugin {
 					)
 				),
 				'content' => $lang['stredit']
+			),
+			array (
+				'attr'=> array (
+					'href' => array (
+						'url' => 'plugin.php',
+						'urlvars' => array_merge($urlvars, array(
+							'action' => 'execute',
+							'report' => $report->fields['report_name'],
+							'database' => $report->fields['db_name'],
+							'reportid' => $report->fields['report_id'],
+							'paginate' => $report->fields['paginate']
+						))
+					)
+				),
+				'content' => $lang['strexecute']
 			)
 		);
 		$misc->printNavLinks($navlinks, 'reports-properties');
@@ -403,12 +457,14 @@ class Report extends Plugin {
 	 * Actually creates the new report in the database
 	 */
 	function save_create() {
-		global $reportsdb, $lang;
+		global $lang;
 
 		if (isset($_REQUEST['cancel'])) {
 			$this->default_action();
 			exit;
 		}
+
+		$reportsdb = $this->get_reportsdb();
 
 		if (!isset($_POST['report_name'])) $_POST['report_name'] = '';
 		if (!isset($_POST['db_name'])) $_POST['db_name'] = '';
@@ -419,7 +475,7 @@ class Report extends Plugin {
 		if ($_POST['report_name'] == '') $this->create($this->lang['strreportneedsname']);
 		elseif ($_POST['report_sql'] == '') $this->create($this->lang['strreportneedsdef']);
 		else {
-			$status = $this->reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
+			$status = $reportsdb->createReport($_POST['report_name'], $_POST['db_name'],
 					$_POST['descr'], $_POST['report_sql'], isset($_POST['paginate']));
 			if ($status == 0)
 				$this->default_action($this->lang['strreportcreated']);
@@ -438,6 +494,8 @@ class Report extends Plugin {
 		$confirm = false;
 		if (isset($_REQUEST['confirm'])) $confirm = true;
 
+		$reportsdb = $this->get_reportsdb();
+
 		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
 		
@@ -448,7 +506,7 @@ class Report extends Plugin {
 
 		if ($confirm) {
 			// Fetch report from the database
-			$report = $this->reportsdb->getReport($_REQUEST['report_id']);
+			$report = $reportsdb->getReport($_REQUEST['report_id']);
 
 			$_REQUEST['report'] = $report->fields['report_name'];
 			$misc->printTrail('report');
@@ -464,7 +522,7 @@ class Report extends Plugin {
 			echo "<input type=\"submit\" name=\"cancel\" value=\"{$lang['strcancel']}\" />\n";
 			echo "</form>\n";
 		} else {
-			$status = $this->reportsdb->dropReport($_POST['report_id']);
+			$status = $reportsdb->dropReport($_POST['report_id']);
 			if ($status == 0)
 				$this->default_action($this->lang['strreportdropped']);
 			else
@@ -475,8 +533,11 @@ class Report extends Plugin {
 	}
 
 	function execute() {
-		global $misc, $lang, $data, $conf;
-		$report = $this->reportsdb->getReport($_REQUEST['reportid']);
+		global $misc, $lang, $data;
+
+		$reportsdb = $this->get_reportsdb();
+
+		$report = $reportsdb->getReport($_REQUEST['reportid']);
 		$_SESSION['sqlquery'] = $report->fields['report_sql'];
 		include('./sql.php');
 	}
@@ -485,8 +546,9 @@ class Report extends Plugin {
 	 * Show default list of reports in the database
 	 */
 	function default_action($msg = '') {
-		global $data, $misc, $reportsdb;
-		global $lang;
+		global $data, $misc, $lang;
+
+		$reportsdb = $this->get_reportsdb();
 
 		$misc->printHeader($this->lang['strreports']);
 		$misc->printBody();
@@ -494,7 +556,7 @@ class Report extends Plugin {
 		$misc->printTabs('server', 'report_plugin');
 		$misc->printMsg($msg);
 		
-		$reports = $this->reportsdb->getReports();
+		$reports = $reportsdb->getReports();
 
 		$columns = array(
 			'report' => array(

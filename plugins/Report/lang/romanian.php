@@ -4,22 +4,23 @@
 	*/
 
 	// Language and character set
-	$lang['appcharset'] = 'UTF-8';
+	$plugin_lang['appcharset'] = 'UTF-8';
 
 	//Basic
-	$lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strnoreportsdb'] = 'Nu aţi creat baza de date pentru rapoarte. Citiţi fişierul INSTALL pentru instrucţiuni.';
 
 	// Reports
-	$lang['strreport'] = 'Raport';
-	$lang['strreports'] = 'Rapoarte';
-	$lang['strshowallreports'] = 'Afişare toate rapoartele';
-	$lang['strnoreports'] = 'Nici un raport găsit.';
-	$lang['strcreatereport'] = 'Creare raport';
-	$lang['strreportdropped'] = 'Report dropped.';
-	$lang['strreportdroppedbad'] = 'Ştergere raport eşuată.';
-	$lang['strconfdropreport'] = 'Sigur ştergeţi raportul "%s"?';
-	$lang['strreportneedsname'] = 'Specificaţi un nume pentru raport.';
-	$lang['strreportneedsdef'] = 'Specificaţi o instrucţiune SQL pentru raport.';
-	$lang['strreportcreated'] = 'Raport salvat.';
-	$lang['strreportcreatedbad'] = 'Salvare raport eşuată.';
+	$plugin_lang['strreport'] = 'Raport';
+	$plugin_lang['strreports'] = 'Rapoarte';
+	$plugin_lang['strshowallreports'] = 'Afişare toate rapoartele';
+	$plugin_lang['strnoreports'] = 'Nici un raport găsit.';
+	$plugin_lang['strcreatereport'] = 'Creare raport';
+	$plugin_lang['strreportdropped'] = 'Report dropped.';
+	$plugin_lang['strreportdroppedbad'] = 'Ştergere raport eşuată.';
+	$plugin_lang['strconfdropreport'] = 'Sigur ştergeţi raportul "%s"?';
+	$plugin_lang['strreportneedsname'] = 'Specificaţi un nume pentru raport.';
+	$plugin_lang['strreportneedsdef'] = 'Specificaţi o instrucţiune SQL pentru raport.';
+	$plugin_lang['strreportcreated'] = 'Raport salvat.';
+	$plugin_lang['strreportcreatedbad'] = 'Salvare raport eşuată.';
 ?>

@@ -5,22 +5,22 @@
 	 */
 
 	// Language and character set
-	$lang['appcharset'] = 'ISO-8859-5';
+	$plugin_lang['appcharset'] = 'ISO-8859-5';
 
 	//Basic
-	$lang['strplugindescription'] = 'Report plugin';
+	$plugin_lang['strplugindescription'] = 'Report plugin';
 
 	// Reports
-	$lang['strreport'] = 'Отчет';
-	$lang['strreports'] = 'Отчеты';
-	$lang['strshowallreports'] = 'Показать все отчеты';
-	$lang['strnoreports'] = 'Отчетов нет.';
-	$lang['strcreatereport'] = 'Создать отчет';
-	$lang['strreportdropped'] = 'Отчет уничтожен.';
-	$lang['strreportdroppedbad'] = 'Уничтожение отчета прервано.';
-	$lang['strconfdropreport'] = 'Вы уверены, что хотите уничтожить отчет "%s"?';
-	$lang['strreportneedsname'] = 'Вам необходимо указать имя отчета.';
-	$lang['strreportneedsdef'] = 'Вам необходимо указать SQL-запрос для Вашего отчета.';
-	$lang['strreportcreated'] = 'Отчет сохранен.';
-	$lang['strreportcreatedbad'] = 'Сохранение отчета прервано.';
+	$plugin_lang['strreport'] = 'Отчет';
+	$plugin_lang['strreports'] = 'Отчеты';
+	$plugin_lang['strshowallreports'] = 'Показать все отчеты';
+	$plugin_lang['strnoreports'] = 'Отчетов нет.';
+	$plugin_lang['strcreatereport'] = 'Создать отчет';
+	$plugin_lang['strreportdropped'] = 'Отчет уничтожен.';
+	$plugin_lang['strreportdroppedbad'] = 'Уничтожение отчета прервано.';
+	$plugin_lang['strconfdropreport'] = 'Вы уверены, что хотите уничтожить отчет "%s"?';
+	$plugin_lang['strreportneedsname'] = 'Вам необходимо указать имя отчета.';
+	$plugin_lang['strreportneedsdef'] = 'Вам необходимо указать SQL-запрос для Вашего отчета.';
+	$plugin_lang['strreportcreated'] = 'Отчет сохранен.';
+	$plugin_lang['strreportcreatedbad'] = 'Сохранение отчета прервано.';
 ?>

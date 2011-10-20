@@ -5,22 +5,23 @@
          */
 
         // Language and character set
-        $lang['appcharset'] = 'KOI8-R';
+        $plugin_lang['appcharset'] = 'KOI8-R';
 
         // Basic
-        $lang['strplugindescription'] = 'Report plugin';
+        $plugin_lang['strplugindescription'] = 'Report plugin';
+        $plugin_lang['strnoreportsdb'] = 'Ви не створили базу даних зв╕т╕в. Читайте пояснення в файл╕ INSTALL.';
 
         // Reports
-        $lang['strreport'] = 'Зв╕т';
-        $lang['strreports'] = 'Зв╕ти';
-        $lang['strshowallreports'] = 'Показати вс╕ зв╕ти';
-        $lang['strnoreports'] = 'Зв╕т╕в нема╓.';
-        $lang['strcreatereport'] = 'Створити зв╕т';
-        $lang['strreportdropped'] = 'Зв╕т видалено.';
-        $lang['strreportdroppedbad'] = 'Видалення зв╕та перервано.';
-        $lang['strconfdropreport'] = 'Ви впевнен╕, що бажа╓тее видалити зв╕т "%s"?';
-        $lang['strreportneedsname'] = 'Вам необх╕дно вказати ╕м"я зв╕ту.';
-        $lang['strreportneedsdef'] = 'Вам необх╕дно вказати SQL-запит для Вашого зв╕ту.';
-        $lang['strreportcreated'] = 'Зв╕т збережено.';
-        $lang['strreportcreatedbad'] = 'Збереження зв╕ту перервано.';
+        $plugin_lang['strreport'] = 'Зв╕т';
+        $plugin_lang['strreports'] = 'Зв╕ти';
+        $plugin_lang['strshowallreports'] = 'Показати вс╕ зв╕ти';
+        $plugin_lang['strnoreports'] = 'Зв╕т╕в нема╓.';
+        $plugin_lang['strcreatereport'] = 'Створити зв╕т';
+        $plugin_lang['strreportdropped'] = 'Зв╕т видалено.';
+        $plugin_lang['strreportdroppedbad'] = 'Видалення зв╕та перервано.';
+        $plugin_lang['strconfdropreport'] = 'Ви впевнен╕, що бажа╓тее видалити зв╕т "%s"?';
+        $plugin_lang['strreportneedsname'] = 'Вам необх╕дно вказати ╕м"я зв╕ту.';
+        $plugin_lang['strreportneedsdef'] = 'Вам необх╕дно вказати SQL-запит для Вашого зв╕ту.';
+        $plugin_lang['strreportcreated'] = 'Зв╕т збережено.';
+        $plugin_lang['strreportcreatedbad'] = 'Збереження зв╕ту перервано.';
 ?>
